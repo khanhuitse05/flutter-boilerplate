@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
 
 class CustomSnackBar {
+  CustomSnackBar(
+    this.content,
+      {this.context,
+      this.globalKey,
+      this.height = 28,
+      this.duration,
+      this.alignment = Alignment.center});
 
-  CustomSnackBar._();
-  CustomSnackBar({this.context, this.content, this.height, this.duration, this.alignment});
-
-  double _defaultHeight = 28;
-  int _defaultDuration = 3;
-  Alignment _defaultAlign = Alignment.center;
-
+  GlobalKey<ScaffoldState> globalKey;
   BuildContext context;
   String content;
   double height;
   Duration duration;
   Alignment alignment;
 
-  show(){
-    Scaffold.of(context).showSnackBar(
-        SnackBar(
-            duration: duration?? Duration(seconds: _defaultDuration),
-            content: Container(
-              height: height??_defaultHeight,
-              alignment: alignment?? _defaultAlign,
-              child: Text(content),
-            )
-        )
+  show() {
+    (context != null ? Scaffold.of(context) : globalKey.currentState)
+        .showSnackBar(
+      SnackBar(
+        duration: duration ?? Duration(seconds: 3),
+        content: Container(
+          height: height,
+          alignment: alignment,
+          child: Text(content),
+        ),
+      ),
     );
   }
 }

@@ -52,9 +52,9 @@ class _LanguageButtonState extends State<LanguageButton> {
       setState(() {});
     } else {
       CustomSnackBar(
-          context: context,
-          content:
-              AppTranslations.of(context).text('acc_setting_language_fail')).show();
+        AppTranslations.of(context).text('acc_setting_language_fail'),
+        context: context,
+      ).show();
     }
   }
 }

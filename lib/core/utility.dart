@@ -1,4 +1,5 @@
 class Utility {
+
   static bool isNullOrEmpty<T>(Iterable<T> array) {
     return array == null || array.length == 0;
   }
