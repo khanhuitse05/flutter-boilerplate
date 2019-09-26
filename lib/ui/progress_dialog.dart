@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_go_and_big_c/style/style.dart';
 
 String _dialogMessage = "Loading...";
 
@@ -10,7 +11,8 @@ class ProgressDialog {
 
   BuildContext _buildContext, _context;
 
-  ProgressDialog(BuildContext buildContext) {
+  ProgressDialog(BuildContext buildContext, {String message = 'Loading...'}) {
+    _dialogMessage = message;
     _buildContext = buildContext;
   }
 
@@ -30,8 +32,8 @@ class ProgressDialog {
   void hide({BuildContext contextHide}) {
     if (_isShowing) {
       _isShowing = false;
-      Navigator.of(contextHide??_context).pop();
-      debugPrint('ProgressDialog dismissed');
+      Navigator.of(contextHide ?? _context).pop();
+//      debugPrint('ProgressDialog dismissed');
     }
   }
 
@@ -39,15 +41,14 @@ class ProgressDialog {
     if (!_isShowing) {
       _dialog = new _MyDialog();
       _isShowing = true;
-      debugPrint('ProgressDialog shown');
+//      debugPrint('ProgressDialog shown');
       showDialog<dynamic>(
         context: _buildContext,
         barrierDismissible: false,
         builder: (BuildContext context) {
           _context = context;
           return Material(
-              type: MaterialType.transparency,
-              child: Center(child: _dialog));
+              type: MaterialType.transparency, child: Center(child: _dialog));
         },
       );
     }
@@ -78,37 +79,51 @@ class _MyDialogState extends State<_MyDialog> {
   void dispose() {
     super.dispose();
     _isShowing = false;
-    debugPrint('ProgressDialog dismissed by back button');
+//    debugPrint('ProgressDialog dismissed by back button');
   }
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Container(
-        height: 120,
-        width: 140,
-        color: Colors.black87,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                child: CircularProgressIndicator(
-                  backgroundColor: Colors.white,
-                  strokeWidth: 5,
-                ),
+    final colorBG = Colors.black87;
+    return Container(
+      width: 140,
+      decoration: BoxDecoration(
+        color: colorBG,
+        borderRadius: BorderRadius.all( Radius.circular(15), ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            height: 80,
+            padding: EdgeInsets.all(20),
+            alignment: Alignment.center,
+            child: Container(
+              child: CircularProgressIndicator(
+                backgroundColor: Colors.white,
+                strokeWidth: 5,
               ),
-              Container(
-                height: 10,
+            ),
+          ),
+
+          /// Bottom
+          Container(
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 20),
+            width: double.infinity,
+            child: Text(
+              _dialogMessage,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                fontFamily: AppFonts.nuNiToSemiBold,
               ),
-              Text(_dialogMessage,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ))
-            ]),
+            ),
+          ),
+        ],
       ),
     );
   }

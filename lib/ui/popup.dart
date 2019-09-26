@@ -79,119 +79,100 @@ class Popup {
         ButtonData btnNormal,
         bool closeButton = true,
         bool barrierDismissible = true}) async {
-
     return showDialog<dynamic>(
       context: context,
       builder: (BuildContext context) {
         return Dialog(
           elevation: 0.0,
           backgroundColor: Colors.transparent,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              /// BorderTop
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15),
-                  ),
-                ),
-                width: double.infinity,
-                height: 20,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(15),
               ),
-
-              /// Image
-              image != null
-                  ? Container(
-                height: 100,
-                color: Colors.white,
-                padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    image,
-                    closeButton? Container(
-                      alignment: Alignment.topRight,
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.close,
-                          color: Colors.black45,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                /// Image
+                image != null
+                    ? Container(
+                  height: 100,
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      image,
+                      closeButton
+                          ? Container(
+                        alignment: Alignment.topRight,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.close,
+                            color: Colors.black87,
+                          ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
                         ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ):Container(),
-                  ],
+                      )
+                          : Container(),
+                    ],
+                  ),
+                )
+                    : Container(
+                  height: 20,
                 ),
-              )
-                  : Container(),
-              Utility.stringIsNullOrEmpty(title)
-                  ? Container()
-                  : Container(
-                width: double.infinity,
-                color: Colors.white,
-                padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
-                child: Text(
-                  title,
-                  style: Theme.of(context).textTheme.body2,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Utility.stringIsNullOrEmpty(body)
-                  ? Container()
-                  : Container(
-                width: double.infinity,
-                color: Colors.white,
-                padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
-                child: Text(
-                  body,
-                  style: Theme.of(context).textTheme.body1,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Container(
-                color: Colors.white,
-                width: double.infinity,
-                padding: EdgeInsets.only(top: 10, right: 10, bottom: 5),
-                child: Row(
-                  mainAxisAlignment: btnNormal == null
-                      ? MainAxisAlignment.center
-                      : MainAxisAlignment.end,
-                  children: <Widget>[
-                    btnNormal != null
-                        ? Container(
-                      margin: EdgeInsets.only(right: 10),
-                      height: 40,
-                      child: btnNormal.buildNormal(context),
-                    )
-                        : Container(),
-                    btnHighlight != null
-                        ? Container(
-                      margin: EdgeInsets.only(right: 10),
-                      height: 40,
-                      child: btnHighlight.buildHighlight(context),
-                    )
-                        : Container(),
-                  ],
-                ),
-              ),
-
-              /// Bottom
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(15),
+                Utility.stringIsNullOrEmpty(title)
+                    ? Container()
+                    : Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+                  child: Text(
+                    title,
+                    style: Theme.of(context).textTheme.body2,
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                width: double.infinity,
-                height: 20,
-              ),
-            ],
+                Utility.stringIsNullOrEmpty(body)
+                    ? Container()
+                    : Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+                  child: Text(
+                    body,
+                    style: Theme.of(context).textTheme.body1,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.fromLTRB(10, 10, 10, 25),
+                  child: Row(
+                    mainAxisAlignment: btnNormal == null
+                        ? MainAxisAlignment.center
+                        : MainAxisAlignment.end,
+                    children: <Widget>[
+                      btnHighlight != null
+                          ? Container(
+                        margin: EdgeInsets.only(left: 10, right: 10),
+                        height: 40,
+                        child: btnHighlight.buildHighlight(context),
+                      )
+                          : Container(),
+                      btnNormal != null
+                          ? Container(
+                        height: 40,
+                        child: btnNormal.buildNormal(context),
+                      )
+                          : Container(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
