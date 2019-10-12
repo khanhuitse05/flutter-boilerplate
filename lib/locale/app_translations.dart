@@ -22,11 +22,11 @@ class AppTranslations {
 
     Map<dynamic, dynamic> _tmpLocale;
     String _localeCode = locale.languageCode;
-    application.language = _localeCode;
+    Application.instance.language = _localeCode;
     // Load multiple language file
-    for (int i = 0; i < application.locale[_localeCode].length; i++) {
+    for (int i = 0; i < Application.instance.locale[_localeCode].length; i++) {
       String jsonContent = await rootBundle.loadString(
-          "assets/locale/$_localeCode/${application.locale[_localeCode][i]}.json");
+          "assets/locale/$_localeCode/${Application.instance.locale[_localeCode][i]}.json");
       _tmpLocale = json.decode(jsonContent);
       _localisedValues.addAll(_tmpLocale);
     }

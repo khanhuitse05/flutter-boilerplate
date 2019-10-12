@@ -1,7 +1,4 @@
-import 'package:chat_app/ui/progress_dialog.dart';
-import 'package:chat_app/ui/snackbar.dart';
 import 'package:flutter/material.dart';
-import 'app_translations.dart';
 import 'application.dart';
 
 class LanguageButton extends StatefulWidget {
@@ -10,14 +7,30 @@ class LanguageButton extends StatefulWidget {
 }
 
 class _LanguageButtonState extends State<LanguageButton> {
-  final flags = {
-    'vi': 'assets/images/locale/vi.png',
-    'en': 'assets/images/locale/en.png',
-  };
+
+  Map flags;
+
+  List<String> get languageCodesList =>
+      Application.instance.supportedLanguagesCodes;
+  String get selectedLanguageCode => Application.instance.language;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    flags = new Map();
+    for (var i = 0; i < languageCodesList.length; i++) {
+      var code = languageCodesList[i];
+      flags[code]= 'assets/images/locale/$code.png';
+      if(code == selectedLanguageCode){
+        currentIndex = i;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    String languageCode = application.language;
     return InkWell(
       onTap: () {
         clickLanguage(context);
@@ -27,7 +40,7 @@ class _LanguageButtonState extends State<LanguageButton> {
           width: 24,
           height: 24,
           child:
-              Image.asset(flags[languageCode] ?? 'assets/images/locale/en.png'),
+              Image.asset(flags[selectedLanguageCode] ?? flags['en']),
         ),
         Container(
           color: Colors.transparent,
@@ -38,23 +51,14 @@ class _LanguageButtonState extends State<LanguageButton> {
     );
   }
 
-  void clickLanguage(BuildContext context) async {
-    String languageCode = application.language;
-    String nextCode = languageCode == 'en' ? 'vi' : 'en';
-
-    ProgressDialog pr = new ProgressDialog(context);
-    pr.setMessage(
-        AppTranslations.of(context).text('acc_setting_language_loading'));
-    pr.show();
-    bool success = await application.changeLanguage(nextCode);
-    pr.hide();
-    if (success) {
-      setState(() {});
-    } else {
-      CustomSnackBar(
-        AppTranslations.of(context).text('acc_setting_language_fail'),
-        context: context,
-      ).show();
+  int currentIndex;
+  void clickLanguage(BuildContext context) {
+    currentIndex++;
+    if(currentIndex >= languageCodesList.length){
+      currentIndex = 0;
     }
+    Application.instance.changeLanguage(languageCodesList[currentIndex]);
+    setState(() {});
+
   }
 }

@@ -1,15 +1,53 @@
+import 'dart:io';
 import 'package:chat_app/locale/app_translations.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class UIManager {
+
   static get decorationBorder => BoxDecoration(
-      color: Colors.white,
-      border: new Border.all(
-        color: Color(0xFFEDEDED),
-        width: 1,
-        style: BorderStyle.solid,
+    color: Colors.white,
+    border: new Border.all(
+      color: Color(0xFFEDEDED),
+      width: 1,
+      style: BorderStyle.solid,
+    ),
+    boxShadow: <BoxShadow>[
+      BoxShadow(
+        color: Colors.black.withAlpha(70),
+        offset: Offset(1.0, 4.0),
+        blurRadius: 5.0,
       ),
-      borderRadius: BorderRadius.all(Radius.circular(5)));
+    ],
+    borderRadius: BorderRadius.all(
+      Radius.circular(5),
+    ),
+  );
+
+  static Widget btnClose({VoidCallback onPressed}) {
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        width: 32,
+        height: 32,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black.withAlpha(70),
+              offset: Offset(1.0, 4.0),
+              blurRadius: 5.0,
+            ),
+          ],
+        ),
+        child: Icon(
+          Icons.close,
+          color: Colors.black45,
+        ),
+      ),
+    );
+  }
 
   static Widget btnViewAll(String text, {VoidCallback onPressed}) {
     return MaterialButton(
@@ -50,54 +88,18 @@ class UIManager {
       ),
     );
   }
-}
 
-class ButtonData {
-  ButtonData({this.title, this.callback});
-
-  String title;
-  VoidCallback callback;
-
-  Widget buildNormal(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(bottom: 10),
-      alignment: AlignmentDirectional.topCenter,
-      child: RaisedButton(
-        color: Colors.white,
-        padding: EdgeInsets.only(left: 15, right: 15),
-        child: Text(
-          title,
-          style: Theme.of(context)
-              .textTheme
-              .button
-              .merge(TextStyle(color: Colors.black12)),
+  static defaultIndicator() {
+    if (Platform.isIOS) {
+      return CupertinoActivityIndicator(radius: 15,);
+    } else {
+      return SizedBox(
+        child: CircularProgressIndicator(
+          backgroundColor: Colors.white,
+          strokeWidth: 3,
         ),
-        onPressed: () {
-          Navigator.pop(context);
-          if (callback != null) callback();
-        },
-      ),
-    );
-  }
-
-  Widget buildHighlight(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(bottom: 10, right: 10),
-      alignment: AlignmentDirectional.topCenter,
-      child: RaisedButton(
-        padding: EdgeInsets.only(left: 15, right: 15),
-        child: Text(
-          title,
-          style: Theme.of(context)
-              .textTheme
-              .button
-              .merge(TextStyle(color: Colors.white)),
-        ),
-        onPressed: () {
-          Navigator.pop(context);
-          if (callback != null) callback();
-        },
-      ),
-    );
+      );
+    }
   }
 }
+

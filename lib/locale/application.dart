@@ -3,6 +3,15 @@ import 'dart:ui';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Application {
+
+  static final Application instance = Application._internal();
+
+  factory Application() => instance;
+
+  Application._internal() {
+    /// init
+  }
+
   final List<String> supportedLanguages = [
     "English",
     "Tiếng việt",
@@ -41,5 +50,3 @@ class Application {
     onLocaleChanged.add(Locale(languageCode));
   }
 }
-
-Application application = Application();

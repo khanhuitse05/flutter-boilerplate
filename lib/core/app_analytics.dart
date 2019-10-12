@@ -8,10 +8,10 @@ class AppAnalytics {
   }
 
   AppAnalytics._internal() {
-    // init things inside this
+    firebase = FirebaseAnalytics();
   }
 
-  FirebaseAnalytics firebase = FirebaseAnalytics();
+  FirebaseAnalytics firebase;
 
   Future<void> setAnalyticsCollectionEnabled(bool enable) async {
     await firebase.setAnalyticsCollectionEnabled(enable);

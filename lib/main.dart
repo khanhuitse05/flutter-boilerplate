@@ -1,54 +1,76 @@
 import 'package:chat_app/core/router.dart';
 import 'package:chat_app/theme/app_theme.dart';
-import 'package:chat_app/view/home_view.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
 import 'core/app_analytics.dart';
 import 'locale/app_translations_delegate.dart';
 import 'locale/application.dart';
 
-
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
       .copyWith(statusBarIconBrightness: Brightness.light));
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+//  ErrorWidget.builder = (FlutterErrorDetails details) => Container(
+//    alignment: Alignment.center,
+//    child: Icon(Icons.error),
+//  );
+
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
-
-  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(
-      analytics: AppAnalytics.instance.firebase, nameExtractor: Router.getNameExtractor);
+  static final navKey = new GlobalKey<NavigatorState>();
 
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
+
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(
+      analytics: AppAnalytics.instance.firebase,
+      nameExtractor: Router.getNameExtractor);
+
   AppTranslationsDelegate _newLocaleDelegate;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: [
-        _newLocaleDelegate,
-        const AppTranslationsDelegate(),
-        //provides localised strings
-        GlobalMaterialLocalizations.delegate,
-        //provides RTL support
-        GlobalWidgetsLocalizations.delegate,
+    return MultiProvider(
+      providers: [
+        Provider.value(value: ThemeManager()),
+        StreamProvider<ThemeData>(
+            builder: (context) =>
+                Provider.of<ThemeManager>(context, listen: false).theme)
       ],
-      supportedLocales: application.supportedLocales(),
-
-      title: 'Flutter Demo',
-      theme: themeData,
-      initialRoute: '/',
-      onGenerateRoute: Router.generateRoute,
-      navigatorObservers: [MyApp.observer],
-      home: HomeView(title: 'Flutter Demo Home Page'),
+      child: Consumer<ThemeData>(builder: (context, theme, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: [
+            _newLocaleDelegate,
+            const AppTranslationsDelegate(),
+            //provides localised strings
+            GlobalMaterialLocalizations.delegate,
+            //provides RTL support
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: Application.instance.supportedLocales(),
+          navigatorKey: MyApp.navKey,
+          title: 'My Flutter App',
+          theme: theme,
+          initialRoute: '/',
+          onGenerateRoute: Router.generateRoute,
+          navigatorObservers: [observer],
+        );
+      }),
     );
   }
 
@@ -56,10 +78,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     _newLocaleDelegate = AppTranslationsDelegate(newLocale: null);
-    application.onLocaleChanged.stream.listen(onLocaleChange);
-//    AppOneSignal.instance.initOneSignal(context);
-//    AppDynamicLinks.instance.initDynamicLinks(context);
-
+    Application.instance.onLocaleChanged.stream.listen(onLocaleChange);
   }
 
   void onLocaleChange(Locale locale) {

@@ -1,6 +1,6 @@
+import 'package:chat_app/theme/app_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_go_and_big_c/style/style.dart';
 
 String _dialogMessage = "Loading...";
 

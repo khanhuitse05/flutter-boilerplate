@@ -10,6 +10,9 @@
   "tab_home": "Trang chủ",
   "tab_categories": "Danh mục",
   "tab_profile": "Hồ sơ",
-  "tab_notifications": "Tin nhắn"
+  "tab_notifications": "Tin nhắn",
+
+  "setting_language": "Ngôn ngữ",
+  "setting_language_title" : "Chọn ngôn ngữ"
 
 }
