@@ -89,7 +89,9 @@ class _MyDialogState extends State<_MyDialog> {
       width: 140,
       decoration: BoxDecoration(
         color: colorBG,
-        borderRadius: BorderRadius.all( Radius.circular(15), ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(15),
+        ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -119,7 +121,7 @@ class _MyDialogState extends State<_MyDialog> {
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 16,
-                fontFamily: AppFonts.nuNiToSemiBold,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),

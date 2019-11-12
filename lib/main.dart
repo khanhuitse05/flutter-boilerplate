@@ -1,6 +1,5 @@
 import 'package:chat_app/core/router.dart';
 import 'package:chat_app/theme/app_theme.dart';
-import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -36,9 +35,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(
-      analytics: AppAnalytics.instance.firebase,
-      nameExtractor: Router.getNameExtractor);
+//  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(
+//      analytics: AppAnalytics.instance.firebase,
+//      nameExtractor: Router.getNameExtractor);
 
   AppTranslationsDelegate _newLocaleDelegate;
 
@@ -57,9 +56,7 @@ class _MyAppState extends State<MyApp> {
           localizationsDelegates: [
             _newLocaleDelegate,
             const AppTranslationsDelegate(),
-            //provides localised strings
             GlobalMaterialLocalizations.delegate,
-            //provides RTL support
             GlobalWidgetsLocalizations.delegate,
           ],
           supportedLocales: Application.instance.supportedLocales(),
@@ -68,7 +65,7 @@ class _MyAppState extends State<MyApp> {
           theme: theme,
           initialRoute: '/',
           onGenerateRoute: Router.generateRoute,
-          navigatorObservers: [observer],
+//          navigatorObservers: [observer],
         );
       }),
     );

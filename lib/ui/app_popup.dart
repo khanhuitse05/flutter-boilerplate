@@ -6,12 +6,12 @@ class AppPopup {
 
   static TextStyle styleTitle({Color color = Colors.black87}) {
     return TextStyle(
-        color: color, fontFamily: AppFonts.nuNiToSemiBold, fontSize: 16);
+        color: color, fontWeight: FontWeight.w500, fontSize: 16);
   }
 
   static TextStyle styleBody({Color color = Colors.black87}) {
     return TextStyle(
-        color: color, fontFamily: AppFonts.nuNiToRegular, fontSize: 14);
+        color: color, fontWeight: FontWeight.w400, fontSize: 14);
   }
 
   static Future<void> showImageDialog(BuildContext context,
@@ -228,7 +228,7 @@ class ButtonData {
 
   static TextStyle styleButton({Color color}) {
     return TextStyle(
-        color: color, fontFamily: AppFonts.nuNiToSemiBold, fontSize: 14);
+        color: color, fontWeight: FontWeight.w500, fontSize: 14);
   }
 
   String title;
