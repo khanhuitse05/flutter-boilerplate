@@ -1,3 +1,4 @@
+import 'package:chat_app/locale/app_translations.dart';
 import 'package:flutter/material.dart';
 import 'application.dart';
 
@@ -12,7 +13,7 @@ class _LanguageButtonState extends State<LanguageButton> {
 
   List<String> get languageCodesList =>
       Application.instance.supportedLanguagesCodes;
-  String get selectedLanguageCode => Application.instance.language;
+  String get selectedLanguageCode => appTranslations.currentLanguage;
 
   @override
   void initState() {

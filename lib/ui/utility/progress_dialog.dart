@@ -1,26 +1,21 @@
-import 'package:chat_app/theme/app_styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-String _dialogMessage = "Loading...";
+String _dialogMessage = '';
 
 bool _isShowing = false;
 
 class ProgressDialog {
   _MyDialog _dialog;
 
-  BuildContext _buildContext, _context;
+  BuildContext _buildContext;
 
   ProgressDialog(BuildContext buildContext, {String message = 'Loading...'}) {
     _dialogMessage = message;
     _buildContext = buildContext;
   }
 
-  void setMessage(String mess) {
-    _dialogMessage = mess;
-  }
-
-  void update(String message) {
+  void updateMessage(String message) {
     _dialogMessage = message;
     _dialog.update();
   }
@@ -29,11 +24,10 @@ class ProgressDialog {
     return _isShowing;
   }
 
-  void hide({BuildContext contextHide}) {
+  void hide(BuildContext context) {
     if (_isShowing) {
       _isShowing = false;
-      Navigator.of(contextHide ?? _context).pop();
-//      debugPrint('ProgressDialog dismissed');
+      Navigator.of(context).pop();
     }
   }
 
@@ -41,12 +35,10 @@ class ProgressDialog {
     if (!_isShowing) {
       _dialog = new _MyDialog();
       _isShowing = true;
-//      debugPrint('ProgressDialog shown');
       showDialog<dynamic>(
         context: _buildContext,
         barrierDismissible: false,
         builder: (BuildContext context) {
-          _context = context;
           return Material(
               type: MaterialType.transparency, child: Center(child: _dialog));
         },
@@ -64,7 +56,6 @@ class _MyDialog extends StatefulWidget {
   }
 
   @override
-  // ignore: must_be_immutable
   State<StatefulWidget> createState() {
     return _dialog;
   }
@@ -79,7 +70,6 @@ class _MyDialogState extends State<_MyDialog> {
   void dispose() {
     super.dispose();
     _isShowing = false;
-//    debugPrint('ProgressDialog dismissed by back button');
   }
 
   @override
@@ -128,5 +118,20 @@ class _MyDialogState extends State<_MyDialog> {
         ],
       ),
     );
+  }
+}
+
+ProgressDialog _progressDialog;
+
+showLoading(context, {String message = 'Loading...'}) {
+  if (_progressDialog == null) {
+    _progressDialog = ProgressDialog(context, message: message)..show();
+  }
+}
+
+hideLoading(context) {
+  if (_progressDialog != null) {
+    _progressDialog.hide(context);
+    _progressDialog = null;
   }
 }

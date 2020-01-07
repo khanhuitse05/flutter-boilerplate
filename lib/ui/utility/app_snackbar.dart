@@ -18,7 +18,7 @@ class AppSnackBar {
     ));
   }
 
-  static Widget showFlushbar(context, message, {duration = _duration}) {
+  static Widget showFlushBar(context, message, {duration = _duration}) {
     return Flushbar(
       padding: const EdgeInsets.all(0),
 //      forwardAnimationCurve: Curves.easeOutQuart,

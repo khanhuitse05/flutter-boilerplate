@@ -11,7 +11,5 @@ class GlobalConfig {
   }
 
   var appVersion = '2.0.2';
-
-  var language = 'en';
-
+  final domain = 'http://yourdomain.com';
 }

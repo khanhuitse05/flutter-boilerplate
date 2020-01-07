@@ -5,18 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
-import 'core/app_analytics.dart';
 import 'locale/app_translations_delegate.dart';
 import 'locale/application.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light
       .copyWith(statusBarIconBrightness: Brightness.light));
-
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
 
 //  ErrorWidget.builder = (FlutterErrorDetails details) => Container(
 //    alignment: Alignment.center,
@@ -34,23 +28,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-//  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(
-//      analytics: AppAnalytics.instance.firebase,
-//      nameExtractor: Router.getNameExtractor);
-
   AppTranslationsDelegate _newLocaleDelegate;
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider.value(value: ThemeManager()),
-        StreamProvider<ThemeData>(
-            builder: (context) =>
-                Provider.of<ThemeManager>(context, listen: false).theme)
+        ChangeNotifierProvider(create: (_) => ThemeManager()),
       ],
-      child: Consumer<ThemeData>(builder: (context, theme, child) {
+      child: Consumer<ThemeManager>(builder: (context, theme, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           localizationsDelegates: [
@@ -62,10 +48,9 @@ class _MyAppState extends State<MyApp> {
           supportedLocales: Application.instance.supportedLocales(),
           navigatorKey: MyApp.navKey,
           title: 'My Flutter App',
-          theme: theme,
-          initialRoute: '/',
+          theme: theme.currentTheme,
+          initialRoute: '/home',
           onGenerateRoute: Router.generateRoute,
-//          navigatorObservers: [observer],
         );
       }),
     );
@@ -76,6 +61,11 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _newLocaleDelegate = AppTranslationsDelegate(newLocale: null);
     Application.instance.onLocaleChanged.stream.listen(onLocaleChange);
+
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
   }
 
   void onLocaleChange(Locale locale) {

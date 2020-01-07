@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Application {
-
   static final Application instance = Application._internal();
 
   factory Application() => instance;
@@ -12,25 +11,16 @@ class Application {
     /// init
   }
 
-  final List<String> supportedLanguages = [
-    "English",
-    "Tiếng việt",
-  ];
+  final List<String> supportedLanguages = ["English", "Tiếng việt"];
 
-  final List<String> supportedLanguagesCodes = [
-    "en",
-    "vi",
-  ];
+  final List<String> supportedLanguagesCodes = ["en", "vi"];
+
+  final remoteUrl =
+      'http://dev-mobileapp.bigc.vn:8080/files/mobile-app/locale/';
 
   final locale = {
-    'en': [
-      "main",
-      "common",
-    ],
-    'vi': [
-      "main",
-      "common",
-    ]
+    'en': ["main", "common"],
+    'vi': ["main", "common"]
   };
 
   //returns the list of supported Locales
@@ -38,15 +28,12 @@ class Application {
       supportedLanguagesCodes.map<Locale>((language) => Locale(language, ""));
 
   var onLocaleChanged = StreamController<Locale>.broadcast();
-  String language;
 
   changeLanguage(String languageCode) async {
     /// save to locale
     final prefInstance = await SharedPreferences.getInstance();
-    prefInstance.setString("language_code", languageCode);
-
+    await prefInstance.setString("language_code", languageCode);
     /// set language
-    language = languageCode;
     onLocaleChanged.add(Locale(languageCode));
   }
 }

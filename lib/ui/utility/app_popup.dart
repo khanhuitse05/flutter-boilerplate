@@ -1,5 +1,4 @@
 import 'package:chat_app/core/utility.dart';
-import 'package:chat_app/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class AppPopup {
@@ -85,7 +84,7 @@ class AppPopup {
       );
     }
 
-    if (titleWidget == null && Utility.stringIsNullOrEmpty(title) == false) {
+    if (titleWidget == null && Utility.isNullOrEmpty(title) == false) {
       titleWidget = Text(
         title,
         style: styleTitle(),
@@ -93,7 +92,7 @@ class AppPopup {
       );
     }
     if (messageWidget == null &&
-        Utility.stringIsNullOrEmpty(message) == false) {
+        Utility.isNullOrEmpty(message) == false) {
       messageWidget = Text(
         message,
         style: styleBody(),
@@ -168,7 +167,7 @@ class AppPopup {
                     : Container(
                         height: 20,
                       ),
-                Utility.stringIsNullOrEmpty(title)
+                Utility.isNullOrEmpty(title)
                     ? Container()
                     : Container(
                         width: double.infinity,
@@ -179,7 +178,7 @@ class AppPopup {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                Utility.stringIsNullOrEmpty(body)
+                Utility.isNullOrEmpty(body)
                     ? Container()
                     : Container(
                         width: double.infinity,

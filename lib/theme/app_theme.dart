@@ -1,14 +1,12 @@
-import 'dart:async';
-
 import 'package:chat_app/core/storage_manager.dart';
 import 'package:flutter/material.dart';
 
-class ThemeManager {
-  int _currentTheme = 0;
+class ThemeManager extends ChangeNotifier {
+  int _currentIndex = 0;
 
-  StreamController<ThemeData> _themeController = StreamController<ThemeData>();
+  List get _theme => [primaryTheme, secondaryTheme];
 
-  Stream<ThemeData> get theme => _themeController.stream;
+  ThemeData get currentTheme => _theme[_currentIndex];
 
   ThemeManager() {
     loadUserTheme();
@@ -20,18 +18,16 @@ class ThemeManager {
   }
 
   switchTheme() {
-    changeTheme(_currentTheme == 0 ? 1 : 0);
+    changeTheme(_currentIndex == 0 ? 1 : 0);
   }
 
   changeTheme(int index) async {
-    _currentTheme = index;
-
-    _themeController
-        .add(_currentTheme == 0 ? primaryTheme() : secondaryTheme());
-    await StorageManager.setObject("user_theme", index);
+    _currentIndex = index;
+    notifyListeners();
+    StorageManager.setObject("user_theme", index);
   }
 
-  ThemeData primaryTheme() {
+  ThemeData get primaryTheme {
     return ThemeData(
         primarySwatch: Colors.blue,
 
@@ -46,7 +42,7 @@ class ThemeManager {
   }
 
   // Example Dark mode
-  ThemeData secondaryTheme() {
+  ThemeData get secondaryTheme {
     return ThemeData(
       brightness: Brightness.dark,
 

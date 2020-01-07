@@ -1,10 +1,7 @@
-import 'package:chat_app/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 
 import 'app_translations.dart';
 import 'application.dart';
-
-enum SingingCharacter { lafayette, jefferson }
 
 class LanguageSelectorPage extends StatefulWidget {
   @override
@@ -17,7 +14,7 @@ class _LanguageSelectorPageState extends State<LanguageSelectorPage> {
   List<String> get languageCodesList =>
       Application.instance.supportedLanguagesCodes;
 
-  String get selectedLanguageCode => Application.instance.language;
+  String get selectedLanguageCode => appTranslations.currentLanguage;
 
   String get selectedLanguage => languagesMap[selectedLanguageCode];
 
@@ -48,7 +45,7 @@ class _LanguageSelectorPageState extends State<LanguageSelectorPage> {
           children: <Widget>[
             Text(
               AppTranslations.of(context).text("setting_language_title"),
-              style: AppStyles.title(),
+              style: Theme.of(context).textTheme.title,
             ),
             Padding(
               padding: EdgeInsets.only(top: 10),
@@ -64,13 +61,13 @@ class _LanguageSelectorPageState extends State<LanguageSelectorPage> {
     );
   }
 
-  buildButtonLanguage(context, String code) {
+  Widget buildButtonLanguage(context, String code) {
     return Row(
       children: <Widget>[
         new Radio(
           activeColor: Theme.of(context).primaryColor,
           value: code,
-          groupValue: selectedLanguage,
+          groupValue: selectedLanguageCode,
           onChanged: onChangeMyLanguage,
         ),
         new InkWell(
@@ -79,7 +76,7 @@ class _LanguageSelectorPageState extends State<LanguageSelectorPage> {
           },
           child: Text(
             languagesMap[code],
-            style: AppStyles.title(),
+            style: Theme.of(context).textTheme.title,
           ),
         ),
       ],
@@ -88,6 +85,8 @@ class _LanguageSelectorPageState extends State<LanguageSelectorPage> {
 
   void onChangeMyLanguage(Object value) {
     Application.instance.changeLanguage(value);
-    setState(() {});
+
+    setState(() {
+    });
   }
 }

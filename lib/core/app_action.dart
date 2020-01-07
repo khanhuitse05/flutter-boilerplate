@@ -1,0 +1,77 @@
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class AppAction {
+  static final AppAction instance = AppAction._internal();
+
+  factory AppAction() => instance;
+
+  AppAction._internal() {
+    alreadySpam = false;
+  }
+
+  bool alreadySpam;
+
+  void onHandleActionInit(
+      BuildContext context, String action, String value, String message) {
+    if (alreadySpam == false) {
+      alreadySpam = true;
+      onHandleAction(context, action, value, message);
+    }
+  }
+
+  void onHandleAction(
+      BuildContext context, String action, String value, String message) {
+    action = action.trim().toLowerCase();
+    value = value.trim();
+    switch (action) {
+      case ActionType.linkToScreen:
+        linkToScreen(context, value, message);
+        break;
+      case ActionType.linkToWebView:
+        linkToWebView(context, value, message);
+        break;
+      case ActionType.linkToBrowser:
+        linkToBrowser(context, value);
+        break;
+      default:
+        print("Type don't exist: $action");
+        break;
+    }
+  }
+
+
+  void linkToBrowser(BuildContext context, String value) {
+    print('link to web page: $value');
+    launch(value);
+  }
+
+  void linkToWebView(BuildContext context, String value, String message) {
+    print('link to web page: $value');
+    Navigator.pushNamed(context, '/web-view',
+        arguments: {'url': value, 'title': message});
+  }
+
+  void linkToScreen(BuildContext context, String value, String message) {
+    print('link to scrren: ' + value);
+    int index = -1;
+    switch (value) {
+      case 'home':
+        index = 0;
+        break;
+      default:
+        Navigator.pushNamed(context, '/$value', arguments: message);
+        return;
+        break;
+    }
+    if (index >= 0) {
+      Navigator.popUntil(context, ModalRoute.withName('/home'));
+    }
+  }
+}
+
+class ActionType {
+  static const String linkToBrowser = "linkToBrowser";
+  static const String linkToWebView = "linkToWebView";
+  static const String linkToScreen = "linkToScreen";
+}
