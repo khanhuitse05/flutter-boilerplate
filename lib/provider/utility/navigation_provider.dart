@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:chat_app/locale/language_selector_page.dart';
+import 'package:chat_app/view/sample/home_view.dart';
 import 'package:flutter/material.dart';
 
 class NavigationProvider extends ChangeNotifier {
@@ -20,19 +22,21 @@ class NavigationProvider extends ChangeNotifier {
 enum PageName { home, category, search, notification, account }
 
 List<Widget> homeTap = [
-  Text(
-    'Index 0: Home',
+  HomeView(),
+  Center(
+    child: Text(
+      'Index 1: Category',
+    ),
   ),
-  Text(
-    'Index 1: Category',
+  Center(
+    child: Text(
+      'Index 2: Search',
+    ),
   ),
-  Text(
-    'Index 2: Search',
+  Center(
+    child: Text(
+      'Index 2: Notification',
+    ),
   ),
-  Text(
-    'Index 2: Notification',
-  ),
-  Text(
-    'Index 2: Account',
-  ),
+  LanguageSelectorPage(),
 ];

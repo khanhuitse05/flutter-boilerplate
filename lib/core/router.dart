@@ -1,5 +1,5 @@
 import 'package:chat_app/view/empty_view.dart';
-import 'package:chat_app/view/home_view.dart';
+import 'package:chat_app/view/sample/home_page.dart';
 import 'package:chat_app/view/web_view.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +8,9 @@ class Router {
     /// add settings on MaterialPageRoute for which route you want to tracking
     var data = settings.arguments;
     switch (settings.name) {
-      case '/home':
+      case '/':
         return MaterialPageRoute(
-            builder: (_) => HomeView(), settings: settings);
+            builder: (_) => HomePage(), settings: settings);
 
       case '/web-view':
         return MaterialPageRoute(

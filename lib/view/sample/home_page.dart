@@ -3,12 +3,12 @@ import 'package:chat_app/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomeView extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _HomeViewState createState() => _HomeViewState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeViewState extends State<HomeView>
+class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin, WidgetsBindingObserver {
 
   @override
@@ -76,7 +76,7 @@ class _HomeViewState extends State<HomeView>
   }
 
   _onItemTapped(_index) {
-    Provider.of<NavigationProvider>(context).switchTo(_index);
+    Provider.of<NavigationProvider>(context, listen: false).switchTo(_index);
 //      tabController.animateTo(_index);
   }
 

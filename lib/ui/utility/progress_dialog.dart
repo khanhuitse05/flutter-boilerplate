@@ -4,6 +4,26 @@ import 'package:flutter/material.dart';
 String _dialogMessage = '';
 
 bool _isShowing = false;
+ProgressDialog _progressDialog;
+
+showLoading(context, {message = 'Loading...'}) {
+  if (_progressDialog == null) {
+    _progressDialog = ProgressDialog(context, message: message)..show();
+  }
+}
+
+hideLoading(context) {
+  if (_progressDialog != null) {
+    _progressDialog.hide(context);
+    _progressDialog = null;
+  }
+}
+
+updateLoading(String message) {
+  if (_progressDialog != null) {
+    _progressDialog.updateMessage(message);
+  }
+}
 
 class ProgressDialog {
   _MyDialog _dialog;
@@ -76,7 +96,7 @@ class _MyDialogState extends State<_MyDialog> {
   Widget build(BuildContext context) {
     final colorBG = Colors.black87;
     return Container(
-      width: 140,
+      width: _dialogMessage.isEmpty ? 80 : 130,
       decoration: BoxDecoration(
         color: colorBG,
         borderRadius: BorderRadius.all(
@@ -94,15 +114,19 @@ class _MyDialogState extends State<_MyDialog> {
             padding: EdgeInsets.all(20),
             alignment: Alignment.center,
             child: Container(
+              width: 30,
+              height: 30,
               child: CircularProgressIndicator(
                 backgroundColor: Colors.white,
-                strokeWidth: 5,
+                strokeWidth: 3,
               ),
             ),
           ),
 
           /// Bottom
-          Container(
+          _dialogMessage.isEmpty
+              ? SizedBox()
+              : Container(
             padding: EdgeInsets.fromLTRB(10, 0, 10, 20),
             width: double.infinity,
             child: Text(
@@ -110,7 +134,7 @@ class _MyDialogState extends State<_MyDialog> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -118,20 +142,5 @@ class _MyDialogState extends State<_MyDialog> {
         ],
       ),
     );
-  }
-}
-
-ProgressDialog _progressDialog;
-
-showLoading(context, {String message = 'Loading...'}) {
-  if (_progressDialog == null) {
-    _progressDialog = ProgressDialog(context, message: message)..show();
-  }
-}
-
-hideLoading(context) {
-  if (_progressDialog != null) {
-    _progressDialog.hide(context);
-    _progressDialog = null;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:chat_app/core/router.dart';
+import 'package:chat_app/provider/utility/navigation_provider.dart';
 import 'package:chat_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -35,6 +36,7 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeManager()),
+        ChangeNotifierProvider(create: (_) => NavigationProvider()),
       ],
       child: Consumer<ThemeManager>(builder: (context, theme, child) {
         return MaterialApp(
@@ -49,7 +51,7 @@ class _MyAppState extends State<MyApp> {
           navigatorKey: MyApp.navKey,
           title: 'My Flutter App',
           theme: theme.currentTheme,
-          initialRoute: '/home',
+          initialRoute: '/',
           onGenerateRoute: Router.generateRoute,
         );
       }),

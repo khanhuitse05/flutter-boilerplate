@@ -32,23 +32,16 @@ class _LanguageButtonState extends State<LanguageButton> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
+    return IconButton(
+      onPressed: () {
         clickLanguage(context);
       },
-      child: Stack(alignment: Alignment.center, children: [
-        Container(
-          width: 24,
-          height: 24,
-          child:
-              Image.asset(flags[selectedLanguageCode] ?? flags['en']),
-        ),
-        Container(
-          color: Colors.transparent,
-          height: 40,
-          width: 40,
-        )
-      ]),
+      icon: Container(
+        width: 24,
+        height: 24,
+        child:
+        Image.asset(flags[selectedLanguageCode] ?? flags['en']),
+      ),
     );
   }
 
