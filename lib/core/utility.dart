@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:intl/intl.dart';
 
 class Utility {
@@ -6,7 +7,7 @@ class Utility {
     if (object == null) return true;
     if (object is String) return object.trim().isEmpty;
     if (object is Iterable) return object.length == 0;
-    if (object is Map) return object.keys.length == 0;
+    if (object is Map) return object.isEmpty;
     return false;
   }
 
@@ -23,5 +24,10 @@ class Utility {
     } else {
       return oCcy.format(number);
     }
+  }
+
+  checkInternet() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    return (connectivityResult != ConnectivityResult.none);
   }
 }

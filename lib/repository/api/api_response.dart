@@ -53,7 +53,7 @@ class ApiResponse<T> {
   ApiResponse({this.requiredStore = true, this.requiredLanguage = true}) {
     //language = '';
     message = 'Not load yet';
-    _status = Status.error;
+    _status = Status.none;
     _data = null;
     onStatusChanged = StreamController<Status>.broadcast();
   }
@@ -83,4 +83,4 @@ class ApiResponse<T> {
   }
 }
 
-enum Status { loading, error, success }
+enum Status {none, loading, error, success }

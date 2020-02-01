@@ -10,8 +10,8 @@
 @import connectivity;
 #endif
 
-#if __has_include(<shared_preferences/SharedPreferencesPlugin.h>)
-#import <shared_preferences/SharedPreferencesPlugin.h>
+#if __has_include(<shared_preferences/FLTSharedPreferencesPlugin.h>)
+#import <shared_preferences/FLTSharedPreferencesPlugin.h>
 #else
 @import shared_preferences;
 #endif
@@ -22,8 +22,8 @@
 @import url_launcher;
 #endif
 
-#if __has_include(<webview_flutter/WebViewFlutterPlugin.h>)
-#import <webview_flutter/WebViewFlutterPlugin.h>
+#if __has_include(<webview_flutter/FLTWebViewFlutterPlugin.h>)
+#import <webview_flutter/FLTWebViewFlutterPlugin.h>
 #else
 @import webview_flutter;
 #endif

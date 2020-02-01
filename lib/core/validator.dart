@@ -1,4 +1,5 @@
 class Validator {
+
   static String phoneNumberValidator(String value) {
     String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
     RegExp regExp = new RegExp(pattern);

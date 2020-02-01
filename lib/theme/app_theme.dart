@@ -28,8 +28,32 @@ class ThemeManager extends ChangeNotifier {
   }
 
   ThemeData get primaryTheme {
+    var title = TextStyle(
+        color: Colors.white,
+        fontWeight: FontWeight.w500,
+        fontSize: 18,
+        letterSpacing: 0.15);
+
     return ThemeData(
+        brightness: Brightness.light,
         primarySwatch: Colors.blue,
+        primaryColor: Colors.blue,
+
+        buttonColor: Colors.blue,
+        /// App bar theme
+        appBarTheme: AppBarTheme(
+//        color: Colors.white,
+          textTheme: TextTheme(
+            title: title,
+            caption: TextStyle(color: Colors.white),
+          ),
+          actionsIconTheme: IconThemeData(
+            color: Colors.white,
+          ),
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
+        ),
 
         /// Support swipe from edge to navigate the previous scene
         /// for both iOS and android

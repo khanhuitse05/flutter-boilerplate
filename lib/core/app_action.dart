@@ -1,4 +1,6 @@
+import 'package:chat_app/provider/utility/navigation_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AppAction {
@@ -65,6 +67,7 @@ class AppAction {
         break;
     }
     if (index >= 0) {
+      Provider.of<NavigationProvider>(context).switchTo(index);
       Navigator.popUntil(context, ModalRoute.withName('/home'));
     }
   }
