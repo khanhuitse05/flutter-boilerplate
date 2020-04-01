@@ -1,4 +1,4 @@
-import 'package:chat_app/locale/app_translations.dart';
+import 'package:my_app/locale/app_translations.dart';
 import 'package:flutter/material.dart';
 import 'application.dart';
 

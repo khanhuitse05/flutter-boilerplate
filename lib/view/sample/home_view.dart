@@ -1,11 +1,8 @@
+import 'package:my_app/repository/utility/navigation_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:chat_app/locale/app_translations.dart';
-import 'package:chat_app/locale/language_button.dart';
-import 'package:chat_app/provider/utility/navigation_provider.dart';
-import 'package:chat_app/ui/button/text_button.dart';
-import 'package:chat_app/ui/utility/app_popup.dart';
-import 'package:chat_app/ui/utility/app_snackbar.dart';
-import 'package:chat_app/ui/utility/progress_dialog.dart';
+import 'package:my_app/locale/app_translations.dart';
+import 'package:my_app/locale/language_button.dart';
+import 'package:my_app/ui/utility/progress_dialog.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
@@ -38,27 +35,9 @@ class _HomeViewState extends State<HomeView> {
             RaisedButton(
               child: Text('Show Popup'),
               onPressed: () {
-                AppPopup.showCustomDialog(
-                  context,
-                  title: 'Title',
-                  content: [
-                    FlutterLogo(),
-                    Text('Message \n Message 2 \n Message 3 \n Message 4 \n Message 5 \n Message 6'),
-                    Text('Message \n Message 2 \n Message 3 \n Message 4 \n Message 5 \n Message 6'),
-                    Text('Message \n Message 2 \n Message 3 \n Message 4 \n Message 5 \n Message 6'),
-                    Text('Message \n Message 2 \n Message 3 \n Message 4 \n Message 5 \n Message 6'),
-                    Text('Message \n Message 2 \n Message 3 \n Message 4 \n Message 5 \n Message 6'),
-                  ],
-                  actions: [
-                    ButtonNormal(title: 'Normal', callback: () {}),
-                    ButtonHighLight(title: 'Highlight', callback: () {}),
-                    ButtonHighLight(title: 'Yes', callback: () {}),
-                    ButtonHighLight(title: 'No', callback: () {}),
-                  ],
-                );
               },
             ),
-            TextButton('Show loading', onPressed: (){
+            FlatButton(child: Text('Show loading'), onPressed: (){
               _showLoadingFiveSec();
             },),
           ],
@@ -82,6 +61,5 @@ class _HomeViewState extends State<HomeView> {
     await Future.delayed(Duration(seconds: 1));
     hideLoading(context);
     await Future.delayed(Duration(seconds: 1));
-    AppSnackBar.showSnackBar(context, 'Test Snack bar');
   }
 }

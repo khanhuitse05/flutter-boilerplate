@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:chat_app/locale/language_selector_page.dart';
-import 'package:chat_app/view/sample/home_view.dart';
+import 'package:my_app/locale/language_selector_page.dart';
+import 'package:my_app/view/sample/home_view.dart';
 import 'package:flutter/material.dart';
 
 class NavigationProvider extends ChangeNotifier {

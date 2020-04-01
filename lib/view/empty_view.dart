@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class EmptyView extends StatelessWidget {
-  EmptyView({this.title = 'Empty view'});
+  const EmptyView({this.title = 'Empty view'});
 
   final String title;
 
@@ -24,21 +24,20 @@ class EmptyView extends StatelessWidget {
               'OOPS! TRANG KHÔNG TỒN TẠI',
               style: Theme.of(context).textTheme.title,
             ),
-            SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             RaisedButton(
               child: Text(
                 'TRỞ VỀ TRANG CHỦ',
-                style: Theme.of(context).textTheme.button.merge(TextStyle(color: Colors.white)),
+                style: Theme.of(context)
+                    .textTheme
+                    .button
+                    .merge(TextStyle(color: Colors.white)),
               ),
               onPressed: () {
                 Navigator.pop(context);
               },
             ),
-            SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

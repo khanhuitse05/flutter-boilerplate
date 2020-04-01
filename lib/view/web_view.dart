@@ -29,20 +29,18 @@ class WebViewRouter extends StatelessWidget {
       body: WebView(
         initialUrl: url,
         javascriptMode: JavascriptMode.unrestricted,
-        onWebViewCreated: (WebViewController webViewController) {
-          _controller.complete(webViewController);
-        },
-        javascriptChannels: <JavascriptChannel>[
+        onWebViewCreated: _controller.complete,
+        javascriptChannels: [
           _toasterJavascriptChannel(context),
         ].toSet(),
       ),
     );
   }
 
-  _toasterJavascriptChannel(BuildContext context) {
+  JavascriptChannel _toasterJavascriptChannel(BuildContext context) {
     return JavascriptChannel(
         name: 'ABCD',
-        onMessageReceived: (JavascriptMessage message) {
+        onMessageReceived: (message) {
           Scaffold.of(context).showSnackBar(
             SnackBar(content: Text(message.message)),
           );

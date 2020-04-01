@@ -14,7 +14,7 @@ class HtmlContent extends StatelessWidget {
         return textAlign;
       },
       useRichText: true,
-      data: """<div><p>${text}</p> </div>""",
+      data: text,
     );
   }
 }

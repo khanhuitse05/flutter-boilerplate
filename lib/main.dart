@@ -1,6 +1,6 @@
-import 'package:chat_app/core/router.dart';
-import 'package:chat_app/provider/utility/navigation_provider.dart';
-import 'package:chat_app/theme/app_theme.dart';
+import 'package:my_app/core/router.dart';
+import 'package:my_app/repository/utility/navigation_provider.dart';
+import 'package:my_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -35,26 +35,23 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ThemeManager()),
         ChangeNotifierProvider(create: (_) => NavigationProvider()),
       ],
-      child: Consumer<ThemeManager>(builder: (context, theme, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          localizationsDelegates: [
-            _newLocaleDelegate,
-            const AppTranslationsDelegate(),
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-          ],
-          supportedLocales: Application.instance.supportedLocales(),
-          navigatorKey: MyApp.navKey,
-          title: 'My Flutter App',
-          theme: theme.currentTheme,
-          initialRoute: '/',
-          onGenerateRoute: Router.generateRoute,
-        );
-      }),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: [
+          _newLocaleDelegate,
+          const AppTranslationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: Application.instance.supportedLocales(),
+        navigatorKey: MyApp.navKey,
+        title: 'My Flutter App',
+        theme: primaryTheme,
+        initialRoute: '/',
+        onGenerateRoute: Router.generateRoute,
+      ),
     );
   }
 

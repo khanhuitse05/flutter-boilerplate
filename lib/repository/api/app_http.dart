@@ -1,60 +1,37 @@
-import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class AppHttp {
-
   final Map<String, String> _headers = {
     'Content-type': 'application/json',
     'Accept': 'application/json'
   };
 
-  Future<http.Response> get(String url,
-      {Map<String, String> headers}) async {
-    if (headers != null && headers.isNotEmpty) {
-      headers.addAll(_headers);
-    } else {
-      headers = _headers;
-    }
-
+  Future<http.Response> get(String url) async {
     try {
-      print('> API GET <');
-      print(url);
       final response =
-          await http.get(url, headers: headers).timeout(Duration(seconds: 10));
-      print('> API RESPONSE <');
-      print(response.statusCode);
-      print(response.body);
+          await http.get(url, headers: _headers).timeout(Duration(seconds: 10));
+      debugPrint('> API GET < $url');
+      debugPrint(response.body, wrapWidth: 1024);
       return response;
     } catch (e) {
-      print('> API CATCH <');
-      print(e.toString());
+      debugPrint('> API CATCH < $e');
       throw (e);
     }
-    throw ('Some thing went wrong');
   }
 
-  post(String url, {var body, Map<String, String> headers}) async {
-    if (headers != null && headers.isNotEmpty) {
-      headers.addAll(_headers);
-    } else {
-      headers = _headers;
-    }
+  post(String url, {var body}) async {
     try {
-      print('> API POST <');
-      print(url);
-      print(body);
       final response = await http
-          .post(url, body: body, headers: headers)
+          .post(url, body: body, headers: _headers)
           .timeout(Duration(seconds: 10));
-      print('> API RESPONSE <');
-      print(response.statusCode);
-      print(response.body);
+      debugPrint('> API POST < $url');
+      debugPrint(body.toString());
+      debugPrint(response.body, wrapWidth: 1024);
       return response;
     } catch (e) {
-      print('> API CATCH <');
-      print(e.toString());
+      print('> API CATCH < $e');
       throw (e);
     }
-    throw ('Some thing went wrong');
   }
 }

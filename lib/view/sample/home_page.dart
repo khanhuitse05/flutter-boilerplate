@@ -1,5 +1,5 @@
-import 'package:chat_app/provider/utility/navigation_provider.dart';
-import 'package:chat_app/theme/app_styles.dart';
+import 'package:my_app/repository/utility/navigation_provider.dart';
+import 'package:my_app/theme/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

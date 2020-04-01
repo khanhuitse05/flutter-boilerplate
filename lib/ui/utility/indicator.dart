@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 
 class Indicator extends StatelessWidget {
 
-  Indicator({this.radius = 15});
+  const Indicator({this.radius = 15});
   final double radius;
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS && false) {
+    if (Platform.isIOS) {
       return Center(
         child: CupertinoActivityIndicator(
           radius: radius,

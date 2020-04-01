@@ -1,5 +1,5 @@
-import 'package:chat_app/ui/utility/html_content.dart';
-import 'package:chat_app/ui/utility/indicator.dart';
+import 'package:my_app/ui/utility/html_content.dart';
+import 'package:my_app/ui/utility/indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
