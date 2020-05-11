@@ -19,10 +19,10 @@ class SomethingWentWrong extends StatelessWidget {
             Container(
               padding: const EdgeInsets.only(bottom: 20),
               child: image ??
-                  SizedBox(
-                    width: 80,
-                    height: 80,
-                    child: Image.asset('assets/images/ui/bullet_error.png'),
+                  Icon(
+                    Icons.error_outline,
+                    size: 80,
+                    color: Colors.grey,
                   ),
             ),
             const Text('Something went wrong, tap to retry...')

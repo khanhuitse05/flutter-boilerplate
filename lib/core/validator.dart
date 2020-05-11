@@ -1,8 +1,8 @@
 class Validator {
 
   static String phone(String value) {
-    String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
-    RegExp regExp = new RegExp(pattern);
+    const String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
+    final RegExp regExp =  RegExp(pattern);
     if (value == null || value.length == 0) {
       return 'Please enter your phone number';
     } else if (!regExp.hasMatch(value)) {

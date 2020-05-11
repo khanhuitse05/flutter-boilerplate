@@ -1,5 +1,6 @@
-import 'package:my_app/core/utility.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:my_app/core/utility.dart';
 
 class EmptyListUI extends StatelessWidget {
   const EmptyListUI({this.image, this.title, this.body, this.oneMoreWidget});
@@ -13,7 +14,7 @@ class EmptyListUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.fromLTRB(32, 0, 32, 32),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -22,22 +23,22 @@ class EmptyListUI extends StatelessWidget {
           Container(
             padding: const EdgeInsets.only(bottom: 20),
             child: image ??
-                SizedBox(
-                  width: 80,
-                  height: 80,
-                  child: Image.asset('assets/images/ui/recycle_bin_empty.png'),
+                Icon(
+                  MaterialCommunityIcons.file_document_box_multiple_outline,
+                  size: 80,
+                  color: Colors.grey,
                 ),
           ),
-          if (Utility.isNullOrEmpty(title) == false)
+          if (isNullOrEmpty(title) == false)
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: Text(
                 title,
-                style: Theme.of(context).textTheme.title,
+                style: Theme.of(context).textTheme.headline6,
                 textAlign: TextAlign.center,
               ),
             ),
-          if (Utility.isNullOrEmpty(body) == false)
+          if (isNullOrEmpty(body) == false)
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: Text(

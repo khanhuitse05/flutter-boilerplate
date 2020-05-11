@@ -1,6 +1,6 @@
-import 'package:my_app/view/empty_view.dart';
-import 'package:my_app/view/sample/home_page.dart';
-import 'package:my_app/view/web_view.dart';
+import 'package:my_app/view/utility/empty_view.dart';
+import 'package:my_app/view/home_page.dart';
+import 'package:my_app/view/utility/web_view.dart';
 import 'package:flutter/material.dart';
 
 class Router {

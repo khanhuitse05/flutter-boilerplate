@@ -6,12 +6,11 @@ import 'package:flutter/material.dart';
 
 class NavigationProvider extends ChangeNotifier {
   int index = 0;
+  final StreamController<int> reTap = StreamController<int>.broadcast();
 
-  var reTap = StreamController<int>.broadcast();
-
-  switchTo(int value) {
+  void switchTo(int value) {
     if (index != value) {
-      this.index = value;
+      index = value;
       notifyListeners();
     } else {
       reTap.add(index);

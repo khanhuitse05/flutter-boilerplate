@@ -1,8 +1,14 @@
 import 'dart:io';
 
-const kAppName = 'My App';
-const kAppVersion = '1.0.0';
+import 'package:package_info/package_info.dart';
+
 const kDomainApi = 'http://yourdomain.com';
+
+PackageInfo kPackageInfo;
+
+String get kAppName => kPackageInfo.appName ?? 'MEC Health';
+
+String get kAppVersion => kPackageInfo.version;
 
 const kDynamicLinkStore = 'https://[app_name].page.link/store';
 

@@ -22,9 +22,8 @@ class _LanguageSelectorPageState extends State<LanguageSelectorPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    languagesMap = new Map();
+    languagesMap = {};
     for (var i = 0; i < languageCodesList.length; i++) {
       languagesMap[languageCodesList[i]] = languagesList[i];
     }
@@ -39,7 +38,7 @@ class _LanguageSelectorPageState extends State<LanguageSelectorPage> {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -48,7 +47,7 @@ class _LanguageSelectorPageState extends State<LanguageSelectorPage> {
               style: Theme.of(context).textTheme.title,
             ),
             Padding(
-              padding: EdgeInsets.only(top: 10),
+              padding: const EdgeInsets.only(top: 10),
               child: Column(
                 children: languageCodesList
                     .map((item) => buildButtonLanguage(context, item))
@@ -64,13 +63,13 @@ class _LanguageSelectorPageState extends State<LanguageSelectorPage> {
   Widget buildButtonLanguage(context, String code) {
     return Row(
       children: <Widget>[
-        new Radio(
+        Radio(
           activeColor: Theme.of(context).primaryColor,
           value: code,
           groupValue: selectedLanguageCode,
           onChanged: onChangeMyLanguage,
         ),
-        new InkWell(
+        InkWell(
           onTap: () {
             onChangeMyLanguage(code);
           },

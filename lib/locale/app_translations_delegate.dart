@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app_translations.dart';
@@ -7,8 +8,8 @@ import 'application.dart';
 
 class AppTranslationsDelegate extends LocalizationsDelegate<AppTranslations> {
 
-  final Locale newLocale;
-  const AppTranslationsDelegate({this.newLocale});
+  static AppTranslationsDelegate delegate  = AppTranslationsDelegate._();
+  AppTranslationsDelegate._();
 
   @override
   bool isSupported(Locale locale) {
@@ -17,14 +18,14 @@ class AppTranslationsDelegate extends LocalizationsDelegate<AppTranslations> {
 
   @override
   Future<AppTranslations> load(Locale locale) async {
-     SharedPreferences prefInstance = await SharedPreferences.getInstance();
-     if(!prefInstance.containsKey("language_code")) {
-      prefInstance.setString("language_code", locale.languageCode);
-      return AppTranslations.load(locale);
+    final SharedPreferences prefInstance =
+    await SharedPreferences.getInstance();
+    Locale cacheLocale = locale;
+    if (prefInstance.containsKey("language_code")) {
+      cacheLocale = Locale(prefInstance.get("language_code"));
     }
-    else{
-      return AppTranslations.load(Locale(prefInstance.get("language_code")));
-    }
+    debugPrint('Load new language: ${cacheLocale.languageCode}');
+    return AppTranslations.load(cacheLocale);
   }
 
   @override

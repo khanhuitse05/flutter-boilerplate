@@ -10,7 +10,7 @@ class ApiResult {
   String get message {
     if (_message == 'Expectation failed') {
       final Map _fields = data['requiredFields'];
-      if (Utility.isNullOrEmpty(_fields) == false) {
+      if (isNullOrEmpty(_fields) == false) {
         final String _first = _fields.keys.first;
         return _requestMessage[_first] ?? _fields[_first]['message'] ?? _first;
       }

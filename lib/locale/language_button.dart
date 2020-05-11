@@ -17,12 +17,11 @@ class _LanguageButtonState extends State<LanguageButton> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
-    flags = new Map();
+    flags = {};
     for (var i = 0; i < languageCodesList.length; i++) {
-      var code = languageCodesList[i];
+      final code = languageCodesList[i];
       flags[code]= 'assets/images/locale/$code.png';
       if(code == selectedLanguageCode){
         currentIndex = i;

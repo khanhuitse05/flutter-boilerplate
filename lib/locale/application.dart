@@ -15,10 +15,7 @@ class Application {
 
   final List<String> supportedLanguagesCodes = ["en", "vi"];
 
-  final remoteUrl =
-      'http://dev-mobileapp.bigc.vn:8080/files/mobile-app/locale/';
-
-  final locale = {
+  final Map locale = {
     'en': ["main", "common"],
     'vi': ["main", "common"]
   };
@@ -29,10 +26,11 @@ class Application {
 
   var onLocaleChanged = StreamController<Locale>.broadcast();
 
-  changeLanguage(String languageCode) async {
+  Future changeLanguage(String languageCode) async {
     /// save to locale
     final prefInstance = await SharedPreferences.getInstance();
     await prefInstance.setString("language_code", languageCode);
+
     /// set language
     onLocaleChanged.add(Locale(languageCode));
   }

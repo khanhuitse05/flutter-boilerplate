@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CloseButton extends StatelessWidget {
-  CloseButton({this.onPressed});
+  const CloseButton({this.onPressed});
 
   final VoidCallback onPressed;
 
@@ -18,7 +18,7 @@ class CloseButton extends StatelessWidget {
           boxShadow: <BoxShadow>[
             BoxShadow(
               color: Colors.black.withAlpha(70),
-              offset: Offset(1.0, 4.0),
+              offset: const Offset(1.0, 4.0),
               blurRadius: 5.0,
             ),
           ],
