@@ -32,7 +32,7 @@ class UtilityRepository {
       }
       return myDevice;
     } catch (e) {
-      log(e);
+      lg(e);
       return null;
     }
   }

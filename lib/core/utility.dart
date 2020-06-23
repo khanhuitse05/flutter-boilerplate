@@ -18,7 +18,7 @@ bool isNullOrEmpty(dynamic object) {
   return false;
 }
 
-void log(Object object, {int frames = 1}) {
+void lg(Object object, {int frames = 1}) {
   final output = "${Trace.current().frames[frames].location} | $object";
   final pattern = RegExp('.{1,1000}');
   pattern.allMatches(output).forEach((match) => debugPrint(match.group(0)));

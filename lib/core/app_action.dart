@@ -1,3 +1,4 @@
+import 'package:my_app/core/utility.dart';
 import 'package:my_app/repository/utility/navigation_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,10 +23,10 @@ class AppAction {
     }
   }
 
-  void onHandleAction(
-      BuildContext context, String action, String value, String message) {
-    action = action.trim().toLowerCase();
-    value = value.trim();
+  void onHandleAction(BuildContext context, String actionName,
+      String actionValue, String message) {
+    final action = actionName.trim().toLowerCase();
+    final value = actionValue.trim();
     switch (action) {
       case ActionType.linkToScreen:
         linkToScreen(context, value, message);
@@ -37,25 +38,24 @@ class AppAction {
         linkToBrowser(context, value);
         break;
       default:
-        print("Type don't exist: $action");
+        lg("Type don't exist: $action");
         break;
     }
   }
 
-
   void linkToBrowser(BuildContext context, String value) {
-    print('link to web page: $value');
+    lg('link to web page: $value');
     launch(value);
   }
 
   void linkToWebView(BuildContext context, String value, String message) {
-    print('link to web page: $value');
+    lg('link to web page: $value');
     Navigator.pushNamed(context, '/web-view',
         arguments: {'url': value, 'title': message});
   }
 
   void linkToScreen(BuildContext context, String value, String message) {
-    print('link to scrren: ' + value);
+    lg('link to screen: $value');
     int index = -1;
     switch (value) {
       case 'home':

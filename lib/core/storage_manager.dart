@@ -8,7 +8,7 @@ class StorageManager {
   static final StorageManager instance = StorageManager._internal();
   static const String storageDomain = "my_app_storage_key";
 
-  Future setObject(String keyName,dynamic keyValue) async {
+  Future setObject(String keyName, Object keyValue) async {
     final preferences = await SharedPreferences.getInstance();
 
     switch (keyValue.runtimeType) {
@@ -19,10 +19,10 @@ class StorageManager {
         await preferences.setInt(storageDomain + keyName, keyValue);
         break;
       case bool:
-        await  preferences.setBool(storageDomain + keyName, keyValue);
+        await preferences.setBool(storageDomain + keyName, keyValue);
         break;
       case double:
-        await  preferences.setDouble(storageDomain + keyName, keyValue);
+        await preferences.setDouble(storageDomain + keyName, keyValue);
         break;
       case List:
         await preferences.setStringList(storageDomain + keyName, keyValue);
@@ -46,7 +46,7 @@ class StorageManager {
   }
 
   Future clearObjectByKey(String keyName) async {
-    final  preferences = await SharedPreferences.getInstance();
+    final preferences = await SharedPreferences.getInstance();
     await preferences.remove(storageDomain + keyName);
   }
 }

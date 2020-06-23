@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:my_app/locale/language_selector_page.dart';
 import 'package:my_app/view/sample/home_view.dart';
 import 'package:flutter/material.dart';
 
@@ -34,8 +33,12 @@ List<Widget> homeTap = [
   ),
   Center(
     child: Text(
-      'Index 2: Notification',
+      'Index 3: Notification',
     ),
   ),
-  LanguageSelectorPage(),
+  Center(
+    child: Text(
+      'Index 4: Account',
+    ),
+  ),
 ];

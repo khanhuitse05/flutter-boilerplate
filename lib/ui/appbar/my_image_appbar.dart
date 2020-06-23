@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:my_app/ui/utility/app_image.dart';
-import 'package:provider/provider.dart';
 
 class MyImageAppBar extends SliverPersistentHeaderDelegate {
   MyImageAppBar(
@@ -9,7 +7,6 @@ class MyImageAppBar extends SliverPersistentHeaderDelegate {
         @required this.banner,
         this.leading,
         this.actions}) {
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     isShow = false;
   }
 
@@ -25,11 +22,6 @@ class MyImageAppBar extends SliverPersistentHeaderDelegate {
     final _new = dt >= 0.7;
     if (_new != isShow) {
       isShow = _new;
-      if (isShow) {
-        SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-      } else {
-        SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-      }
     }
   }
 

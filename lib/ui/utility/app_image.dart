@@ -1,6 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/core/constans.dart';
+import 'package:my_app/core/utility.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class AppImage extends StatelessWidget {
@@ -9,18 +9,23 @@ class AppImage extends StatelessWidget {
 
   final String url;
   final BoxFit fit;
+
   final double heightPlaceHolder;
   final double widthPlaceHolder;
 
   @override
   Widget build(BuildContext context) {
+    if (isNullOrEmpty(url)) {
+      return _buildPlaceHolder();
+    }
+
     final String fullUrl =
-    (url != null && url.contains('http')) ? url : ('$kDomainApi$url');
-    return CachedNetworkImage(
-      imageUrl: fullUrl,
+        (url != null && url.contains('http')) ? url : ('$kDomainApi$url');
+    return FadeInImage.memoryNetwork(
+      image: fullUrl,
       fit: fit,
-      placeholder: (context, url) => _buildPlaceHolder(),
-      errorWidget: (context, url, error) => _buildPlaceHolder(),
+      placeholder: kTransparentImage,
+      imageErrorBuilder: (context, error, stackTrace) => _buildPlaceHolder(),
     );
   }
 
@@ -42,16 +47,34 @@ class AppImage extends StatelessWidget {
 }
 
 class AppIcon extends StatelessWidget {
-  const AppIcon(this.url, {this.fit = BoxFit.cover});
+  const AppIcon(this.url,
+      {this.fit = BoxFit.cover, this.colorError = Colors.white});
 
   final String url;
   final BoxFit fit;
+  final Color colorError;
 
   @override
   Widget build(BuildContext context) {
+    if (isNullOrEmpty(url)) {
+      return _buildPlaceHolder();
+    }
     final String fullUrl =
-    (url != null && url.contains('http')) ? url : ('$kDomainApi$url');
+        (url != null && url.contains('http')) ? url : ('$kDomainApi$url');
     return FadeInImage.memoryNetwork(
-        image: fullUrl, placeholder: kTransparentImage, fit: fit);
+      image: fullUrl,
+      placeholder: kTransparentImage,
+      imageErrorBuilder: (context, error, stackTrace) => _buildPlaceHolder(),
+      fit: fit,
+    );
+  }
+
+  Widget _buildPlaceHolder() {
+    return Center(
+      child: Icon(
+        Icons.error,
+        color: colorError,
+      ),
+    );
   }
 }
