@@ -41,6 +41,10 @@ dependencies:
     git:
       url: git://github.com/PingAK9/my-flutter-plugin.git
       path: packages/my_loading
+  mynativewidget:
+    git:
+      url: git://github.com/PingAK9/my-flutter-plugin.git
+      path: packages/my_native_widget
 
 dev_dependencies:
   flutter_test:
