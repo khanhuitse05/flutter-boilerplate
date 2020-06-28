@@ -1,8 +1,8 @@
 import 'package:my_app/core/utility.dart';
 import 'package:my_app/repository/utility/navigation_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class AppAction {
   static final AppAction instance = AppAction._internal();
@@ -67,7 +67,7 @@ class AppAction {
         break;
     }
     if (index >= 0) {
-      Provider.of<NavigationProvider>(context).switchTo(index);
+      navProvider.read(context).switchTo(index);
       Navigator.popUntil(context, ModalRoute.withName('/home'));
     }
   }

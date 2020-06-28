@@ -1,7 +1,6 @@
 import 'package:my_app/repository/utility/navigation_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:myloading/myloading.dart';
-import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -14,15 +13,6 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Welcome'),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.category),
-            onPressed: () {
-              Provider.of<NavigationProvider>(context, listen: false)
-                  .switchTo(PageName.category.index);
-            },
-          )
-        ],
       ),
       body: Center(
         child: Column(
