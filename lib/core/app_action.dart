@@ -1,8 +1,5 @@
-import 'package:my_app/core/utility.dart';
-import 'package:my_app/repository/utility/navigation_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:ping9/ping9.dart';
 
 class AppAction {
   static final AppAction instance = AppAction._internal();
@@ -38,38 +35,23 @@ class AppAction {
         linkToBrowser(context, value);
         break;
       default:
-        lg("Type don't exist: $action");
+        printTrace("Type don't exist: $action");
         break;
     }
   }
 
   void linkToBrowser(BuildContext context, String value) {
-    lg('link to web page: $value');
-    launch(value);
+    printTrace('link to web page: $value');
   }
 
   void linkToWebView(BuildContext context, String value, String message) {
-    lg('link to web page: $value');
+    printTrace('link to web page: $value');
     Navigator.pushNamed(context, '/web-view',
         arguments: {'url': value, 'title': message});
   }
 
   void linkToScreen(BuildContext context, String value, String message) {
-    lg('link to screen: $value');
-    int index = -1;
-    switch (value) {
-      case 'home':
-        index = 0;
-        break;
-      default:
-        Navigator.pushNamed(context, '/$value', arguments: message);
-        return;
-        break;
-    }
-    if (index >= 0) {
-      navProvider.read(context).switchTo(index);
-      Navigator.popUntil(context, ModalRoute.withName('/home'));
-    }
+
   }
 }
 

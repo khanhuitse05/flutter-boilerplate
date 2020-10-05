@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:my_app/core/application.dart';
-import 'package:my_app/ui/utility/indicator.dart';
+import 'package:ping9/ping9.dart';
 
 class InitView extends StatefulWidget {
   @override
@@ -13,7 +12,7 @@ class _InitViewState extends State<InitView> {
   @override
   void initState() {
     super.initState();
-    Application.instance.setupFuture.then(onSetup);
+    AppDelegate.instance.setupFuture.then(onSetup);
   }
 
   FutureOr onSetup(_) {

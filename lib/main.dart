@@ -1,8 +1,6 @@
-import 'package:my_app/core/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_app/view/my_app.dart';
-import 'package:package_info/package_info.dart';
 
 
 Future main() async {
@@ -14,8 +12,6 @@ Future main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
-  kPackageInfo = await PackageInfo.fromPlatform();
 
   runApp(MyApp());
 }

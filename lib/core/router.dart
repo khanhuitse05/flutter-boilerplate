@@ -1,10 +1,9 @@
-import 'package:my_app/view/utility/empty_view.dart';
-import 'package:my_app/view/home_page.dart';
+import 'package:my_app/view/dashboard/dashboard_page.dart';
 import 'package:my_app/view/utility/init_view.dart';
-import 'package:my_app/view/utility/web_view.dart';
 import 'package:flutter/material.dart';
+import 'package:ping9/ping9.dart';
 
-class Router {
+class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     /// add settings on MaterialPageRoute for which route you want to tracking
     final data = settings.arguments;
@@ -14,7 +13,7 @@ class Router {
             builder: (_) => InitView(), settings: settings);
       case '/':
         return MaterialPageRoute(
-            builder: (_) => HomePage(), settings: settings);
+            builder: (_) => DashboardPage(), settings: settings);
 
       case '/web-view':
         return MaterialPageRoute(

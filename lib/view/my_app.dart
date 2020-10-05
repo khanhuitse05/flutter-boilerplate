@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:my_app/core/router.dart';
 import 'package:my_app/theme/app_theme.dart';
 
@@ -15,15 +14,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return ProviderScope(
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        navigatorKey: MyApp.navKey,
-        title: "My APP",
-        theme: primaryTheme,
-        initialRoute: '/init-view',
-        onGenerateRoute: Router.generateRoute,
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      navigatorKey: MyApp.navKey,
+      title: "My APP",
+      theme: primaryTheme,
+      initialRoute: '/init-view',
+      onGenerateRoute: AppRouter.generateRoute,
     );
   }
 }
