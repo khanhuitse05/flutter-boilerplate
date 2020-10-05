@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_app/view/dashboard/bloc/tabbar_bloc.dart';
+import 'package:my_app/view/dashboard/provider/tabbar_provider.dart';
 import 'package:my_app/view/home/home_page.dart';
+import 'package:provider/provider.dart';
 
 class DashboardPage extends StatefulWidget {
   @override
@@ -13,19 +13,17 @@ class _DashboardPageState extends State<DashboardPage>
     with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TabBarBloc, int>(
-      buildWhen: (previous, current) {
-        return previous != current;
-      },
-      cubit: TabBarBloc(),
+    return Provider(
+      create: (_) => TabBarProvider(),
       builder: (context, index) {
         return WillPopScope(
             onWillPop: () async {
+              context.read<TabBarProvider>().switchTo(0);
               return Future.value(false);
             },
             child: Scaffold(
               body: IndexedStack(
-                index: index,
+                index: context.watch<TabBarProvider>().index,
                 children: [
                   HomeView(),
                   Container(),
@@ -38,18 +36,22 @@ class _DashboardPageState extends State<DashboardPage>
                       Theme.of(context).accentColor.withOpacity(0.1),
                 ),
                 child: BottomNavigationBar(
-                  currentIndex: index,
+                  currentIndex: context.watch<TabBarProvider>().index,
                   onTap: (index) {
-                    context.bloc<TabBarBloc>().tap(index);
+                    context.read<TabBarProvider>().switchTo(index);
                   },
                   type: BottomNavigationBarType.fixed,
                   selectedItemColor: Theme.of(context).accentColor,
                   unselectedItemColor: Colors.black,
                   items: const [
                     BottomNavigationBarItem(
-                        label: "Home", icon: Icon(Icons.home)),
+                      label: "Home",
+                      icon: Icon(Icons.home),
+                    ),
                     BottomNavigationBarItem(
-                        label: "Category", icon: Icon(Icons.category))
+                      label: "Category",
+                      icon: Icon(Icons.category),
+                    )
                   ],
                 ),
               ),
