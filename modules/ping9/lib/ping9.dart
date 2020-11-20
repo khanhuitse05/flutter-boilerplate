@@ -12,9 +12,9 @@ export 'src/dialog/dialog_service.dart';
 export 'src/extensions/input_formatter.dart';
 export 'src/extensions/string_extension.dart';
 /// model
-export 'src/models/api_response.dart';
-export 'src/models/api_result.dart';
 export 'src/models/device_info.dart';
+export 'src/models/response.dart';
+export 'src/models/result.dart';
 /// repository
 export 'src/repository/utility_repository.dart';
 /// theme
