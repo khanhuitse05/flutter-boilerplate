@@ -7,9 +7,9 @@ class CloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onPressed,
-      child: Container(
+    return IconButton(
+      onPressed: onPressed,
+      icon: Container(
         width: 32,
         height: 32,
         decoration: BoxDecoration(

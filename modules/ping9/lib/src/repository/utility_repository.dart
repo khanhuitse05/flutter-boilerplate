@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:device_info/device_info.dart';
-import 'package:ping9/src/core/utility.dart';
-import 'package:ping9/src/model/device_info.dart';
+import 'package:ping9/src/models/device_info.dart';
+import 'package:ping9/src/utility/utility.dart';
 
 class UtilityRepository {
   factory UtilityRepository() => instance;

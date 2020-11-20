@@ -9,7 +9,4 @@ extension StringExtensions on String{
     }).join(' ');
   }
 
-  static bool isNullOrEmpty(String value){
-    return value?.trim()?.isEmpty ?? true;
-  }
 }

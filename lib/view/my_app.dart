@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/core/router.dart';
-import 'package:my_app/theme/app_theme.dart';
 
 class MyApp extends StatefulWidget {
   static final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
@@ -18,9 +16,9 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       navigatorKey: MyApp.navKey,
       title: "My APP",
-      theme: primaryTheme,
+      // theme: primaryTheme,
       initialRoute: '/init-view',
-      onGenerateRoute: AppRouter.generateRoute,
+      // onGenerateRoute: AppRouter.generateRoute,
     );
   }
 }

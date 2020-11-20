@@ -4,9 +4,16 @@ class UserDefaults {
   factory UserDefaults() => instance;
 
   UserDefaults._internal();
+
   static final UserDefaults instance = UserDefaults._internal();
 
   static const String storageDomain = "my_app_storage_key";
+
+  SharedPreferences preferences;
+
+  Future initAsync() async {
+    preferences = await SharedPreferences.getInstance();
+  }
 
   Future setObject(String keyName, Object keyValue) async {
     final preferences = await SharedPreferences.getInstance();
@@ -30,23 +37,19 @@ class UserDefaults {
     }
   }
 
-  Future<dynamic> getObjectByKey(String keyName) async {
-    final preferences = await SharedPreferences.getInstance();
+  dynamic getObjectByKey(String keyName) {
     return preferences.get(storageDomain + keyName);
   }
 
-  Future<bool> containsKey(String keyName) async {
-    final preferences = await SharedPreferences.getInstance();
+  bool containsKey(String keyName) {
     return preferences.containsKey(storageDomain + keyName);
   }
 
   Future clearAll() async {
-    final preferences = await SharedPreferences.getInstance();
     await preferences.clear();
   }
 
   Future clearObjectByKey(String keyName) async {
-    final preferences = await SharedPreferences.getInstance();
     await preferences.remove(storageDomain + keyName);
   }
 }
