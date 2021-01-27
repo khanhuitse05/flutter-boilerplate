@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ping9/src/utility/utility.dart';
+import 'package:ping9/src/core/utils.dart';
 
 class EmptyListUI extends StatelessWidget {
   const EmptyListUI({this.image, this.title, this.body, this.oneMoreWidget});

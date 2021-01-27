@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:my_app/routing/routes.dart';
-import 'package:my_app/view_model/helper/tabbar_provider.dart';
+import 'package:my_app/services/locator.dart';
 import 'package:ping9/ping9.dart';
 import 'package:provider/provider.dart';
 
@@ -10,10 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        Provider(create: (_) => Get.find<ThemeService>()),
-        Provider(create: (_) => TabBarProvider()),
-      ],
+      providers: setupProvider,
       child: MyApp(),
     );
   }

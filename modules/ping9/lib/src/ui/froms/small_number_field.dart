@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ping9/src/utility/utility.dart';
+import 'package:ping9/src/core/utils.dart';
 
 class SmallNumberField extends StatelessWidget {
   SmallNumberField({this.value, this.onChanged, this.hintText});

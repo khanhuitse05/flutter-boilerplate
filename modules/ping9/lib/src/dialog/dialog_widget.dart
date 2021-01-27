@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ping9/src/core/utils.dart';
 import 'package:ping9/src/dialog/dialog_model.dart';
-import 'package:ping9/src/utility/utility.dart';
-
 import 'dialog_service.dart';
 
 class DialogWidget extends StatefulWidget {
@@ -37,50 +35,38 @@ class _DialogWidgetState extends State<DialogWidget> {
         builder: (context) {
           if (Platform.isIOS) {
             return CupertinoAlertDialog(
-              title: isNullOrEmpty(request.title) ? null : Text(request.title),
-              content: isNullOrEmpty(request.description)
+              title: request.titleWidget ?? isNullOrEmpty(request.title)
                   ? null
-                  : Text(request.description),
+                  : Text(request.title),
+              content: request.bodyWidget ?? isNullOrEmpty(request.body)
+                  ? null
+                  : Text(request.body),
               actions: <Widget>[
-                if (isNullOrEmpty(request.cancelTitle) == false)
+                for (final item in request.actions ?? [])
                   CupertinoDialogAction(
-                    child: Text(request.cancelTitle),
+                    child: Text(item.title),
                     onPressed: () {
-                      _dialogService
-                          .dialogComplete(DialogResponse(confirmed: false));
-                    },
-                  ),
-                if (isNullOrEmpty(request.buttonTitle) == false)
-                  CupertinoDialogAction(
-                    child: Text(request.buttonTitle),
-                    onPressed: () {
-                      _dialogService
-                          .dialogComplete(DialogResponse(confirmed: true));
+                      _dialogService.pop();
+                      item.onPressed?.call();
                     },
                   ),
               ],
             );
           }
           return AlertDialog(
-            title: isNullOrEmpty(request.title) ? null : Text(request.title),
-            content: isNullOrEmpty(request.description)
+            title: request.titleWidget ?? isNullOrEmpty(request.title)
                 ? null
-                : Text(request.description),
+                : Text(request.title),
+            content: request.bodyWidget ?? isNullOrEmpty(request.body)
+                ? null
+                : Text(request.body),
             actions: <Widget>[
-              if (isNullOrEmpty(request.cancelTitle) == false)
+              for (final item in request.actions ?? [])
                 FlatButton(
-                  child: Text(request.cancelTitle),
+                  child: Text(item.title),
                   onPressed: () {
-                    _dialogService
-                        .dialogComplete(DialogResponse(confirmed: false));
-                  },
-                ),
-              if (isNullOrEmpty(request.buttonTitle) == false)
-                FlatButton(
-                  child: Text(request.buttonTitle),
-                  onPressed: () {
-                    _dialogService
-                        .dialogComplete(DialogResponse(confirmed: true));
+                    _dialogService.pop();
+                    item.onPressed?.call();
                   },
                 ),
             ],

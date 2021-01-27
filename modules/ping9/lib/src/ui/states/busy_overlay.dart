@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ping9/src/core/utils.dart';
 import 'package:ping9/src/ui/common/indicator.dart';
-import 'package:ping9/src/utility/utility.dart';
 
 class BusyOverlay extends StatelessWidget {
   const BusyOverlay({this.title = ""});

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/devmode/view/dev_info_screen.dart';
 
-class DevScreen extends StatefulWidget {
+
+class DevInfoScreen extends StatefulWidget {
   @override
-  _DevScreenState createState() => _DevScreenState();
+  _DevInfoScreenState createState() => _DevInfoScreenState();
 }
 
-class _DevScreenState extends State<DevScreen> {
+class _DevInfoScreenState extends State<DevInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,17 +16,18 @@ class _DevScreenState extends State<DevScreen> {
       body: ListView(
         children: [
           _buildItem(
-            "Information",
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => DevInfoScreen()),
-            ),
-          )
+            "Token",
+            "Missing token",
+            onTap: () {
+              // copy
+            },
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildItem(String title, {VoidCallback onTap}) {
+  Widget _buildItem(String title, String value, {VoidCallback onTap}) {
     return InkWell(
       onTap: onTap,
       child: Container(

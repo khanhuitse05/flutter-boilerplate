@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ping9/ping9.dart';
 
-class StateErrorUI extends StatelessWidget {
-  const StateErrorUI({this.title = "Loading..."});
+class StateLoadingUI extends StatelessWidget {
+  const StateLoadingUI({this.title = "Loading..."});
 
   final String title;
 

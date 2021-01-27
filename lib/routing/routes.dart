@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route_annotations.dart';
-import 'package:my_app/view/dashboard_screen.dart';
+import 'package:my_app/features/dashboard/dashboard_screen.dart';
 
-import 'package:my_app/view/splash_screen.dart';
+import 'package:my_app/shared/view/splash_screen.dart';
 import 'package:ping9/ping9.dart';
 
 export 'routes.gr.dart';

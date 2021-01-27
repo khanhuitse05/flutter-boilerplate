@@ -10,8 +10,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:ping9/ping9.dart';
 
-import '../view/dashboard_screen.dart';
-import '../view/splash_screen.dart';
+import '../features/dashboard/dashboard_screen.dart';
+import '../shared/view/splash_screen.dart';
 
 class Routes {
   static const String dashboardScreen = '/dashboard-screen';

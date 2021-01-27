@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ping9/src/utility/utility.dart';
+import 'package:ping9/src/core/utils.dart';
 
 class SearchField<T> extends StatelessWidget {
   const SearchField(

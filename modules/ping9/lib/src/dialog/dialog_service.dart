@@ -7,51 +7,51 @@ export 'dialog_model.dart';
 export 'dialog_widget.dart';
 
 class DialogService {
-  final GlobalKey<NavigatorState> _dialogNavigationKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> _dialogNavigationKey =
+      GlobalKey<NavigatorState>();
   Function(DialogModel) _showDialogListener;
 
+  // ignore: avoid_setters_without_getters
   set showDialogListener(Function(DialogModel) showDialogListener) {
     _showDialogListener = showDialogListener;
   }
-  Completer<DialogResponse> _dialogCompleter;
 
   GlobalKey<NavigatorState> get dialogNavigationKey => _dialogNavigationKey;
 
-
-  /// Calls the dialog listener and returns a Future that will wait for dialogComplete.
-  Future<DialogResponse> showDialog({
+  /// show the dialog
+  Future showDialog({
     String title,
-    String description,
-    String buttonTitle = 'Ok',
+    String body,
+    String cancelTitle = 'Close',
   }) {
-    _dialogCompleter = Completer<DialogResponse>();
-    _showDialogListener(DialogModel(
+    return _showDialogListener(DialogModel(
       title: title,
-      description: description,
-      buttonTitle: buttonTitle,
+      body: body,
+      actions: [DialogButton(title: cancelTitle)],
     ));
-    return _dialogCompleter.future;
+  }
+
+  /// Shows a confirm dialog
+  Future showConfirmDialog(
+      {String title, String description, List<DialogButton> actions}) {
+    return _showDialogListener(DialogModel(
+      title: title,
+      body: description,
+      actions: actions,
+    ));
   }
 
   /// Shows a confirmation dialog
-  Future<DialogResponse> showConfirmationDialog(
-      {String title,
-        String description,
-        String confirmationTitle = 'Ok',
-        String cancelTitle = 'Cancel'}) {
-    _dialogCompleter = Completer<DialogResponse>();
-    _showDialogListener(DialogModel(
-        title: title,
-        description: description,
-        buttonTitle: confirmationTitle,
-        cancelTitle: cancelTitle));
-    return _dialogCompleter.future;
+  Future showCustomDialog(
+      {Widget title, Widget description, List<DialogButton> actions}) {
+    return _showDialogListener(DialogModel(
+      titleWidget: title,
+      bodyWidget: description,
+      actions: actions,
+    ));
   }
 
-  /// Completes the _dialogCompleter to resume the Future's execution call
-  void dialogComplete(DialogResponse response) {
+  void pop() {
     _dialogNavigationKey.currentState.pop();
-    _dialogCompleter.complete(response);
-    _dialogCompleter = null;
   }
 }

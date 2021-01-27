@@ -1,4 +1,1 @@
-class RouteHelper{
-
-
-}
+class RouteHelper {}

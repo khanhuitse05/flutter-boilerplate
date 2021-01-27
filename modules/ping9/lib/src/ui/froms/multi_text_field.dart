@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ping9/src/utility/utility.dart';
+import 'package:ping9/src/core/utils.dart';
 
 class MultiTextField extends StatelessWidget {
   MultiTextField({this.value, this.hintText, this.onChanged, this.validator});
@@ -19,7 +19,7 @@ class MultiTextField extends StatelessWidget {
       builder: (FormFieldState<List<String>> field) {
         return Focus(
           child: Builder(
-            builder: ( context) {
+            builder: (context) {
               final InputDecoration effectiveDecoration =
                   const InputDecoration(contentPadding: EdgeInsets.all(0))
                       .applyDefaults(
@@ -53,8 +53,8 @@ class MultiTextField extends StatelessWidget {
   }
 
   void _removeItem(String id) {
-    final value = this.value ?? [];
-    value.remove(id);
+    final value = this.value ?? []
+      ..remove(id);
     onChanged(value);
   }
 
@@ -124,8 +124,8 @@ class MultiTextField extends StatelessWidget {
     String _valueInput = '';
     await showModalBottomSheet(
       context: context,
-      isScrollControlled : true,
-        useRootNavigator: true,
+      isScrollControlled: true,
+      useRootNavigator: true,
       builder: (context) {
         return Container(
           padding:

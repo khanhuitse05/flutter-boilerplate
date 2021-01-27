@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ping9/src/core/constants.dart';
-import 'package:ping9/src/utility/utility.dart';
+import 'package:ping9/src/core/utils.dart';
 import 'package:transparent_image/transparent_image.dart';
+
+String _domainApi = '';
 
 class AppImage extends StatelessWidget {
   const AppImage(this.url,
@@ -20,7 +21,7 @@ class AppImage extends StatelessWidget {
     }
 
     final String fullUrl =
-        (url != null && url.contains('http')) ? url : ('${Constants.kDomainApi}$url');
+        (url != null && url.contains('http')) ? url : ('$_domainApi$url');
     return FadeInImage.memoryNetwork(
       image: fullUrl,
       fit: fit,
@@ -60,7 +61,7 @@ class AppIcon extends StatelessWidget {
       return _buildPlaceHolder();
     }
     final String fullUrl =
-        (url != null && url.contains('http')) ? url : ('${Constants.kDomainApi}$url');
+        (url != null && url.contains('http')) ? url : ('$_domainApi$url');
     return FadeInImage.memoryNetwork(
       image: fullUrl,
       placeholder: kTransparentImage,

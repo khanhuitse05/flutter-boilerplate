@@ -1,26 +1,23 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class DialogModel {
   final String title;
-  final String description;
-  final String buttonTitle;
-  final String cancelTitle;
+  final String body;
+  final Widget titleWidget;
+  final Widget bodyWidget;
+  final List<DialogButton> actions;
 
-  DialogModel(
-      {@required this.title,
-        @required this.description,
-        @required this.buttonTitle,
-        this.cancelTitle});
+  DialogModel({
+    this.title,
+    this.body,
+    this.titleWidget,
+    this.bodyWidget,
+    this.actions,
+  });
 }
 
-class DialogResponse {
-  final String fieldOne;
-  final String fieldTwo;
-  final bool confirmed;
-
-  DialogResponse({
-    this.fieldOne,
-    this.fieldTwo,
-    this.confirmed,
-  });
+class DialogButton {
+  final String title;
+  final Function onPressed;
+  DialogButton({this.title, this.onPressed});
 }

@@ -1,24 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/models/action.dart';
+import 'package:my_app/shared/models/action_type.dart';
 import 'package:ping9/ping9.dart';
 
-/// [name]/[value]?message=[message]&title=[title]
 class ActionService {
-  ActionService() {
-    alreadySpam = false;
-  }
-
-  bool alreadySpam;
-
-  void onHandleActionInit(BuildContext context, AppAction action) {
-    if (alreadySpam == false) {
-      alreadySpam = true;
-      onHandleAction(context, action);
-    }
-  }
-
-  void onHandleAction(BuildContext context, AppAction action) {
-    switch (action.type) {
+  void onHandleAction(BuildContext context, Map action) {
+    final type = action['type'];
+    switch (type) {
       case ActionType.screen:
         linkToScreen(context, action);
         break;
@@ -34,15 +21,15 @@ class ActionService {
     }
   }
 
-  void linkToBrowser(BuildContext context, AppAction action) {
-    printTrace('link to web page: $action');
+  void linkToBrowser(BuildContext context, Map action) {
+    final url = action['url'];
+    printTrace('link to web page: $url');
   }
 
-  void linkToWebView(BuildContext context, AppAction action) {
-    printTrace('link to web page: $action');
-    Navigator.pushNamed(context, '/web-view',
-        arguments: {'url': action.value, 'title': action.name});
+  void linkToWebView(BuildContext context, Map action) {
+    printTrace('link to web page: ${action['url']}');
+    Navigator.pushNamed(context, '/web-view', arguments: action);
   }
 
-  void linkToScreen(BuildContext context, AppAction action) {}
+  void linkToScreen(BuildContext context, Map action) {}
 }
