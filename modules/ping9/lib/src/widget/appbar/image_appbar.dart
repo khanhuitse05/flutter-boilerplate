@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ping9/src/ui/common/app_image.dart';
+import 'package:ping9/src/widget/common/app_image.dart';
 
 class ImageAppBar extends SliverPersistentHeaderDelegate {
   ImageAppBar(

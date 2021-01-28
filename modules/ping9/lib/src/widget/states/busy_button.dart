@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ping9/src/ui/common/indicator.dart';
+import 'package:ping9/src/widget/common/indicator.dart';
 
 /// A button that shows a busy indicator in place of title
 class BusyButton extends StatelessWidget {
