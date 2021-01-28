@@ -5,10 +5,10 @@
     <img src="https://diegolaballos.com/files/images/flutter-icon.jpg" alt="Logo" width=72 height=72>
   </a>
 
-  <h3 align="center">Flutter Example App</h3>
+  <h3 align="center">Flutter Init Project</h3>
 
   <p align="center">
-    Example app with Flutter that uses Firebase
+    Fork this project then start you project with a lot of stuck prepare
     <br>
     Base project made with much  :heart: . Contains CRUD, patterns, and much more!
     <br>
@@ -19,7 +19,7 @@
   </p>
 </p>
 
-![](resources/index.png) 
+![](resources/images/folder.png) 
 
 ## Table of contents
 
@@ -74,42 +74,47 @@ In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `F
 **/*.g.dart
 ```
 
-## InitFLutter Feature
-- Splash
-- Login
-- Signup (Player, Manager, Both)
-- Player Dashboard
-- Manager Dashboard
-- Routing
-- Theme (Dark, Light, System)
-- Firebase Clound
-- Firebase Storage
-- Stacked (State Management)
-- Form Validation
-- Dependency Injection
-
-
 # Depencencies
 
 ## Helper
 - [logger](https://pub.dev/packages/logger)
+- [url_launcher](https://pub.dev/packages/url_launcher)
 - [http](https://pub.dev/packages/http)
-- [auto_route](https://pub.dev/packages/auto_route)
-Auto route generator, Manager router
-- [get](https://pub.dev/packages/get)
-Snackbar, Navigation, Theme, Hellper function
+- [auto_route](https://pub.dev/packages/auto_route): Auto route generator, Manager router
+- [get](https://pub.dev/packages/get): Snackbar, Navigation, Theme, Hellper function
+- [http](https://pub.dev/packages/http)
+- [intl](https://pub.dev/packages/intl)
+- [shared_preferences](https://pub.dev/packages/shared_preferences)
+- [package_info](https://pub.dev/packages/package_info)
+- [device_info](https://pub.dev/packages/device_info)
+- [permission_handler](https://pub.dev/packages/permission_handler)
 
 ## social sign_in
 - [firebase_auth](https://pub.dev/packages/firebase_auth)
 - [google_sign_in](https://pub.dev/packages/google_sign_in)
 - [flutter_twitter_login](https://github.com/Kiruel/flutter_twitter_login.git)
+- [flutter_facebook_login](https://pub.dev/packages/flutter_facebook_login)
+- [sign_in_with_apple](https://pub.dev/packages/sign_in_with_apple)
 
 ## Firebase: Storage & Cloud
+- [firebase_analytics](https://pub.dev/packages/firebase_analytics)
+- [firebase_crashlytics](https://pub.dev/packages/firebase_crashlytics)
+- [firebase_messaging](https://pub.dev/packages/firebase_messaging)
 - [firebase_storage](https://pub.dev/packages/firebase_storage)
 - [cloud_firestore](https://pub.dev/packages/cloud_firestore)
 
 ## State Management
-- [stacked](https://pub.dev/packages/stacked)
+- [provider](https://pub.dev/packages/provider)
+
+## Widget
+- [shimmer](https://pub.dev/packages/shimmer): Shimmer loading animation
+- [flutter_html](https://pub.dev/packages/flutter_html)
+- [webview_flutter](https://pub.dev/packages/webview_flutter)
+
+## Image
+- [cached_network_image](https://pub.dev/packages/cached_network_image)
+- [flutter_cache_manager](https://pub.dev/packages/flutter_cache_manager)
+
 
 
 # Code structure
@@ -117,27 +122,51 @@ Here is the core folder structure which flutter provides.
 ```
 flutter-app/
 |- android
-|- build
 |- ios
 |- lib
+|- modules
 |- test
 ```
 Here is the folder structure we have been using in this project
 
 ```
 lib/
-|- Config/
-|- Models/
-|- Routes/
-|- Services/
-|- ui/
-  |- View/
-  |- Widget/
-|- utils/
-|- ViewModels/
+|- code/
+|- data/
+|- _devmode/
+  |- mock/
+  |- view/
+  |- widget/
+|- services/
+|- feature/
+  |- dashboard/
+    |- widget/
+    |- controller
+    |- dashboard_screen.dart
+  |- home/
+  |- login/
+|- plugins/
+|- routing/
+|- shared/
+  |- widget/
+  |- controller/
+  |- models/
+  |- view/
 |- main.dart
-| - Modul
+|- modules
 ```
+
+Here is the folder structure of core modules in this project
+
+```
+ping9/
+|- code/
+|- dialog/
+|- theme/
+|- widget/
+|- view/
+```
+
 Now, lets dive into the lib folder which has the main code for the application.
 
 - **Config**: App Config
