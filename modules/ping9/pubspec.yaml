@@ -16,12 +16,12 @@ dependencies:
   shared_preferences: ^0.5.12
   package_info: ^0.4.3
   device_info: ^0.4.2+8
-  webview_flutter: ^1.0.0
   transparent_image: ^1.0.0
   http: ^0.12.1
   flutter_html: ^0.11.0
-  provider: ^4.3.2+2
-  get: ^3.17.1
+  webview_flutter: ^1.0.0
+  provider:
+  get:
 
 dev_dependencies:
   flutter_test:

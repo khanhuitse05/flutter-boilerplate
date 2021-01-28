@@ -1,6 +1,6 @@
 import 'dart:core';
 
-import 'package:my_app/shared/models/api/result.dart';
+import 'package:my_app/data/models/result.dart';
 
 class Response<T> {
   Response();
