@@ -10,7 +10,7 @@
 #endif
 #endif
 
-#import "SharedPreferencesPlugin.h"
+#import "FLTSharedPreferencesPlugin.h"
 
 FOUNDATION_EXPORT double shared_preferencesVersionNumber;
 FOUNDATION_EXPORT const unsigned char shared_preferencesVersionString[];

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
-import 'package:my_app/devmode/view/dev_screen.dart';
+import 'package:my_app/_devmode/view/dev_screen.dart';
 
 class FloatDevButton extends StatelessWidget {
   @override

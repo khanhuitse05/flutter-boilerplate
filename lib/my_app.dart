@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: setupProvider,
-      child: MyApp(),
+      child: MyAppState(),
     );
   }
 }

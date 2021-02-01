@@ -13,7 +13,7 @@ class _DashboardScreenState extends State<DashboardScreen>
     with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
-    return Provider(
+    return ChangeNotifierProvider(
       create: (_) => TabBarProvider(),
       builder: (context, index) {
         return WillPopScope(

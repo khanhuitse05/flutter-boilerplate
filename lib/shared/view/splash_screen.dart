@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:my_app/core/app_delegate.dart';
+import 'package:my_app/routing/routes.gr.dart';
 import 'package:ping9/ping9.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   FutureOr onSetup(_) {
-    Navigator.pushReplacementNamed(context, '/');
+    Navigator.pushReplacementNamed(context, Routes.dashboardScreen);
   }
 
   @override

@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
+import 'package:my_app/services/locator.dart';
+import 'package:ping9/ping9.dart';
+import 'core/app_delegate.dart';
 import 'my_app.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarIconBrightness: Brightness.dark,
-      statusBarColor: Colors.grey[100]));
-
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
-
+  setupLocator();
+  await UserDefaults.instance.initAsync();
   runApp(MyApp());
 }

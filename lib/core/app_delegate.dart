@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_app/services/locator.dart';
 import 'package:ping9/ping9.dart';
 import 'constants.dart';
 
@@ -19,8 +21,11 @@ class AppDelegate {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.grey[100]));
+
     await Constants.initAsync();
-    await UserDefaults.instance.initAsync();
-    return Future.delayed(const Duration(milliseconds: 300));
   }
 }

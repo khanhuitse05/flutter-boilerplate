@@ -1,10 +1,12 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Reachability" "${PODS_CONFIGURATION_BUILD_DIR}/connectivity" "${PODS_CONFIGURATION_BUILD_DIR}/shared_preferences" "${PODS_CONFIGURATION_BUILD_DIR}/webview_flutter" "${PODS_ROOT}/../.symlinks/flutter/ios"
+CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/device_info" "${PODS_CONFIGURATION_BUILD_DIR}/package_info" "${PODS_CONFIGURATION_BUILD_DIR}/shared_preferences" "${PODS_CONFIGURATION_BUILD_DIR}/url_launcher" "${PODS_CONFIGURATION_BUILD_DIR}/webview_flutter" "${PODS_ROOT}/../.symlinks/flutter/ios"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Reachability/Reachability.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/connectivity/connectivity.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/shared_preferences/shared_preferences.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/webview_flutter/webview_flutter.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/device_info/device_info.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/package_info/package_info.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/shared_preferences/shared_preferences.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/url_launcher/url_launcher.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/webview_flutter/webview_flutter.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -framework "Flutter" -framework "Reachability" -framework "SystemConfiguration" -framework "connectivity" -framework "shared_preferences" -framework "webview_flutter"
+OTHER_LDFLAGS = $(inherited) -framework "Flutter" -framework "device_info" -framework "package_info" -framework "shared_preferences" -framework "url_launcher" -framework "webview_flutter"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods
+PODS_XCFRAMEWORKS_BUILD_DIR = $(PODS_CONFIGURATION_BUILD_DIR)/XCFrameworkIntermediates
 USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES

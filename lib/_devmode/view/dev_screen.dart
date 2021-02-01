@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/devmode/view/dev_info_screen.dart';
+
+import 'dev_info_screen.dart';
 
 class DevScreen extends StatefulWidget {
   @override

@@ -11,10 +11,10 @@
 #endif
 
 #import "FLTCookieManager.h"
+#import "FLTWebViewFlutterPlugin.h"
 #import "FLTWKNavigationDelegate.h"
 #import "FlutterWebView.h"
 #import "JavaScriptChannelHandler.h"
-#import "WebViewFlutterPlugin.h"
 
 FOUNDATION_EXPORT double webview_flutterVersionNumber;
 FOUNDATION_EXPORT const unsigned char webview_flutterVersionString[];
