@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:my_app/_devmode/view/dev_popup_demo_screen.dart';
+import 'package:ping9/ping9.dart';
 
 import 'dev_info_screen.dart';
 
@@ -20,6 +23,12 @@ class _DevScreenState extends State<DevScreen> {
             "Information",
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => DevInfoScreen()),
+            ),
+          ),
+          _buildItem(
+            "Demo Popup",
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => DevPopupDemoScreen()),
             ),
           )
         ],

@@ -8,6 +8,7 @@ export 'src/core/utils.dart';
 /// dialog
 export 'src/dialog/dialog_progress.dart';
 export 'src/dialog/dialog_service.dart';
+export 'src/dialog/toast_service.dart';
 
 /// theme
 export 'src/theme/app_theme.dart';

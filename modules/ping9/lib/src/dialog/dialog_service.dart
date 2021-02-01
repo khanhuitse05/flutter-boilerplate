@@ -33,20 +33,20 @@ class DialogService {
 
   /// Shows a confirm dialog
   Future showConfirmDialog(
-      {String title, String description, List<DialogButton> actions}) {
+      {String title, String body, List<DialogButton> actions}) {
     return _showDialogListener(DialogModel(
       title: title,
-      body: description,
+      body: body,
       actions: actions,
     ));
   }
 
   /// Shows a confirmation dialog
   Future showCustomDialog(
-      {Widget title, Widget description, List<DialogButton> actions}) {
+      {Widget title, Widget body, List<DialogButton> actions}) {
     return _showDialogListener(DialogModel(
       titleWidget: title,
-      bodyWidget: description,
+      bodyWidget: body,
       actions: actions,
     ));
   }

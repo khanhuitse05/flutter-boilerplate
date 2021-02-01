@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 String _dialogMessage = '';
 StreamController<String> _streamController =
-StreamController<String>.broadcast();
+    StreamController<String>.broadcast();
 
 _DialogProgress _progressDialog;
 
@@ -37,13 +37,14 @@ class _DialogProgress {
   final Color bgRoundedColor;
 
   void hide(BuildContext context) {
-    Navigator.of(context).pop();
+    Navigator.of(context).pop(true);
   }
 
   void show(BuildContext context) {
     showDialog<dynamic>(
       context: context,
       barrierDismissible: false,
+      useRootNavigator: false,
       builder: (context) {
         return Material(
           type: MaterialType.transparency,
@@ -70,18 +71,18 @@ class _DialogProgress {
                         alignment: Alignment.center,
                         child: Platform.isIOS
                             ? const CupertinoActivityIndicator(
-                          radius: 15,
-                        )
+                                radius: 15,
+                              )
                             : SizedBox(
-                          width: 30,
-                          height: 30,
-                          child: CircularProgressIndicator(
-                            backgroundColor: Colors.white,
-                            strokeWidth: 2,
-                            valueColor: AlwaysStoppedAnimation(
-                                Theme.of(context).primaryColor),
-                          ),
-                        ),
+                                width: 30,
+                                height: 30,
+                                child: CircularProgressIndicator(
+                                  backgroundColor: Colors.white,
+                                  strokeWidth: 2,
+                                  valueColor: AlwaysStoppedAnimation(
+                                      Theme.of(context).primaryColor),
+                                ),
+                              ),
                       ),
 
                       /// Bottom

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -10,24 +11,21 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome'),
+        title: const Text('Welcome'),
       ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(
-              child: Text('Show Popup'),
-              onPressed: () {
-              },
-            ),
-            FlatButton(child: Text('Show loading'), onPressed: (){
-            },),
+            FlatButton(
+                child: const Text('Home'),
+                onPressed: () {
+                  Get.snackbar('Home', 'Thanks for clicked');
+                }),
           ],
         ),
       ),
     );
   }
-
 }
