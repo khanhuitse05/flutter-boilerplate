@@ -98,8 +98,10 @@ The official Firebase plugins for Flutter. sign_in, analytics, crashlytics, stor
 - [Flutter Fire](https://firebase.flutter.dev/)
 
 ## State Management
-- [provider](https://pub.dev/packages/provider): A recommended approach.
-Other recommend
+- [provider](https://pub.dev/packages/provider): **A recommended approach.
+Other recommend**
+
+Other favorite package
 - [rxdart](https://pub.dev/packages/rxdart): RxDart adds additional capabilities to Dart Streams and StreamControllers. Using as bloc pattens
 - [flutter_bloc](https://pub.dev/packages/flutter_bloc): Widgets that make it easy to integrate blocs and cubits into Flutter. [Learn more](https://bloclibrary.dev/#/) 
 - [RiverPod](https://pub.dev/packages/riverpod): This project can be considered as a rewrite of provider to make improvements that would be otherwise impossible.
