@@ -1,11 +1,11 @@
-# Init Flutter
+# Flutter boilerplate
 
 <p align="center">
   <a href="https://flutter.io/">
     <img src="https://diegolaballos.com/files/images/flutter-icon.jpg" alt="Logo" width=72 height=72>
   </a>
 
-  <h3 align="center">Flutter Init Project</h3>
+  <h3 align="center">Flutter Boilerplate Project</h3>
 
   <p align="center">
     Fork this project then start you project with a lot of stuck prepare
