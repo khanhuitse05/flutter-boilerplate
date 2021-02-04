@@ -75,17 +75,17 @@ In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `F
 # Depencencies
 
 ## Helper
-- [logger](https://pub.dev/packages/logger)
-- [url_launcher](https://pub.dev/packages/url_launcher)
-- [http](https://pub.dev/packages/http)
+- [logger](https://pub.dev/packages/logger): Small, easy to use and extensible logger which prints beautiful logs.
+- [url_launcher](https://pub.dev/packages/url_launcher): A Flutter plugin for launching a URL in the mobile platform. Supports iOS, Android, web, Windows, macOS, and Linux.
 - [auto_route](https://pub.dev/packages/auto_route): Auto route generator, Manager router
 - [get](https://pub.dev/packages/get): Snackbar, Navigation, Theme, Hellper function
 
 - [intl](https://pub.dev/packages/intl): This package provides internationalization and localization facilities, including message translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
-- [shared_preferences](https://pub.dev/packages/shared_preferences)
+- [shared_preferences](https://pub.dev/packages/shared_preferences): Flutter plugin for reading and writing simple key-value pairs. Wraps NSUserDefaults on iOS and SharedPreferences on Android.
+Other: [hive](https://pub.dev/packages/hive), [sqflite](https://pub.dev/packages/sqflite)
 - [package_info](https://pub.dev/packages/package_info)
 - [device_info](https://pub.dev/packages/device_info)
-- [permission_handler](https://pub.dev/packages/permission_handler)
+- [permission_handler](https://pub.dev/packages/permission_handler): Permission plugin for Flutter. This plugin provides a cross-platform (iOS, Android) API to request and check permissions.
 
 ## HTTP, API
 - [http](https://pub.dev/packages/http): A composable, Future-based library for making HTTP requests.
@@ -106,7 +106,7 @@ Other recommend
 
 ![](resources/images/state.png) 
 
-**[More about state management](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options)
+- [More about state management](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options)
 
 ## Widget
 - [shimmer](https://pub.dev/packages/shimmer): Shimmer loading animation
