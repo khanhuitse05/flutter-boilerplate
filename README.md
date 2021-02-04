@@ -358,7 +358,7 @@ class MyApp extends StatelessWidget {
 ```
 
 You code structure look like
-![](resources/images/state.png) 
+![](resources/images/folder.png) 
 
 ## Wiki
 Checkout [wiki](https://github.com/PingAk9/init-flutter/wiki) for more info
