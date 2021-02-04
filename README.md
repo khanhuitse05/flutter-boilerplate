@@ -82,13 +82,15 @@ In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `F
 
 - [intl](https://pub.dev/packages/intl): This package provides internationalization and localization facilities, including message translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
 - [shared_preferences](https://pub.dev/packages/shared_preferences): Flutter plugin for reading and writing simple key-value pairs. Wraps NSUserDefaults on iOS and SharedPreferences on Android.
-Other: [hive](https://pub.dev/packages/hive), [sqflite](https://pub.dev/packages/sqflite)
+
+`Other`: [hive](https://pub.dev/packages/hive), [sqflite](https://pub.dev/packages/sqflite)
 - [package_info](https://pub.dev/packages/package_info)
 - [device_info](https://pub.dev/packages/device_info)
 - [permission_handler](https://pub.dev/packages/permission_handler): Permission plugin for Flutter. This plugin provides a cross-platform (iOS, Android) API to request and check permissions.
 
 ## HTTP, API
 - [http](https://pub.dev/packages/http): A composable, Future-based library for making HTTP requests.
+
 Besides, you can use one of the favorite package [DIO](https://pub.dev/packages/dio)
 
 ## Flutter Fire
