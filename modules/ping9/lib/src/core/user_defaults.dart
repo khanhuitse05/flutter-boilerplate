@@ -20,20 +20,15 @@ class UserDefaults {
 
     switch (keyValue.runtimeType) {
       case String:
-        await preferences.setString(storageDomain + keyName, keyValue);
-        break;
+        return preferences.setString(storageDomain + keyName, keyValue);
       case int:
-        await preferences.setInt(storageDomain + keyName, keyValue);
-        break;
+        return preferences.setInt(storageDomain + keyName, keyValue);
       case bool:
-        await preferences.setBool(storageDomain + keyName, keyValue);
-        break;
+        return preferences.setBool(storageDomain + keyName, keyValue);
       case double:
-        await preferences.setDouble(storageDomain + keyName, keyValue);
-        break;
+        return preferences.setDouble(storageDomain + keyName, keyValue);
       case List:
-        await preferences.setStringList(storageDomain + keyName, keyValue);
-        break;
+        return preferences.setStringList(storageDomain + keyName, keyValue);
     }
   }
 
