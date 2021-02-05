@@ -74,7 +74,7 @@ In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `F
 
 # Depencencies
 
-![](resources/images/dependencies.png) 
+![](resources/images/dependencies.jpg) 
 
 ## Helper
 - [logger](https://pub.dev/packages/logger): Small, easy to use and extensible logger which prints beautiful logs.
