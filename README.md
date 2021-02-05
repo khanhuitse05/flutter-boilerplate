@@ -74,6 +74,8 @@ In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `F
 
 # Depencencies
 
+![](resources/images/dependencies.png) 
+
 ## Helper
 - [logger](https://pub.dev/packages/logger): Small, easy to use and extensible logger which prints beautiful logs.
 - [url_launcher](https://pub.dev/packages/url_launcher): A Flutter plugin for launching a URL in the mobile platform. Supports iOS, Android, web, Windows, macOS, and Linux.
