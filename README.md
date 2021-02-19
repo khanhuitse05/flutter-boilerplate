@@ -74,7 +74,8 @@ In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `F
 ```
 
 # Code Conventions
-- [analysis_options.yaml]()
+- [analysis_options.yaml](analysis_options.yaml)
+- [about code analytis flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
 
 
 # Depencencies
