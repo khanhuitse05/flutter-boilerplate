@@ -22,6 +22,7 @@
 ## Table of contents
 
 - [How to Use](#how-to-use)
+- [Code Conventions](#code-conventions)
 - [Depencencies](#depencencies)
 - [Code structure](#code-structure)
 
@@ -71,6 +72,10 @@ In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `F
 **/*.inject.dart
 **/*.g.dart
 ```
+
+# Code Conventions
+- [analysis_options.yaml]()
+
 
 # Depencencies
 
