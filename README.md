@@ -22,6 +22,7 @@
 ## Table of contents
 
 - [How to Use](#how-to-use)
+- [Code Conventions](#code-conventions)
 - [Depencencies](#depencencies)
 - [Code structure](#code-structure)
 
@@ -72,7 +73,14 @@ In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `F
 **/*.g.dart
 ```
 
+# Code Conventions
+- [analysis_options.yaml](analysis_options.yaml)
+- [about code analytis flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
+
+
 # Depencencies
+
+![](resources/images/dependencies.jpg) 
 
 ## Helper
 - [logger](https://pub.dev/packages/logger): Small, easy to use and extensible logger which prints beautiful logs.
