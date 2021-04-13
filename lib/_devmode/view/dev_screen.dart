@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:my_app/_devmode/view/dev_popup_demo_screen.dart';
-import 'package:ping9/ping9.dart';
 
 import 'dev_info_screen.dart';
 
@@ -36,7 +34,7 @@ class _DevScreenState extends State<DevScreen> {
     );
   }
 
-  Widget _buildItem(String title, {VoidCallback onTap}) {
+  Widget _buildItem(String title, {VoidCallback? onTap}) {
     return InkWell(
       onTap: onTap,
       child: Container(

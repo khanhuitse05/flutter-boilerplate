@@ -4,37 +4,41 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  ping9:
-    path: ./modules/ping9
   flutter_icons: ^1.1.0
-  cupertino_icons: ^1.0.0
+  cupertino_icons: ^1.0.2
 
   # -- Helper
-  url_launcher: ^5.4.5
-  auto_route: ^0.6.9
-  logger: ^0.9.4
+  url_launcher: ^6.0.3
+  logger: ^1.0.0
+  intl: ^0.17.0
+  shared_preferences: ^2.0.5
+  package_info: ^2.0.0
+  device_info: ^2.0.0
+  http: ^0.13.1
 
   # -- Widget
-  shimmer: ^1.1.1
+  shimmer: ^2.0.0
+  transparent_image: ^2.0.0
+  flutter_html: ^2.0.0-nullsafety.0
+  webview_flutter: ^2.0.4
 
   # -- firebase
 
   # -- State Management
-  provider: ^4.3.3
-  get: ^3.17.1
+  provider: ^5.0.0
+  get: ^4.1.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^1.10.1
-  auto_route_generator:
+  build_runner: ^1.12.2
 
 flutter:
   uses-material-design: true

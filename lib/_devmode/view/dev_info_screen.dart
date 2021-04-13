@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class DevInfoScreen extends StatefulWidget {
   @override
   _DevInfoScreenState createState() => _DevInfoScreenState();
@@ -27,7 +26,7 @@ class _DevInfoScreenState extends State<DevInfoScreen> {
     );
   }
 
-  Widget _buildItem(String title, String value, {VoidCallback onTap}) {
+  Widget _buildItem(String title, String value, {VoidCallback? onTap}) {
     return InkWell(
       onTap: onTap,
       child: Container(

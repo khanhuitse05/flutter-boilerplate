@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/shared/models/action_type.dart';
-import 'package:ping9/ping9.dart';
+import 'package:my_app/models/shared/action_type.dart';
+import 'package:my_app/src/utils/index.dart';
 
 class ActionService {
   void onHandleAction(BuildContext context, Map action) {

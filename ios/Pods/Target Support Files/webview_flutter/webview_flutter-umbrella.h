@@ -13,6 +13,7 @@
 #import "FLTCookieManager.h"
 #import "FLTWebViewFlutterPlugin.h"
 #import "FLTWKNavigationDelegate.h"
+#import "FLTWKProgressionDelegate.h"
 #import "FlutterWebView.h"
 #import "JavaScriptChannelHandler.h"
 

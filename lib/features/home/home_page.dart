@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:my_app/src/dialog/toast_service.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -18,10 +18,10 @@ class _HomeViewState extends State<HomeView> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton(
+            TextButton(
                 child: const Text('Home'),
                 onPressed: () {
-                  Get.snackbar('Home', 'Thanks for clicked');
+                  Toast.showNoti('Home', 'Thanks for clicked');
                 }),
           ],
         ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:my_app/core/content/message.dart';
+import 'package:my_app/src/content/message.dart';
 import 'package:stack_trace/stack_trace.dart';
 
 class AppHttp {
-  static String tokenType;
-  static String tokenApi;
+  static String? tokenType;
+  static String? tokenApi;
 
   static Map<String, String> get _headers => {
         'Content-type': 'application/json',
@@ -21,10 +21,11 @@ class AppHttp {
   static const domain = '';
 
   static Future<String> get(String url) async {
-    String bodyResponse;
+    String bodyResponse = '';
     try {
+      final uri = Uri.https(domain, url);
       final response = await http
-          .get(domain + url, headers: _headers)
+          .get(uri, headers: _headers)
           .timeout(const Duration(minutes: 5));
       log('> GET RESPONSE [${response.statusCode}]<  $url');
       bodyResponse = response.body;
@@ -44,11 +45,12 @@ class AppHttp {
     }
   }
 
-  static Future<String> post(String url, {String body}) async {
-    String bodyResponse;
+  static Future<String> post(String url, {String? body}) async {
+    String bodyResponse = '';
     try {
+      final uri = Uri.https(domain, url);
       final response = await http
-          .post(domain + url, body: body, headers: _headers)
+          .post(uri, body: body, headers: _headers)
           .timeout(const Duration(minutes: 5));
       log('> POST RESPONSE [${response.statusCode}]< $url $body');
       bodyResponse = response.body;
@@ -68,11 +70,12 @@ class AppHttp {
     }
   }
 
-  static Future<String> put(String url, {String body}) async {
-    String bodyResponse;
+  static Future<String> put(String url, {String? body}) async {
+    String bodyResponse = '';
     try {
+      final uri = Uri.https(domain, url);
       final response = await http
-          .put(domain + url, body: body, headers: _headers)
+          .put(uri, body: body, headers: _headers)
           .timeout(const Duration(minutes: 5));
       log('> PUT RESPONSE [${response.statusCode}]< $url');
       bodyResponse = response.body;
@@ -92,11 +95,12 @@ class AppHttp {
     }
   }
 
-  static Future<String> patch(String url, {String body}) async {
-    String bodyResponse;
+  static Future<String> patch(String url, {String? body}) async {
+    String bodyResponse = '';
     try {
+      final uri = Uri.https(domain, url);
       final response = await http
-          .patch(domain + url, body: body, headers: _headers)
+          .patch(uri, body: body, headers: _headers)
           .timeout(const Duration(minutes: 5));
       log('> PATCH RESPONSE [${response.statusCode}]< $url');
       bodyResponse = response.body;
@@ -117,10 +121,11 @@ class AppHttp {
   }
 
   static Future<String> delete(String url) async {
-    String bodyResponse;
+    String bodyResponse = '';
     try {
+      final uri = Uri.https(domain, url);
       final response = await http
-          .delete(domain + url, headers: _headers)
+          .delete(uri, headers: _headers)
           .timeout(const Duration(minutes: 5));
       log('> DELETE RESPONSE [${response.statusCode}]< $url');
       bodyResponse = response.body;

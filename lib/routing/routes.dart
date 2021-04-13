@@ -1,34 +1,18 @@
-import 'package:auto_route/auto_route_annotations.dart';
+import 'package:get/get.dart';
+import 'package:my_app/_devmode/view/dev_screen.dart';
 import 'package:my_app/features/dashboard/dashboard_screen.dart';
+import 'package:my_app/features/splash/splash_screen.dart';
 
-import 'package:my_app/shared/view/splash_screen.dart';
-import 'package:ping9/ping9.dart';
+// https://github.com/jonataslaw/getx/blob/master/documentation/en_US/route_management.md
+class Routes {
+  Routes._();
+  static const String splash = '/';
+  static const String dashboard = '/dashboard';
+  static const String dev = '/dev';
 
-export 'routes.gr.dart';
-
-@MaterialAutoRouter(routes: <AutoRoute>[
-  // login
-  MaterialRoute(page: DashboardScreen),
-
-  // helper
-  MaterialRoute(page: SplashScreen, initial: true),
-  MaterialRoute(page: WebScreen),
-  MaterialRoute(path: "*", page: EmptyScreen)
-
-  // Custom path names
-  /// MaterialRoute(path: "/users", page: UsersScreen)
-  /// CupertinoRoute(page: UsersScreen, fullscreenDialog: true),
-  /// CustomRoute<bool>(page: LoginScreen, transitionsBuilder: TransitionsBuilders.fadeIn),
-  /**
-   MaterialRoute(
-      path: '/users:id',
-      page: UsersScreen,
-      children: <AutoRoute>[
-      // path: '/' is the same as setting initial to true
-      MaterialRoute(path: '/', page: ProfileScreen),
-      MaterialRoute(path: '/posts', page: PostsScreen),
-      ],
-    ),
-   */
-])
-class $AppRoute {}
+  static List<GetPage> routes = [
+    GetPage(name: splash, page: () => SplashScreen()),
+    GetPage(name: dashboard, page: () => DashboardScreen()),
+    GetPage(name: dev, page: () => DevScreen()),
+  ];
+}

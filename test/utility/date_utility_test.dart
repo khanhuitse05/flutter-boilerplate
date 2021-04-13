@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:my_app/core/utils/date_utility.dart';
+import 'package:my_app/src/utils/date_utility.dart';
 
 /// flutter test test/utils/date_utility_test.dart
 void main() {
