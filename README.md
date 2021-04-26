@@ -77,6 +77,8 @@ In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `F
 - [analysis_options.yaml](analysis_options.yaml)
 - [about code analytis flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
 
+In Flutter, Modularization will be done at a file level. While building widgets, we have to make sure they stay independent and re-usable as maximum. Ideally, widgets should be easily extractable into an independent project.
+
 
 # Depencencies
 
