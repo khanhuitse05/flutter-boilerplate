@@ -120,6 +120,19 @@ Other favorite package
 
 - [More about state management](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options)
 
+## Get package 
+[get](https://pub.dev/packages/get)
+
+- Utils
+- Theme
+- [State management](https://medium.com/flutter-community/the-flutter-getx-ecosystem-state-management-881c7235511d)
+- [Router management](https://pub.dev/packages/get#route-management)
+- [Dependency management](https://medium.com/flutter-community/the-flutter-getx-ecosystem-dependency-injection-8e763d0ec6b9)
+
+
+## Flutter Gen
+- [flutter_gen](https://pub.dev/packages/flutter_gen): The Flutter code generator for your assets, fonts, colors, … — Get rid of all String-based APIs.
+
 ## Widget
 - [shimmer](https://pub.dev/packages/shimmer): Shimmer loading animation
 - [flutter_html](https://pub.dev/packages/flutter_html)
