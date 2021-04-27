@@ -108,6 +108,9 @@ The official Firebase plugins for Flutter. sign_in, analytics, crashlytics, stor
 - [Flutter Fire](https://firebase.flutter.dev/)
 
 ## State Management
+
+State Management is still the hottest topic in Flutter Community. There are tons of choices available and it’s super intimidating for a beginner to choose one. Also, all of them have their pros and cons. So, what’s the best approach
+
 - [provider](https://pub.dev/packages/provider): **A recommended approach.
 Other recommend**
 
