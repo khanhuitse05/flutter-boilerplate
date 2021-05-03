@@ -77,6 +77,8 @@ In Visual Studio Code, navigate to `Preferences` -> `Settings` and search for `F
 - [analysis_options.yaml](analysis_options.yaml)
 - [about code analytis flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
 
+In Flutter, Modularization will be done at a file level. While building widgets, we have to make sure they stay independent and re-usable as maximum. Ideally, widgets should be easily extractable into an independent project.
+
 
 # Depencencies
 
@@ -106,6 +108,9 @@ The official Firebase plugins for Flutter. sign_in, analytics, crashlytics, stor
 - [Flutter Fire](https://firebase.flutter.dev/)
 
 ## State Management
+
+State Management is still the hottest topic in Flutter Community. There are tons of choices available and it’s super intimidating for a beginner to choose one. Also, all of them have their pros and cons. So, what’s the best approach
+
 - [provider](https://pub.dev/packages/provider): **A recommended approach.
 Other recommend**
 
@@ -119,6 +124,19 @@ Other favorite package
 ![](resources/images/state.png) 
 
 - [More about state management](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options)
+
+## Get package 
+[get](https://pub.dev/packages/get)
+
+- Utils
+- Theme
+- [State management](https://medium.com/flutter-community/the-flutter-getx-ecosystem-state-management-881c7235511d)
+- [Router management](https://pub.dev/packages/get#route-management)
+- [Dependency management](https://medium.com/flutter-community/the-flutter-getx-ecosystem-dependency-injection-8e763d0ec6b9)
+
+
+## Flutter Gen
+- [flutter_gen](https://pub.dev/packages/flutter_gen): The Flutter code generator for your assets, fonts, colors, … — Get rid of all String-based APIs.
 
 ## Widget
 - [shimmer](https://pub.dev/packages/shimmer): Shimmer loading animation
