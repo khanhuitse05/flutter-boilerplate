@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/features/home/home_page.dart';
+import 'package:my_app/src/widget/helper/lifecycle_mixin.dart';
 import 'package:provider/provider.dart';
 
 import 'controller/tabbar_provider.dart';
@@ -9,8 +10,7 @@ class DashboardScreen extends StatefulWidget {
   _DashboardScreenState createState() => _DashboardScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen>
-    with WidgetsBindingObserver {
+class _DashboardScreenState extends State<DashboardScreen> with LifecycleMixin {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -61,33 +61,10 @@ class _DashboardScreenState extends State<DashboardScreen>
   }
 
   @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance?.addObserver(this);
-  }
+  void onPause() {}
 
   @override
-  void dispose() {
-    WidgetsBinding.instance?.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  Future didChangeAppLifecycleState(AppLifecycleState _state) async {
-    switch (_state) {
-      case AppLifecycleState.paused:
-      case AppLifecycleState.detached:
-        break;
-      case AppLifecycleState.resumed:
-        resumeCallBack();
-        break;
-      case AppLifecycleState.inactive:
-      default:
-        break;
-    }
-  }
-
-  void resumeCallBack() {
+  void onResume() {
     debugPrint('App resume call back');
   }
 }

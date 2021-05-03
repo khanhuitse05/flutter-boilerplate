@@ -1,19 +1,38 @@
-#include: package:pedantic/analysis_options.yaml
+# Copyright 2017 The Fuchsia Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
 
+# The analysis_options.yaml file at the repository root is the source of truth,
+# and the other analysis_options.yaml files under dart packages directories are
+# mere copies of it.
+#
+# The copy happens when you run "make" from the command line.
 analyzer:
-  strong-mode:
-    implicit-dynamic: true
-  errors:
-    # allow having TODOs in the code
-    todo: ignore
   exclude:
-    # exclude files
-    - lib/data/models/models_gen.g.dart
-    - lib/data/dio/api_client_gen.g.dart
-    - lib/generated_plugin_registrant.dart
-  enable-experiment:
-    - extension-methods
+    - "**/generated/**"
+    - "flutter/**"
+    - "lib/**/*.g.dart"
 
+  # taken from https://dart.dev/guides/language/analysis-options#enabling-additional-type-checks
+  strong-mode:
+    implicit-casts: false
+
+  # taken from https://github.com/passsy/dart-lint/blob/master/lib/analysis_options.yaml
+  errors:
+    # treat missing required parameters as a error (not a hint)
+    missing_required_param: error
+    # treat missing returns as a error (not a hint)
+    missing_return: error
+    # - maybe set it to "ignore" to reduce noise ?
+    todo: info
+    # seems like we should watch out :
+    avoid_void_async: warning
+    unawaited_futures: warning
+    # using deprecated is a proper way to mark things we want to delete later
+    # there's a bug in flutter analyze and it has return code -1 for info rules failures
+    deprecated_member_use_from_same_package: ignore
+
+# taken from https://dart-lang.github.io/linter/lints/options/options.html
 linter:
   rules:
     - always_declare_return_types

@@ -11,7 +11,7 @@ class ThemeService extends ChangeNotifier {
 
   ThemeService() {
     final String? theme =
-        UserDefaults.instance.getObjectByKey(_referencesThemeKey);
+        UserDefaults.instance.getObjectByKey(_referencesThemeKey) as String;
     changeTheme(theme);
   }
 

@@ -10,7 +10,7 @@ export 'color_scheme_extension.dart';
 /// default dark mode
 class AppTheme {
   // share style
-  static const fontFamily = null;
+  static const String? fontFamily = null;
 
   static InputBorder _getInputBorder(Color color) {
     return OutlineInputBorder(
