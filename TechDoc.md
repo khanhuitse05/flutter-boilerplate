@@ -283,3 +283,58 @@ class MyApp extends StatelessWidget {
 ## Wiki
 Checkout [wiki](https://github.com/PingAk9/init-flutter/wiki) for more info
 
+
+
+
+## Prerequisites
+
+-- TO DO --
+
+## Getting Started
+
+1. Run `flutter pub get` to update your dependencies (as defined in `pubspec.yaml`)
+2. Add .env on root project as environment variable
+3. To open an emulator run `flutter emulators --launch <emulator id>`
+   - (get a list of available emulator ids by running `flutter emulators`)
+4. Run `flutter run`
+
+## Development guide
+
+### State management
+
+The app uses Getx for state managerment
+
+- [GetX ecosystem state management](https://medium.com/flutter-community/the-flutter-getx-ecosystem-state-management-881c7235511d)
+
+dependency injection
+
+- [Getx ecosystem dependency injection](https://medium.com/flutter-community/the-flutter-getx-ecosystem-dependency-injection-8e763d0ec6b9)
+
+### Auto generate assets object
+
+- Run this command after add images or fonts
+- More information [Flutter Gen](https://github.com/FlutterGen/flutter_gen)
+
+```
+flutter packages pub run build_runner build
+```
+
+### Localized Plist item on iOS
+
+After add permission description in info.plist (Default EN). You need to add localize for other languages in `ios/Runner/${languageCode}.Iproj/InfoPlist.strings`
+
+## EnumClass
+
+- [Read more about enum class](https://cloud-trends.medium.com/advanced-enums-in-flutter-a8f2e2702ffd)
+
+### Create new EnumClass
+
+- Create new enum file in lib/model/enums/
+
+- Add vsCode Extension [built-value-snippets](https://marketplace.visualstudio.com/items?itemName=GiancarloCode.built-value-snippets). Then use `bve` shortcut. Or write your own code like the Enums already have
+
+[example](https://github.com/google/built_value.dart/blob/master/example/lib/enums.dart)
+
+### Run to generate enums
+
+- flutter packages pub run build_runner build --delete-conflicting-outputs

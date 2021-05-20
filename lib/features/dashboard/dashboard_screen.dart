@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:my_app/features/home/home_page.dart';
 import 'package:my_app/src/widget/helper/lifecycle_mixin.dart';
-import 'package:provider/provider.dart';
-
 import 'controller/tabbar_provider.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -13,17 +12,18 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> with LifecycleMixin {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => TabBarProvider(),
-      builder: (context, index) {
+    return GetBuilder<TabBarProvider>(
+      init: TabBarProvider(),
+      builder: (controller) {
+        final index = controller.index;
         return WillPopScope(
             onWillPop: () async {
-              context.read<TabBarProvider>().switchTo(0);
-              return Future.value(false);
+              controller.switchTo(0);
+              return false;
             },
             child: Scaffold(
               body: IndexedStack(
-                index: context.watch<TabBarProvider>().index,
+                index: index,
                 children: [
                   HomeView(),
                   Container(),
@@ -36,9 +36,9 @@ class _DashboardScreenState extends State<DashboardScreen> with LifecycleMixin {
                       Theme.of(context).accentColor.withOpacity(0.1),
                 ),
                 child: BottomNavigationBar(
-                  currentIndex: context.watch<TabBarProvider>().index,
+                  currentIndex: index,
                   onTap: (index) {
-                    context.read<TabBarProvider>().switchTo(index);
+                    controller.switchTo(index);
                   },
                   type: BottomNavigationBarType.fixed,
                   selectedItemColor: Theme.of(context).accentColor,

@@ -7,23 +7,6 @@ import 'package:flutter/widgets.dart';
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
-
-  $AssetsImagesImagesGen get images => const $AssetsImagesImagesGen();
-  $AssetsImagesLocaleGen get locale => const $AssetsImagesLocaleGen();
-}
-
-class $AssetsImagesImagesGen {
-  const $AssetsImagesImagesGen();
-
-  AssetGenImage get logo =>
-      const AssetGenImage('assets/images/images/logo.png');
-}
-
-class $AssetsImagesLocaleGen {
-  const $AssetsImagesLocaleGen();
-
-  AssetGenImage get en => const AssetGenImage('assets/images/locale/en.png');
-  AssetGenImage get vi => const AssetGenImage('assets/images/locale/vi.png');
 }
 
 class Assets {

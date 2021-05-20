@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_app/src/core/user_defaults.dart';
@@ -6,7 +5,7 @@ import 'package:my_app/src/theme/theme_utility.dart';
 
 const String _referencesThemeKey = "_referencesThemeKey";
 
-class ThemeService extends ChangeNotifier {
+class ThemeService extends GetxController {
   late ThemeMode themeMode;
 
   ThemeService() {
@@ -26,7 +25,7 @@ class ThemeService extends ChangeNotifier {
       // default dark theme
       themeMode = _default;
     }
-    notifyListeners();
+    update();
     UserDefaults.instance
         .setObject(_referencesThemeKey, theme ?? _default.toString());
     _fixAppbarWithTheme(themeMode);
