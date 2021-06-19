@@ -8,41 +8,39 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  # c
-  cupertino_icons: ^1.0.2
-  # d
-  device_info: ^2.0.0
   # flutter
   flutter:
     sdk: flutter
-  flutter_html: ^2.0.0-nullsafety.0
-  flutter_icons: ^1.1.0
   flutter_localizations:
     sdk: flutter
-  # g
-  get: ^4.1.4
-  # h
-  http: ^0.13.2
-  # i
+
+  # widgets
+  cupertino_icons: ^1.0.3
+  http: ^0.13.3
   intl: ^0.17.0
-  # l
   logger: ^1.0.0
-  # p
-  package_info: ^2.0.0
-  # s
-  shared_preferences: ^2.0.5
+  package_info: ^2.0.2
+  shared_preferences: ^2.0.6
+  url_launcher: ^6.0.6
+  webview_flutter: ^2.0.8
+
+  # routing
+  beamer: ^0.14.0
+
+  # helper
+  device_info: ^2.0.2
+  flutter_html: ^2.1.0
   shimmer: ^2.0.0
-  # t
   transparent_image: ^2.0.0
-  # u
-  url_launcher: ^6.0.3
-  # w
-  webview_flutter: ^2.0.4
+
+  # state management
+  flutter_bloc: ^7.0.1
+  get: ^4.1.4
 
 dev_dependencies:
-  build_runner:
-  built_value_generator: ^8.0.6
-  flutter_gen_runner:
+  build_runner: ^2.0.4
+  built_value_generator: ^8.1.0
+  flutter_gen_runner: ^3.1.1
   flutter_test:
     sdk: flutter
 
@@ -52,8 +50,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/fonts/
-    - assets/images/
     - assets/images/locale/
     - assets/images/images/
     # An image asset can refer to one or more resolution-specific "variants", see
