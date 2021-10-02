@@ -1,0 +1,7 @@
+{
+  "common_appTitle": "My App",
+  "common_loading": "Loading",
+  "common_next": "Next",
+  "error_noInternet": "A Server Error Occurred",
+  "error_unknown": "An Unknown Error Occurred"
+}

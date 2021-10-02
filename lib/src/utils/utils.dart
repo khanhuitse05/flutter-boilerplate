@@ -1,46 +1,21 @@
-import 'dart:io';
-import 'package:intl/intl.dart';
-import 'package:device_info/device_info.dart';
-import 'package:my_app/models/shared/device_info.dart';
-import 'package:my_app/src/utils/index.dart';
+import 'package:logger/logger.dart';
 
-class Utility {
-  static String formatPrice(Object number) {
-    final oCcy = NumberFormat("#,###", "en_US");
-    if (number is String) {
-      if (number.toString().isNotEmpty) {
-        final int value = int.parse(number);
+Logger xLog = Logger();
 
-        return oCcy.format(value);
-      } else {
-        return '';
-      }
-    } else {
-      return oCcy.format(number);
-    }
+class Utils {}
+
+bool isNullOrEmpty(Object? object) {
+  if (object == null) {
+    return true;
   }
-
-  Future<DeviceInfo?> getDeviceInfo() async {
-    try {
-      final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-      if (Platform.isAndroid) {
-        final AndroidDeviceInfo info = await deviceInfoPlugin.androidInfo;
-        return DeviceInfo(
-            platformName: info.version.baseOS,
-            platformVersion: info.version.release,
-            uid: info.androidId,
-            name: info.device);
-      } else if (Platform.isIOS) {
-        final IosDeviceInfo info = await deviceInfoPlugin.iosInfo;
-        return DeviceInfo(
-            platformName: info.systemName,
-            platformVersion: info.systemVersion,
-            uid: info.identifierForVendor,
-            name: info.name);
-      }
-    } catch (e) {
-      printTrace(e);
-    }
-    return null;
+  if (object is String) {
+    return object.trim().isEmpty;
   }
+  if (object is Iterable) {
+    return object.isEmpty;
+  }
+  if (object is Map) {
+    return object.isEmpty;
+  }
+  return false;
 }

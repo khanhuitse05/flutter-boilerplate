@@ -1,6 +1,8 @@
 name: my_app
-description: A new Flutter application.
-publish_to: "none"
+description: A new Flutter project.
+
+# Prevent accidental publishing to pub.dev.
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -8,90 +10,34 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  # flutter
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-
-  # widgets
-  cupertino_icons: ^1.0.3
+  equatable: ^2.0.3
+  flutter_bloc: ^7.2.0
+  logger: ^1.1.0
+  fluttertoast: ^8.0.8
   http: ^0.13.3
-  intl: ^0.17.0
-  logger: ^1.0.0
-  package_info: ^2.0.2
+  device_info_plus: ^2.1.0
+  package_info_plus: ^1.0.6
   shared_preferences: ^2.0.6
-  url_launcher: ^6.0.6
-  webview_flutter: ^2.0.8
 
-  # routing
-  beamer: ^0.14.0
-
-  # helper
-  device_info: ^2.0.2
-  flutter_html: ^2.1.0
-  shimmer: ^2.0.0
-  transparent_image: ^2.0.0
-
-  # state management
-  flutter_bloc: ^7.0.1
-  get: ^4.1.4
 
 dev_dependencies:
-  build_runner: ^2.0.4
-  built_value_generator: ^8.1.0
-  flutter_gen_runner: ^3.1.1
   flutter_test:
     sdk: flutter
 
+  flutter_lints: ^1.0.0
 
 flutter:
-  generate: true
   uses-material-design: true
 
+  # Enable generation of localized Strings from arb files.
+  generate: true
+
   assets:
-    - assets/images/locale/
-    - assets/images/images/
-    # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
-
-
-
-  # flutter packages pub run build_runner build
-  # flutter packages pub run build_runner watch --delete-conflicting-outputs  --enable-experiment=non-nullable
-
-  # keytool -exportcert -alias androiddebugkey -keystore "C:\Users\Mica\.android\debug.keystore" | "C:\Users\Mica\Downloads\openssl-0.9.8e_X64\bin\openssl" sha1 -binary | "C:\Users\Mica\Downloads\openssl-0.9.8e_X64\bin\openssl" base64
-
-  # for facebook key hash
-  # keytool -list -v -keystore key.jks -alias key
-
-  # keytool -exportcert -alias key -keystore C:\Users\Mica\Documents\yegobox\clean\leftMidApp\android\app\external\key.jks | "C:\Users\Mica\Downloads\openssl-0.9.8e_X64\bin\openssl" sha1 -binary | "C:\Users\Mica\Downloads\openssl-0.9.8e_X64\bin\openssl" base64
-
-  # flutter build appbundle --build-name=1.8.9  --build-number=189
-  # flutter build apk --build-name=1.6.0  --build-number=160
-
-  # generate launcher icon
-  # flutter pub run flutter_launcher_icons:main
+    # Add assets from the images directory to the application.
+    - assets/images/
+    - assets/images/images
+    - assets/images/locale

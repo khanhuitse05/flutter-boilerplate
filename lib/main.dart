@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/services/locator.dart';
-import 'package:my_app/src/core/user_defaults.dart';
-import 'my_app.dart';
+import 'package:my_app/src/locator.dart';
+
+import 'src/app.dart';
 
 Future main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  setupLocator();
-  await UserDefaults.instance.initAsync();
+  initializeApp();
   runApp(MyApp());
 }
