@@ -22,6 +22,7 @@ dependencies:
   device_info_plus: ^2.1.0
   package_info_plus: ^1.0.6
   shared_preferences: ^2.0.6
+  get_it: ^7.2.0
 
 
 dev_dependencies:
@@ -39,5 +40,5 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
-    - assets/images/images
-    - assets/images/locale
+    - assets/images/images/
+    - assets/images/locale/

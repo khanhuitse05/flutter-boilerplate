@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/network/models/common/handle.dart';
+import 'package:my_app/src/network/model/common/handle.dart';
 import 'package:my_app/widgets/state/state_error_widget.dart';
 import 'package:my_app/widgets/state/state_loading_widget.dart';
 

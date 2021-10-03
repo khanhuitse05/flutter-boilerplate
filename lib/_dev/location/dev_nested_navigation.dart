@@ -22,7 +22,7 @@ class _DevNestedNavigationState extends State<DevNestedNavigation> {
       create: (context) => coordinator,
       child: WillPopScope(
         onWillPop: () async {
-          coordinator.onBack();
+          coordinator.pop();
           return false;
         },
         child: Scaffold(

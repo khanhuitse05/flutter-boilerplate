@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:my_app/src/router/routing.dart';
 
 abstract class NavCoordinator {
   GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   BuildContext get context => navigatorKey.currentState!.context;
   String get initialRoute;
-  NavigatorObserver? get navigatorObserver;
+  NavigatorObserver? get navigatorObserver => null;
 
   Route<dynamic>? onGenerateRoute(RouteSettings settings);
 
   Future? onExit(BuildContext context) {
-    // todo
+    XRouting.pop();
   }
 
-  void onBack([Object? result]) {
+  void pop([Object? result]) {
     if (navigatorKey.currentState!.canPop()) {
       navigatorKey.currentState!.pop(result);
     }

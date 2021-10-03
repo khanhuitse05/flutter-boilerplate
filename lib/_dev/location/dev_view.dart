@@ -20,13 +20,13 @@ class DevScreen extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 16),
         children: [
-          DevNavigationTitle('Device Info', screenName: DevRouters.device),
-          DevNavigationTitle('Theme', screenName: DevRouters.theme),
-          DevNavigationTitle('Text Theme', screenName: DevRouters.textTheme),
-          DevNavigationTitle('Button', screenName: DevRouters.button),
-          DevNavigationTitle('Text Input', screenName: DevRouters.input),
-          DevNavigationTitle('Dialog', screenName: DevRouters.dialog),
-          DevNavigationTitle('Other', screenName: DevRouters.other),
+          DevNavigationTitle('1. Device Info', screenName: DevRouters.device),
+          DevNavigationTitle('2. Theme', screenName: DevRouters.theme),
+          DevNavigationTitle('3. Text Theme', screenName: DevRouters.textTheme),
+          DevNavigationTitle('4. Button', screenName: DevRouters.button),
+          DevNavigationTitle('5. Text Input', screenName: DevRouters.input),
+          DevNavigationTitle('6. Dialog', screenName: DevRouters.dialog),
+          DevNavigationTitle('7. Other', screenName: DevRouters.other),
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class XIndicator extends StatelessWidget {
@@ -8,13 +9,7 @@ class XIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
-      return Center(
-        child: CupertinoActivityIndicator(
-          radius: radius,
-        ),
-      );
-    } else {
+    if (kIsWeb || Platform.isAndroid) {
       return Center(
         child: SizedBox(
           width: radius * 2,
@@ -25,5 +20,10 @@ class XIndicator extends StatelessWidget {
         ),
       );
     }
+    return Center(
+      child: CupertinoActivityIndicator(
+        radius: radius,
+      ),
+    );
   }
 }

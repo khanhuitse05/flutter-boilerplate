@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/_dev/widgets/dev_button_title.dart';
-import 'package:my_app/src/dialogs/dialog_service.dart';
+import 'package:my_app/src/dialogs/alert_wrapper.dart';
+import 'package:my_app/src/dialogs/toast_wrapper.dart';
+import 'package:my_app/src/dialogs/widget/x_loading_alert.dart';
 import '../widgets/dev_screen_layout.dart';
 
 class DevDialogScreen extends StatelessWidget {
@@ -12,15 +14,17 @@ class DevDialogScreen extends StatelessWidget {
       'Dialog',
       children: [
         DevButtonTitle('1. Show Dialog', onTap: () {
-          showAlert(title: 'title', body: 'dialog content');
+          XAlert.show(title: 'title', body: 'dialog content');
         }),
         DevButtonTitle('2. Show full screen loading', onTap: () async {
           showLoading();
           await Future.delayed(Duration(seconds: 1));
+          updateLoading('90%');
+          await Future.delayed(Duration(seconds: 1));
           hideLoading();
         }),
         DevButtonTitle('3. Show Toast', onTap: () {
-          // Toast.show('Default Toast');
+          XToast.show('Default Toast');
         }),
         DevButtonTitle(
           '4. Show Default Bottom Sheet',

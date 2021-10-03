@@ -3,18 +3,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:my_app/src/features/common/setting/setting_bloc.dart';
+import 'package:my_app/src/router/route_observer.dart';
 import 'package:my_app/src/router/routing.dart';
+import 'package:my_app/src/services/user_prefs.dart';
 import 'package:my_app/src/theme/themes.dart';
 import 'package:my_app/src/utils/localization_utils.dart';
 
-import 'dialogs/dialog_service.dart';
-
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-  static BuildContext get context => navigatorKey.currentState!.context;
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -33,13 +35,13 @@ class MyApp extends StatelessWidget {
           supportedLocales: const [
             Locale('en', ''),
           ],
-          builder: DialogService.initBuilder,
-          navigatorKey: MyApp.navigatorKey,
           onGenerateTitle: (BuildContext context) =>
               S.of(context).common_appTitle,
           theme: XTheme.light(),
           darkTheme: XTheme.dark(),
-          themeMode: ThemeMode.system,
+          themeMode: state.themeMode,
+          navigatorKey: XRouting.navigatorKey,
+          navigatorObservers: [XRouteObserver()],
           onGenerateRoute: XRouting.onGenerateRoute,
         );
       }),

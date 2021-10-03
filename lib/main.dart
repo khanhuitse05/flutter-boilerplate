@@ -4,6 +4,6 @@ import 'package:my_app/src/locator.dart';
 import 'src/app.dart';
 
 Future main() async {
-  initializeApp();
+  await initializeApp();
   runApp(MyApp());
 }
