@@ -24,13 +24,16 @@ dependencies:
   package_info_plus: ^1.2.0
   shared_preferences: ^2.0.8
   get_it: ^7.2.0
-
+  flutter_dotenv: ^5.0.2
+  
   # WIDGET
   modal_bottom_sheet: ^2.0.0
   fluttertoast: ^8.0.8
   
   # STATE MANAGEMENT
   flutter_bloc: ^7.3.0
+  auto_route: ^2.4.2
+
   # FIREBASE
   # GITHUB
 
