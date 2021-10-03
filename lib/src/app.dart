@@ -5,7 +5,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:my_app/src/features/common/setting/setting_bloc.dart';
 import 'package:my_app/src/router/route_observer.dart';
 import 'package:my_app/src/router/routing.dart';
-import 'package:my_app/src/services/user_prefs.dart';
 import 'package:my_app/src/theme/themes.dart';
 import 'package:my_app/src/utils/localization_utils.dart';
 
