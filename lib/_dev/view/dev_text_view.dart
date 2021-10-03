@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:my_app/src/theme/colors.dart';
 
-class DevTextScreen extends StatelessWidget {
-  const DevTextScreen({Key? key}) : super(key: key);
+class DevTextView extends StatelessWidget {
+  const DevTextView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

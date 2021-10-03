@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/_dev/widgets/dev_screen_layout.dart';
 import 'package:my_app/_dev/widgets/dev_title.dart';
+import 'package:my_app/widgets/button/button.dart';
+import 'package:my_app/widgets/button/outlined_button.dart';
 
-class DevButtonScreen extends StatefulWidget {
-  const DevButtonScreen({Key? key}) : super(key: key);
+class DevButtonView extends StatefulWidget {
+  const DevButtonView({Key? key}) : super(key: key);
 
   @override
-  State<DevButtonScreen> createState() => _DevButtonScreenState();
+  State<DevButtonView> createState() => _DevButtonViewState();
 }
 
-class _DevButtonScreenState extends State<DevButtonScreen> {
+class _DevButtonViewState extends State<DevButtonView> {
   bool busy = false;
   bool enabled = true;
   @override
@@ -40,10 +42,19 @@ class _DevButtonScreenState extends State<DevButtonScreen> {
           onPressed: enabled ? () {} : null,
           icon: Icon(Icons.add_circle),
         ),
-        _title('2. ElevatedButton'),
-        ElevatedButton(
-          child: Text('ElevatedButton'),
-          onPressed: enabled ? () {} : null,
+        _title('2. XButton'),
+        XButton(
+          child: Text('XButton'),
+          busy: busy,
+          enabled: enabled,
+          onPressed: () {},
+        ),
+        _title('2. XOutlinedButton'),
+        XOutlinedButton(
+          child: Text('XOutlinedButton'),
+          busy: busy,
+          enabled: enabled,
+          onPressed: () {},
         ),
       ],
     );

@@ -14,7 +14,7 @@ class DevCopyTitle extends StatelessWidget {
     return ListTile(
       title: Text(
         title,
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
       ),
       subtitle: Text(body ?? ''),
       trailing: Icon(Icons.copy_outlined),

@@ -30,21 +30,22 @@ class XTheme {
         ),
 
         /// input
-        inputDecorationTheme: InputDecorationTheme(
-          fillColor: XColors.inputFillColor,
-          filled: true,
-        ),
+        inputDecorationTheme: InputDecorationTheme(),
 
         /// Button
+        buttonTheme: ButtonThemeData(),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(),
         ),
 
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(),
         ),
-
         iconTheme: IconThemeData(),
       );
+
   static ThemeData dark() => ThemeData.dark();
 }

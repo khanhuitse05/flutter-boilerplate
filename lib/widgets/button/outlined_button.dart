@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/theme/colors.dart';
 
 import 'button.dart';
 
@@ -30,7 +29,6 @@ class XOutlinedButton extends StatelessWidget {
             }
           : null,
       child: XBusyTitle(
-        style: TextStyle(color: XColors.primary),
         busy: busy,
         title: title,
         child: child,

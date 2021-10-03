@@ -10,20 +10,29 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  # FLUTTER
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+
+  # HELPER
   equatable: ^2.0.3
-  flutter_bloc: ^7.2.0
   logger: ^1.1.0
-  fluttertoast: ^8.0.8
   http: ^0.13.3
   device_info_plus: ^2.1.0
   package_info_plus: ^1.0.6
   shared_preferences: ^2.0.6
   get_it: ^7.2.0
 
+  # WIDGET
+  modal_bottom_sheet: ^2.0.0
+  fluttertoast: ^8.0.8
+  
+  # STATE MANAGEMENT
+  flutter_bloc: ^7.2.0
+  # FIREBASE
+  # GITHUB
 
 dev_dependencies:
   flutter_test:

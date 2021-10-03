@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DevInputScreen extends StatefulWidget {
+class DevInputView extends StatefulWidget {
   @override
-  _DevInputScreenState createState() => _DevInputScreenState();
+  _DevInputViewState createState() => _DevInputViewState();
 }
 
-class _DevInputScreenState extends State<DevInputScreen> {
+class _DevInputViewState extends State<DevInputView> {
   InputDecoration getDecoration({InputBorder? border}) {
     return InputDecoration(
         hintText: !hintText ? null : "Hint Text",

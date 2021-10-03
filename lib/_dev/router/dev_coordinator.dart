@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:my_app/_dev/location/dev_view.dart';
 import 'package:my_app/_dev/router/dev_routers.dart';
-import 'package:my_app/_dev/view/dev_button_screen.dart';
-import 'package:my_app/_dev/view/dev_theme_screen.dart';
-import 'package:my_app/_dev/view/dev_device_screen.dart';
-import 'package:my_app/_dev/view/dev_dialog_screen.dart';
-import 'package:my_app/_dev/view/dev_input_screen.dart';
-import 'package:my_app/_dev/view/dev_other_screen.dart';
-import 'package:my_app/_dev/view/dev_text_screen.dart';
+import 'package:my_app/_dev/view/dev_button_view.dart';
+import 'package:my_app/_dev/view/dev_theme_view.dart';
+import 'package:my_app/_dev/view/dev_device_view.dart';
+import 'package:my_app/_dev/view/dev_dialog_view.dart';
+import 'package:my_app/_dev/view/dev_input_view.dart';
+import 'package:my_app/_dev/view/dev_other_view.dart';
+import 'package:my_app/_dev/view/dev_text_view.dart';
 import 'package:my_app/src/features/common/view/not_found_view.dart';
 import 'package:my_app/src/router/coordinator.dart';
 
@@ -27,25 +27,25 @@ class DevCoordinator extends NavCoordinator {
             builder: (context) => DevScreen(), settings: settings);
       case DevRouters.device:
         return MaterialPageRoute<dynamic>(
-            builder: (context) => DevDeviceScreen(), settings: settings);
+            builder: (context) => DevDeviceView(), settings: settings);
       case DevRouters.button:
         return MaterialPageRoute<dynamic>(
-            builder: (context) => DevButtonScreen(), settings: settings);
+            builder: (context) => DevButtonView(), settings: settings);
       case DevRouters.theme:
         return MaterialPageRoute<dynamic>(
-            builder: (context) => DevThemeScreen(), settings: settings);
+            builder: (context) => DevThemeView(), settings: settings);
       case DevRouters.textTheme:
         return MaterialPageRoute<dynamic>(
-            builder: (context) => DevTextScreen(), settings: settings);
+            builder: (context) => DevTextView(), settings: settings);
       case DevRouters.dialog:
         return MaterialPageRoute<dynamic>(
-            builder: (context) => DevDialogScreen(), settings: settings);
+            builder: (context) => DevDialogView(), settings: settings);
       case DevRouters.input:
         return MaterialPageRoute<dynamic>(
-            builder: (context) => DevInputScreen(), settings: settings);
+            builder: (context) => DevInputView(), settings: settings);
       case DevRouters.other:
         return MaterialPageRoute<dynamic>(
-            builder: (context) => DevOtherScreen(), settings: settings);
+            builder: (context) => DevOtherView(), settings: settings);
       default:
         return MaterialPageRoute<dynamic>(
             builder: (context) => NotFoundView(), settings: settings);

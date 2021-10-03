@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_app/src/config/constants/images.dart';
 import 'package:my_app/src/features/sample/router/sample_coordinator.dart';
 
 class SampleItemListView extends StatelessWidget {
@@ -25,7 +26,7 @@ class SampleItemListView extends StatelessWidget {
           return ListTile(
             title: Text('SampleItem ${index}'),
             leading: const CircleAvatar(
-              foregroundImage: AssetImage('assets/images/images/logo.png'),
+              foregroundImage: AssetImage(XImagePath.logo),
             ),
             onTap: () {
               context.read<SampleCoordinator>().pushNamed(SampleRoutes.detail);

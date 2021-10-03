@@ -3,8 +3,8 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:my_app/_dev/widgets/dev_screen_layout.dart';
 
-class DevThemeScreen extends StatelessWidget {
-  const DevThemeScreen({Key? key}) : super(key: key);
+class DevThemeView extends StatelessWidget {
+  const DevThemeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

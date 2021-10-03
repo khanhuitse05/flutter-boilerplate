@@ -11,5 +11,4 @@ class XColors {
   static const text = Color(0xFF404040);
 
   //
-  static const inputFillColor = Color(0x7FD9DCDE);
 }

@@ -2,6 +2,10 @@
   "common_appTitle": "My App",
   "common_loading": "Loading",
   "common_next": "Next",
+  "common_cancel": "Cancel",
+  "common_exit": "Exit",
+  "common_back": "Back",
   "error_noInternet": "A Server Error Occurred",
-  "error_unknown": "An Unknown Error Occurred"
+  "error_unknown": "An Unknown Error Occurred",
+  "error_somethingWrongTryAgain": "Something went wrong, try again..."
 }

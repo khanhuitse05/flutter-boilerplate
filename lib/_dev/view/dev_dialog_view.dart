@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:my_app/_dev/widgets/dev_button_title.dart';
 import 'package:my_app/src/dialogs/alert_wrapper.dart';
 import 'package:my_app/src/dialogs/toast_wrapper.dart';
 import 'package:my_app/src/dialogs/widget/x_loading_alert.dart';
 import '../widgets/dev_screen_layout.dart';
 
-class DevDialogScreen extends StatelessWidget {
-  const DevDialogScreen({Key? key}) : super(key: key);
+class DevDialogView extends StatelessWidget {
+  const DevDialogView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class DevDialogScreen extends StatelessWidget {
 class _DemoBottomSheet extends StatelessWidget {
   const _DemoBottomSheet({Key? key}) : super(key: key);
   static show(BuildContext context) {
-    showBottomSheet(
+    showCupertinoModalBottomSheet(
       context: context,
       builder: (context) => _DemoBottomSheet(),
     );
