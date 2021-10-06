@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_app/_dev/router/dev_coordinator.dart';
-import 'package:my_app/_dev/router/dev_routers.dart';
+import 'package:my_app/_dev/router/dev_router.dart';
 import 'package:my_app/_dev/widgets/dev_navigation_title.dart';
+import 'package:my_app/src/router/routes.dart';
 
-class DevScreen extends StatelessWidget {
-  const DevScreen({Key? key}) : super(key: key);
+class DevView extends StatelessWidget {
+  const DevView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +12,7 @@ class DevScreen extends StatelessWidget {
       appBar: AppBar(
           leading: CloseButton(
             onPressed: () {
-              context.read<DevCoordinator>().onExit(context);
+              XCoordinator.pop();
             },
           ),
           title: Text('Dev Only')),

@@ -1,6 +1,5 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_app/_dev/router/dev_coordinator.dart';
 
 class DevNavigationTitle extends StatelessWidget {
   const DevNavigationTitle(
@@ -19,7 +18,7 @@ class DevNavigationTitle extends StatelessWidget {
       ),
       trailing: Icon(Icons.navigate_next_outlined),
       onTap: () {
-        context.read<DevCoordinator>().pushNamed(screenName);
+        context.router.pushNamed(screenName);
       },
     );
   }

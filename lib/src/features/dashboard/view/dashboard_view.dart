@@ -1,8 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_app/src/features/common/logic/lifecycle_mixin.dart';
 import 'package:my_app/src/features/dashboard/logic/dashboard_bloc.dart';
-import 'package:my_app/src/features/home/view/home_view.dart';
+import 'package:my_app/src/router/router.gr.dart';
 
 class DashBoardView extends StatefulWidget {
   const DashBoardView({Key? key}) : super(key: key);
@@ -27,36 +28,33 @@ class _DashBoardViewState extends State<DashBoardView> with LifecycleMixin {
       ],
       child: BlocBuilder<DashBoardBloc, DashBoardState>(
         builder: (context, state) {
-          final index = state.tapIndex;
           return WillPopScope(
             onWillPop: () async {
-              bloc.onTapChanged(0);
+              bloc.setActiveIndex(0);
               return false;
             },
-            child: Scaffold(
-              body: IndexedStack(
-                index: index,
-                children: [
-                  HomeView(),
-                  Container(),
-                ],
-              ),
-              bottomNavigationBar: BottomNavigationBar(
-                currentIndex: index,
-                onTap: (index) {
-                  bloc.onTapChanged(index);
-                },
-                items: const [
-                  BottomNavigationBarItem(
-                    label: "Home",
-                    icon: Icon(Icons.home),
-                  ),
-                  BottomNavigationBarItem(
-                    label: "Category",
-                    icon: Icon(Icons.category),
-                  )
-                ],
-              ),
+            child: AutoTabsScaffold(
+              routes: [
+                HomeRouter(),
+                AccountRouter(),
+              ],
+              bottomNavigationBuilder: (_, TabsRouter tabsRouter) {
+                bloc.tabsRouter = tabsRouter;
+                return BottomNavigationBar(
+                  currentIndex: tabsRouter.activeIndex,
+                  onTap: (index) {
+                    bloc.setActiveIndex(index);
+                  },
+                  items: [
+                    ...TapIndex.values
+                        .map((e) => BottomNavigationBarItem(
+                              label: e.nameOf(),
+                              icon: Icon(e.iconOf()),
+                            ))
+                        .toList(),
+                  ],
+                );
+              },
             ),
           );
         },

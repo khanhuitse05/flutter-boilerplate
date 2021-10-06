@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/src/router/routing.dart';
+import 'package:my_app/src/router/routes.dart';
 
 String _dialogMessage = '';
 StreamController<String> _streamController =
@@ -16,7 +16,7 @@ Future<void> showLoading({String message = ''}) async {
   if (_progressDialog == null) {
     _progressDialog = _XLoadingAlert();
     _dialogMessage = message;
-    return _progressDialog?.show(XRouting.context);
+    return _progressDialog?.show(XCoordinator.context);
   }
 }
 

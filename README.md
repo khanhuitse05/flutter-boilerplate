@@ -23,7 +23,7 @@
 
 - [How to Use](#how-to-use)
 - [Code Conventions](#code-conventions)
-- [Depencencies](#depencencies)
+- [Dependencies](#depencencies)
 - [Code structure](#code-structure)
 
 ## How to Use 
@@ -36,6 +36,10 @@
 
   ```
   flutter pub get 
+  ```
+3. Now run the generator
+  ```
+  flutter packages pub run build_runner build
   ```
 
 # Code Conventions

@@ -1,8 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/_dev/location/dev_location.dart';
+import 'package:my_app/_dev/widgets/dev_float_button.dart';
 import 'package:my_app/src/dialogs/toast_wrapper.dart';
 import 'package:my_app/src/router/routes.dart';
-import 'package:my_app/src/router/routing.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -15,18 +15,19 @@ class HomeView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              XRouting.pushNamed(XRoutes.sample);
+              context.router.pushNamed(XRoutes.sample);
             },
             icon: Icon(Icons.list),
           ),
           IconButton(
             onPressed: () {
-              XRouting.pushNamed(XRoutes.setting);
+              context.router.pushNamed(XRoutes.setting);
             },
             icon: Icon(Icons.settings),
           ),
         ],
       ),
+      floatingActionButton: DevFloatButton(),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -36,12 +37,6 @@ class HomeView extends StatelessWidget {
               child: const Text('Home'),
               onPressed: () {
                 XToast.show('Clicked');
-              },
-            ),
-            TextButton(
-              child: const Text('Show Dev View'),
-              onPressed: () {
-                showDevScreen(context);
               },
             ),
           ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/_dev/location/dev_location.dart';
+import 'package:my_app/_dev/router/dev_router.dart';
 import 'package:my_app/src/config/env/env.dart';
 
 int _tapCount = 0;
@@ -15,7 +15,7 @@ class DevWrapButton extends StatelessWidget {
               _tapCount++;
               if (_tapCount > 5) {
                 _tapCount = 0;
-                showDevScreen(context);
+                DevRouter.onEnter();
               }
             }
           : null,
