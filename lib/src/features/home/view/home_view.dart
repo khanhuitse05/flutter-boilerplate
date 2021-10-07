@@ -39,6 +39,12 @@ class HomeView extends StatelessWidget {
                 XToast.show('Clicked');
               },
             ),
+            TextButton(
+              child: const Text('Order'),
+              onPressed: () {
+                context.router.pushNamed(XRoutes.order);
+              },
+            ),
           ],
         ),
       ),

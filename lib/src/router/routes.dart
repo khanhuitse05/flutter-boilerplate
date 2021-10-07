@@ -7,7 +7,7 @@ class XRoutes {
   static const setting = '/setting';
   static const sample = '/sample';
   static const dev = '/dev';
-  static const notFound = '/notFound';
+  static const order = '/order';
 }
 
 class XCoordinator {

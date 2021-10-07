@@ -4,12 +4,13 @@ import 'package:my_app/src/features/account/profile/view/profile_view.dart';
 import 'package:my_app/src/features/account/view/account_view.dart';
 import 'package:my_app/src/features/dashboard/view/dashboard_view.dart';
 import 'package:my_app/src/features/home/view/home_view.dart';
+import 'package:my_app/src/features/order/router/order_router.dart';
 import 'package:my_app/src/features/sample/router/sample_router.dart';
 import 'package:my_app/src/features/settings/settings_view.dart';
 import 'package:my_app/src/router/routes.dart';
 
 @MaterialAutoRouter(
-  replaceInRouteName: 'Page,Route',
+  replaceInRouteName: 'View,Route',
   routes: <AutoRoute>[
     AutoRoute(
       page: DashBoardView,
@@ -31,6 +32,7 @@ import 'package:my_app/src/router/routes.dart';
     AutoRoute(path: XRoutes.setting, page: SettingsView),
     SampleRouter.autoRoute,
     DevRouter.autoRoute,
+    OrderRouter.autoRoute,
     RedirectRoute(path: '*', redirectTo: ''),
   ],
 )
