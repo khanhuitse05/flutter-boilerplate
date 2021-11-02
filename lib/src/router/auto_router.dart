@@ -7,7 +7,7 @@ import 'package:my_app/src/features/home/view/home_view.dart';
 import 'package:my_app/src/features/order/router/order_router.dart';
 import 'package:my_app/src/features/sample/router/sample_router.dart';
 import 'package:my_app/src/features/settings/settings_view.dart';
-import 'package:my_app/src/router/routes.dart';
+import 'package:my_app/src/router/router_name.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'View,Route',
@@ -30,9 +30,9 @@ import 'package:my_app/src/router/routes.dart';
       ],
     ),
     AutoRoute(path: XRoutes.setting, page: SettingsView),
-    SampleRouter.autoRoute,
-    DevRouter.autoRoute,
-    OrderRouter.autoRoute,
+    SampleCoordinator.autoRoute,
+    DevCoordinator.autoRoute,
+    OrderCoordinator.autoRoute,
     RedirectRoute(path: '*', redirectTo: ''),
   ],
 )

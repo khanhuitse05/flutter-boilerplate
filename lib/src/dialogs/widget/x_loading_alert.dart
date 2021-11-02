@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/src/router/routes.dart';
+import 'package:my_app/src/router/coordinator.dart';
 
 String _dialogMessage = '';
 StreamController<String> _streamController =

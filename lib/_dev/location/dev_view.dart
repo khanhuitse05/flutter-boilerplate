@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/_dev/router/dev_router.dart';
 import 'package:my_app/_dev/widgets/dev_navigation_title.dart';
-import 'package:my_app/src/router/routes.dart';
+import 'package:my_app/src/router/coordinator.dart';
 
 class DevView extends StatelessWidget {
   const DevView({Key? key}) : super(key: key);

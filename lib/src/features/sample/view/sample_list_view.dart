@@ -2,8 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:my_app/src/config/constants/images.dart';
-import 'package:my_app/src/router/router.gr.dart';
-import 'package:my_app/src/router/routes.dart';
+import 'package:my_app/src/router/auto_router.gr.dart';
+import 'package:my_app/src/router/coordinator.dart';
+import 'package:my_app/src/router/router_name.dart';
 
 class SampleItemListView extends StatelessWidget {
   const SampleItemListView({Key? key}) : super(key: key);

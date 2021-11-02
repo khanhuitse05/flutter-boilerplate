@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:my_app/src/features/common/setting/setting_bloc.dart';
-import 'package:my_app/src/router/router.gr.dart';
+import 'package:my_app/src/router/auto_router.gr.dart';
 import 'package:my_app/src/theme/themes.dart';
-import 'package:my_app/src/utils/localization_utils.dart';
+import 'package:my_app/src/localization/localization_utils.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);

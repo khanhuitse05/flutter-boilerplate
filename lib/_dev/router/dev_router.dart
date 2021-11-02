@@ -8,7 +8,7 @@ import 'package:my_app/_dev/view/dev_input_view.dart';
 import 'package:my_app/_dev/view/dev_other_view.dart';
 import 'package:my_app/_dev/view/dev_text_view.dart';
 import 'package:my_app/_dev/view/dev_theme_view.dart';
-import 'package:my_app/src/router/routes.dart';
+import 'package:my_app/src/router/router_name.dart';
 
 class DevRouters {
   static const String device = 'device';
@@ -20,11 +20,7 @@ class DevRouters {
   static const String other = 'other';
 }
 
-class DevRouter {
-  static void onEnter() {
-    XCoordinator.router.pushNamed(XRoutes.dev);
-  }
-
+class DevCoordinator {
   static const autoRoute = AutoRoute(
     path: XRoutes.dev,
     name: "DevRouter",

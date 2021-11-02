@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
-import 'package:my_app/src/utils/localization_utils.dart';
+import 'package:my_app/src/localization/localization_utils.dart';
 
 class XHttp {
   static String? tokenType;

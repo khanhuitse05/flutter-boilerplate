@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_app/src/features/common/logic/lifecycle_mixin.dart';
 import 'package:my_app/src/features/dashboard/logic/dashboard_bloc.dart';
-import 'package:my_app/src/router/router.gr.dart';
+import 'package:my_app/src/router/auto_router.gr.dart';
 
 class DashBoardView extends StatefulWidget {
   const DashBoardView({Key? key}) : super(key: key);

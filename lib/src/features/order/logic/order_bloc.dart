@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:my_app/src/dialogs/toast_wrapper.dart';
 import 'package:my_app/src/features/order/router/order_router.dart';
-import 'package:my_app/src/router/router.gr.dart';
+import 'package:my_app/src/router/auto_router.gr.dart';
 
 part 'order_state.dart';
 

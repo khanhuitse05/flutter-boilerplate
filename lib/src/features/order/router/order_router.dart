@@ -6,7 +6,7 @@ import 'package:my_app/src/features/order/view/order_payment_type_view.dart';
 import 'package:my_app/src/features/order/view/order_payment_view.dart';
 import 'package:my_app/src/features/order/view/order_receive_type_view.dart';
 import 'package:my_app/src/features/order/view/order_success_view.dart';
-import 'package:my_app/src/router/routes.dart';
+import 'package:my_app/src/router/router_name.dart';
 
 import 'order_wrapper_view.dart';
 
@@ -20,11 +20,7 @@ class OrderRouters {
   static const String success = 'success';
 }
 
-class OrderRouter {
-  static void onEnter() {
-    XCoordinator.router.pushNamed(XRoutes.order);
-  }
-
+class OrderCoordinator {
   static const autoRoute = AutoRoute(
     path: XRoutes.order,
     name: "OrderRouter",

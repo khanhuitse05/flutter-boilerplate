@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/utils/localization_utils.dart';
+import 'package:my_app/src/localization/localization_utils.dart';
 
 class XStateErrorWidget extends StatelessWidget {
   const XStateErrorWidget({this.onReload, Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/_dev/router/dev_router.dart';
+import 'package:my_app/src/router/coordinator.dart';
 
 class DevFloatButton extends StatelessWidget {
   const DevFloatButton({Key? key}) : super(key: key);
@@ -7,7 +7,7 @@ class DevFloatButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () => DevRouter.onEnter(),
+      onPressed: () => XCoordinator.showDev(),
       child: Icon(Icons.file_upload_outlined),
     );
   }
