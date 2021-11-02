@@ -21,7 +21,7 @@ extension ETapIndex on TapIndex {
 
   static String nameAt(int index) {
     if (index == TapIndex.account.index) {
-      return 'account';
+      return 'Account';
     } else {
       return 'Home';
     }
