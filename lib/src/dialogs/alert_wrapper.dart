@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:my_app/src/dialogs/widget/x_alert_dialog.dart';
-import 'package:my_app/src/router/auto_router.gr.dart';
+import 'package:my_app/src/router/coordinator.dart';
 
 class XAlert {
-  static get context => GetIt.I<XRouter>().navigatorKey.currentState!.context;
+  static get context => XCoordinator.context;
 
   /// show the dialog
   static Future<String?> show({

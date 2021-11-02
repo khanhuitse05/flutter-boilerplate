@@ -29,19 +29,8 @@ extension ETapIndex on TapIndex {
 }
 
 class DashBoardState extends Equatable {
-  DashBoardState({
-    this.tapIndex = 0,
-  });
-  final int tapIndex;
+  DashBoardState();
 
   @override
-  List<Object?> get props => [tapIndex];
-
-  DashBoardState copyWith({
-    int? tapIndex,
-  }) {
-    return DashBoardState(
-      tapIndex: tapIndex ?? this.tapIndex,
-    );
-  }
+  List<Object?> get props => [];
 }

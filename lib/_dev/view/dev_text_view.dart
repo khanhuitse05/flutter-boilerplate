@@ -8,14 +8,11 @@ class DevTextView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFB4B4B4),
       appBar: AppBar(
         title: Text('text Theme'),
       ),
       body: CustomScrollView(
         slivers: [
-          _title('Fonts'),
-          _buildFonts(context),
           _title('Theme Typography'),
           _buildTypography(context),
         ],
@@ -36,17 +33,6 @@ class DevTextView extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildFonts(BuildContext context) {
-    final _space = SizedBox(height: 12);
-    return SliverPadding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      sliver: SliverList(
-          delegate: SliverChildListDelegate([
-        _space,
-      ])),
     );
   }
 

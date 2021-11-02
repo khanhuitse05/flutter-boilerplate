@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class _key {
+class _keys {
   static const String theme = 'app-theme';
 }
 
@@ -17,7 +17,7 @@ class UserPrefs {
 
   // theme
   ThemeMode getTheme() {
-    final value = _prefs.getString(_key.theme);
+    final value = _prefs.getString(_keys.theme);
     return ThemeMode.values.firstWhere(
       (e) => e.toString().toLowerCase() == '$value'.toLowerCase(),
       orElse: () => ThemeMode.system,
@@ -25,6 +25,6 @@ class UserPrefs {
   }
 
   void setTheme(ThemeMode value) {
-    _prefs.setString(_key.theme, value.toString().toLowerCase());
+    _prefs.setString(_keys.theme, value.toString().toLowerCase());
   }
 }

@@ -14,7 +14,7 @@ class AccountView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              context.read<DashBoardBloc>().setActiveIndex(0);
+              context.read<DashBoardBloc>().setActiveIndex(TapIndex.home.index);
             },
             icon: Icon(Icons.home),
           ),

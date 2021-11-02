@@ -30,7 +30,7 @@ class _DashBoardViewState extends State<DashBoardView> with LifecycleMixin {
         builder: (context, state) {
           return WillPopScope(
             onWillPop: () async {
-              bloc.setActiveIndex(0);
+              bloc.setActiveIndex(TapIndex.home.index);
               return false;
             },
             child: AutoTabsScaffold(
@@ -42,9 +42,8 @@ class _DashBoardViewState extends State<DashBoardView> with LifecycleMixin {
                 bloc.tabsRouter = tabsRouter;
                 return BottomNavigationBar(
                   currentIndex: tabsRouter.activeIndex,
-                  onTap: (index) {
-                    bloc.setActiveIndex(index);
-                  },
+                  onTap: (index) =>
+                      bloc.setActiveIndex(index, context: context),
                   items: [
                     ...TapIndex.values
                         .map((e) => BottomNavigationBarItem(

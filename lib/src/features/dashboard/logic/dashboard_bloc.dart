@@ -9,14 +9,26 @@ part 'dashboard_state.dart';
 
 class DashBoardBloc extends Cubit<DashBoardState> {
   DashBoardBloc() : super(DashBoardState());
-  final StreamController<int> reTap = StreamController<int>.broadcast();
+  final StreamController<TapIndex> reTap =
+      StreamController<TapIndex>.broadcast();
   TabsRouter? tabsRouter;
-  void setActiveIndex(int index) {
-    if (index != state.tapIndex) {
+  void setActiveIndex(int index, {BuildContext? context}) {
+    final tap = TapIndex.values[index];
+    int currentIndex = tabsRouter?.activeIndex ?? -1;
+    if (currentIndex != index) {
+      // switch tap
       tabsRouter?.setActiveIndex(index);
-      emit(state.copyWith(tapIndex: index));
-    } else {
-      reTap.add(index);
+    } else if (context != null) {
+      final router = tabsRouter?.stackRouterOfIndex(index);
+      if (router != null) {
+        if (router.canPopSelfOrChildren) {
+          // back to root
+          tabsRouter?.stackRouterOfIndex(index)?.popUntilRoot();
+        } else {
+          // retap
+          reTap.add(tap);
+        }
+      }
     }
   }
 }

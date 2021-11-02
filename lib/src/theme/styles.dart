@@ -15,14 +15,16 @@ class XStyles {
     color: XColors.text,
   );
 
+  static const inputStyle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+  );
+
 // https://api.flutter.dev/flutter/material/TextTheme-class.html
   static TextTheme get textTheme {
     final textTheme = const TextTheme(
       // input style
-      subtitle1: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
+      subtitle1: inputStyle,
       bodyText2: body,
       button: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
     ).apply(
