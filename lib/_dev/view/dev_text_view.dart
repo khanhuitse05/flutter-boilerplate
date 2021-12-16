@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:my_app/src/theme/colors.dart';
 
 class DevTextView extends StatelessWidget {
