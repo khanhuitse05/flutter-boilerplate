@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://flutter.io/">
-    <img src="https://diegolaballos.com/files/images/flutter-icon.jpg" alt="Logo" width=72 height=72>
+    <img src="https://storage.googleapis.com/cms-storage-bucket/ec64036b4eacc9f3fd73.svg" alt="Logo" width=72 height=72>
   </a>
 
   <h3 align="center">Flutter Boilerplate Project</h3>
