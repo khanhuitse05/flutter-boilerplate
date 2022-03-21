@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/dialogs/widget/x_alert_dialog.dart';
+import 'package:my_app/src/dialogs/widget/alert_dialog.dart';
 import 'package:my_app/src/router/coordinator.dart';
 
 class XAlert {

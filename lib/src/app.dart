@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -36,6 +37,7 @@ class _MyAppState extends State<MyApp> {
           ],
           onGenerateTitle: (BuildContext context) =>
               S.of(context).common_appTitle,
+          builder: BotToastInit(),
           theme: XTheme.light(),
           darkTheme: XTheme.dark(),
           themeMode: state.themeMode,

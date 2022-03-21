@@ -23,7 +23,7 @@
 
 - [How to Use](#how-to-use)
 - [Code Conventions](#code-conventions)
-- [Dependencies](#depencencies)
+- [Dependencies](#dependencies)
 - [Code structure](#code-structure)
 
 ## How to Use 
@@ -44,26 +44,32 @@
 
 # Code Conventions
 - [analysis_options.yaml](analysis_options.yaml)
-- [about code analytis flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
+- [about code analytics flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
 
-In Flutter, Modularization will be done at a file level. While building widgets, we have to make sure they stay independent and re-usable as maximum. Ideally, widgets should be easily extractable into an independent project.
+  In Flutter, Modularization will be done at a file level. While building widgets, we have to make sure they stay independent and re-usable as maximum. Ideally, widgets should be easily extractable into an independent project.
 
 
-# Depencencies
+# Dependencies
 
-![](resources/images/dependencies.jpg) 
+  ![](resources/images/dependencies.jpg) 
 
 ## Helper
 - [logger](https://pub.dev/packages/logger): Small, easy to use and extensible logger which prints beautiful logs.
+
 - [url_launcher](https://pub.dev/packages/url_launcher): A Flutter plugin for launching a URL in the mobile platform. Supports iOS, Android, web, Windows, macOS, and Linux.
+
 - [auto_route](https://pub.dev/packages/auto_route): Auto route generator, Manager router
-- [get](https://pub.dev/packages/get): Snackbar, Navigation, Theme, Hellper function
+
+- [get](https://pub.dev/packages/get): Snackbar, Navigation, Theme, Helper function
 
 - [intl](https://pub.dev/packages/intl): This package provides internationalization and localization facilities, including message translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
+
 - [shared_preferences](https://pub.dev/packages/shared_preferences): Flutter plugin for reading and writing simple key-value pairs. Wraps NSUserDefaults on iOS and SharedPreferences on Android.
 
-- [package_info](https://pub.dev/packages/package_info)
-- [device_info](https://pub.dev/packages/device_info)
+- [package_info_plus](https://pub.dev/packages/package_info_plus): This Flutter plugin provides an API for querying information about an application package.
+
+- [device_info_plus](https://pub.dev/packages/device_info_plus): Get current device information from within the Flutter application.
+
 - [permission_handler](https://pub.dev/packages/permission_handler): Permission plugin for Flutter. This plugin provides a cross-platform (iOS, Android) API to request and check permissions.
 
 ## HTTP, API
@@ -71,23 +77,30 @@ In Flutter, Modularization will be done at a file level. While building widgets,
 
 
 ## Flutter Fire
-The official Firebase plugins for Flutter. sign_in, analytics, crashlytics, storage, firestore
+  > The official Firebase plugins for Flutter. sign_in, analytics, crashlytics, storage, firestore
 - [Flutter Fire](https://firebase.flutter.dev/)
 
+
 ## State Management
-State Management is still the hottest topic in Flutter Community. There are tons of choices available and it’s super intimidating for a beginner to choose one. Also, all of them have their pros and cons. So, what’s the best approach
+  > State Management is still the hottest topic in Flutter Community. There are tons of choices available and it’s super intimidating for a beginner to choose one. Also, all of them have their pros and cons. So, what’s the best approach
 
 ![](resources/images/state.png) 
 
-- [provider](https://pub.dev/packages/provider): **A recommended approach**
+**A recommended approach**
+- [flutter_bloc](https://pub.dev/packages/flutter_bloc): Widgets that make it easy to integrate blocs and cubits into Flutter. [Learn more](https://bloclibrary.dev/#/) 
+
 
 **Other favorite package**
+- [provider](https://pub.dev/packages/provider): A wrapper around InheritedWidget to make them easier to use and more reusable.
+
 - [rxdart](https://pub.dev/packages/rxdart): RxDart adds additional capabilities to Dart Streams and StreamControllers. Using as bloc pattens
-- [flutter_bloc](https://pub.dev/packages/flutter_bloc): Widgets that make it easy to integrate blocs and cubits into Flutter. [Learn more](https://bloclibrary.dev/#/) 
+
 - [RiverPod](https://pub.dev/packages/riverpod): This project can be considered as a rewrite of provider to make improvements that would be otherwise impossible.
+
 - [Get](https://pub.dev/packages/get): A simplified reactive state management solution.
 - [stacked](https://pub.dev/packages/stacked): This architecture was initially a version of MVVM.
-- [get](https://pub.dev/packages/get): Getx Ecosystem (State, Router, Dependency management, Theme, Utils)
+
+- [get](https://pub.dev/packages/get): GetX Ecosystem (State, Router, Dependency management, Theme, Utils)
 
 - [More about state management](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options)
 

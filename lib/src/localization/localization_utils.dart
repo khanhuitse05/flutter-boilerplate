@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart' as AL;
 import 'package:my_app/src/router/coordinator.dart';
 
 // ignore: avoid_classes_with_only_static_members
 class S {
-  static get delegate => AppLocalizations.delegate;
-  static AppLocalizations of(BuildContext context) {
-    return AppLocalizations.of(context)!;
+  static get delegate => AL.AppLocalizations.delegate;
+  static AL.AppLocalizations of(BuildContext context) {
+    return AL.AppLocalizations.of(context)!;
   }
 
-  static AppLocalizations get text {
-    return AppLocalizations.of(XCoordinator.context)!;
+  static AL.AppLocalizations get text {
+    return AL.AppLocalizations.of(XCoordinator.context)!;
   }
 }
 

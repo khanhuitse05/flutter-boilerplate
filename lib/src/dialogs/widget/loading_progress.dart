@@ -10,11 +10,11 @@ String _dialogMessage = '';
 StreamController<String> _streamController =
     StreamController<String>.broadcast();
 
-_XLoadingAlert? _progressDialog;
+_XLoadingProgress? _progressDialog;
 
 Future<void> showLoading({String message = ''}) async {
   if (_progressDialog == null) {
-    _progressDialog = _XLoadingAlert();
+    _progressDialog = _XLoadingProgress();
     _dialogMessage = message;
     return _progressDialog?.show(XCoordinator.context);
   }
@@ -31,8 +31,8 @@ void updateLoading(String message) {
   _streamController.add(message);
 }
 
-class _XLoadingAlert {
-  _XLoadingAlert();
+class _XLoadingProgress {
+  _XLoadingProgress();
 
   void _hide(BuildContext context) {
     Navigator.of(context).pop();

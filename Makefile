@@ -13,3 +13,5 @@ runner:
 	flutter packages pub run build_runner build
 pop:
 	pod install --project-directory=ios
+signingReport:
+	cd android && ./gradlew signingReport && cd ..

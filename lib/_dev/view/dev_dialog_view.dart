@@ -3,7 +3,6 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:my_app/_dev/widgets/dev_button_title.dart';
 import 'package:my_app/src/dialogs/alert_wrapper.dart';
 import 'package:my_app/src/dialogs/toast_wrapper.dart';
-import 'package:my_app/src/dialogs/widget/x_loading_alert.dart';
 import '../widgets/dev_screen_layout.dart';
 
 class DevDialogView extends StatelessWidget {
@@ -18,11 +17,9 @@ class DevDialogView extends StatelessWidget {
           XAlert.show(title: 'title', body: 'dialog content');
         }),
         DevButtonTitle('2. Show full screen loading', onTap: () async {
-          showLoading();
+          XToast.showLoading();
           await Future.delayed(Duration(seconds: 1));
-          updateLoading('90%');
-          await Future.delayed(Duration(seconds: 1));
-          hideLoading();
+          XToast.hideLoading();
         }),
         DevButtonTitle('3. Show Toast', onTap: () {
           XToast.show('Default Toast');
