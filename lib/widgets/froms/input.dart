@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class XInputCustom extends StatefulWidget {
-  const XInputCustom({
+class XInput extends StatefulWidget {
+  const XInput({
     required this.value,
     Key? key,
     this.onChanged,
@@ -29,10 +29,10 @@ class XInputCustom extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
 
   @override
-  State<XInputCustom> createState() => _XInputCustomState();
+  State<XInput> createState() => _XInputState();
 }
 
-class _XInputCustomState extends State<XInputCustom> {
+class _XInputState extends State<XInput> {
   late TextEditingController _controller;
   String get value => widget.value;
   bool obscureText = false;
@@ -50,7 +50,7 @@ class _XInputCustomState extends State<XInputCustom> {
   }
 
   @override
-  void didUpdateWidget(XInputCustom oldWidget) {
+  void didUpdateWidget(XInput oldWidget) {
     super.didUpdateWidget(oldWidget);
 
     if (_controller.text != widget.value) {

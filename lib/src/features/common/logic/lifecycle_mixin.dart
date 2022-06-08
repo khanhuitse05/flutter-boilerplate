@@ -22,13 +22,13 @@ mixin LifecycleMixin<T extends StatefulWidget> on State<T>
   }
 
   AppLifecycleState? get currentLifecycleState =>
-      WidgetsBinding.instance!.lifecycleState;
+      WidgetsBinding.instance.lifecycleState;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       afterFirstRender();
     });
   }
@@ -45,7 +45,7 @@ mixin LifecycleMixin<T extends StatefulWidget> on State<T>
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 

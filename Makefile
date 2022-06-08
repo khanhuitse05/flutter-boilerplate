@@ -15,3 +15,4 @@ pop:
 	pod install --project-directory=ios
 signingReport:
 	cd android && ./gradlew signingReport && cd ..
+# keytool -list -v -keystore android/app/release-keystore.jks -alias <key alias>
