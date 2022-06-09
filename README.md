@@ -1,11 +1,11 @@
-# Flutter boilerplate
+# Flutter Boilerplate
 
 <p align="center">
   <a href="https://flutter.io/">
-    <img src="https://storage.googleapis.com/cms-storage-bucket/ec64036b4eacc9f3fd73.svg" alt="Logo" width=72 height=72>
+    <img src="https://storage.googleapis.com/cms-storage-bucket/ec64036b4eacc9f3fd73.svg" alt="Logo" width=320 height=72>
   </a>
 
-  <h3 align="center">Flutter Boilerplate Project</h3>
+  <!-- <h3 align="center">Flutter Boilerplate Project</h3> -->
 
   <p align="center">
     Fork this project then start you project with a lot of stuck prepare
@@ -44,7 +44,7 @@
 
 # Code Conventions
 - [analysis_options.yaml](analysis_options.yaml)
-- [about code analytics flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
+- [About code analytics flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
 
   In Flutter, Modularization will be done at a file level. While building widgets, we have to make sure they stay independent and re-usable as maximum. Ideally, widgets should be easily extractable into an independent project.
 
@@ -60,7 +60,7 @@
 
 - [auto_route](https://pub.dev/packages/auto_route): Auto route generator, Manager router
 
-- [get](https://pub.dev/packages/get): Snackbar, Navigation, Theme, Helper function
+- [get_it](https://pub.dev/packages/get_it): This is a simple Service Locator
 
 - [intl](https://pub.dev/packages/intl): This package provides internationalization and localization facilities, including message translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
 

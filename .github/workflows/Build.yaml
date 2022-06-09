@@ -1,0 +1,100 @@
+name: CI
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['*']
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      # GitHub will cancel all in-progress and queued jobs in the matrix if any job in the matrix fails.
+      fail-fast: false 
+      matrix:
+        include:
+          - app-id: <TODO>
+            output-path: build/app/outputs/flutter-apk/app-release.apk
+
+    steps:
+      ##########################
+      # Checkout the code base #
+      ##########################
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          submodules: 'true'
+          token: ${{ secrets.CI_TOKEN}}
+
+      ################################################
+      # Clone Flutter repository with stable channel #
+      ################################################
+      - name: Clone Flutter repository with stable channel
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter --version
+      - run: flutter doctor -v
+
+      
+      #################
+      # Build Flutter #
+      #################
+      - id: Flutter Build
+        name: Flutter Build Android
+        run: |
+          $env:GIT_REDIRECT_STDERR = '2>&1'
+          $lastRelease = $(git describe --tags $(git rev-list --tags --max-count=1))
+
+          if ($lastRelease -match "fatal") {
+            $lastRelease = "1.0.0"
+          }
+
+          $lastReleaseSemVer = [System.Management.Automation.SemanticVersion]$lastRelease
+
+          $version = [System.Management.Automation.SemanticVersion]::New($lastReleaseSemVer.Major, $lastReleaseSemVer.Minor, $lastReleaseSemVer.Patch, "preview.${{ github.event.number }}")
+
+          $versionString = $version.ToString()
+
+          Write-Host "Building Android $versionString"
+
+          flutter build apk --release --build-name $versionString --build-number '${{ github.run_number }}'
+          Write-Host "::set-output name=version::$versionString"
+        shell: pwsh
+
+      ##################
+      # Setup Firebase #
+      ##################
+      - uses: actions/setup-node@v3 
+      - uses: pocket-apps/action-setup-firebase@v2
+        with:
+          firebase-token: ${{ secrets.FIREBASE_TOKEN }}
+
+      ###############################
+      #--- Firebase Distribution ---#
+      ###############################
+      - name: Firebase Distribution
+        run: |
+          $env:GIT_REDIRECT_STDERR = '2>&1'
+
+          Write-Host "Changelog for ${{ steps.flutter-build.outputs.version }}"
+
+          git --no-pager log --pretty=format:%s ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} > changelog.txt
+
+          cat changelog.txt
+
+          firebase appdistribution:distribute ${{ matrix.output-path }} --app ${{ matrix.app-id }} --token '${{ secrets.FIREBASE_TOKEN }}' --groups "internal-testers" --release-notes-file changelog.txt
+        shell: pwsh
+        env:
+          CI_TOKEN: ${{ secrets.CI_TOKEN }}
+
+  build-success:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo success!

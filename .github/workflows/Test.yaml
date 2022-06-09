@@ -1,0 +1,67 @@
+name: Test Report
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['*']
+
+###############
+# Set the Job #
+###############
+jobs:
+  test:
+    permissions:
+      statuses: write
+      checks: write
+    name: Flutter Test Report
+    runs-on: ubuntu-latest
+
+    steps:
+      ##########################
+      # Checkout the code base #
+      ##########################
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          submodules: 'true'
+          token: ${{ secrets.CI_TOKEN}}
+
+      ################################################
+      # Clone Flutter repository with stable channel #
+      ################################################
+      - name: Clone Flutter repository with stable channel
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter --version
+      - run: flutter doctor -v
+
+      ##########################
+      # Flutter analyze & test #
+      ##########################
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze project source
+        run: flutter analyze
+
+      - name: Flutter Test
+        run: flutter test --machine > test.json
+      - name: Flutter Coverage
+        run: flutter test --coverage
+        if: success() || failure()    # Run this step even if previous step failed
+
+
+      #######################
+      # Flutter test report #
+      #######################
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure()    # Run this step even if previous step failed
+        with:
+          name: Flutter Tests Results # Name of the check run which will be created
+          path: test.json             # Path to test results
+          token:  ${{ secrets.GITHUB_TOKEN }}
+          reporter: flutter-json      # Format of test results

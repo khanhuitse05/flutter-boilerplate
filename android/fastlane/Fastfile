@@ -1,0 +1,39 @@
+# 
+# You can find the documentation at https://docs.fastlane.tools
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+aabPath = '../build/app/outputs/bundle/release/app-release.aab'
+apkPath = '../build/app/outputs/apk/release/app-release.apk'
+appID = '<TODO>'
+
+default_platform(:android)
+
+platform :android do
+
+  desc "Submit a new beta build to Google Play"
+  lane :prod do
+    sh "flutter build appbundle -v"
+    upload_to_play_store(
+      track: 'internal',
+      aab: aabPath,
+      # release_status: 'draft',  # Remove after enable beta
+    )
+  end
+
+  desc "Submit a new apk to Firebase Distribute"
+  lane :beta do
+    sh "flutter build apk --release"
+    changelog = sh("git log -20 --pretty=format:%s")
+    firebase_app_distribution(
+      app: appID, 
+      testers: "khanhuitse05@gmail.com",
+      groups: 'internal',
+      android_artifact_path: apkPath,
+      release_notes: changelog,
+      firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"]
+    )
+  end
+end
