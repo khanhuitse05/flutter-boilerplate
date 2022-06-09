@@ -26,10 +26,6 @@ jobs:
       ##########################
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          lfs: true
-          submodules: 'true'
-          token: ${{ secrets.CI_TOKEN}}
 
       ################################################
       # Clone Flutter repository with stable channel #
@@ -90,8 +86,6 @@ jobs:
 
           firebase appdistribution:distribute ${{ matrix.output-path }} --app ${{ matrix.app-id }} --token '${{ secrets.FIREBASE_TOKEN }}' --groups "internal-testers" --release-notes-file changelog.txt
         shell: pwsh
-        env:
-          CI_TOKEN: ${{ secrets.CI_TOKEN }}
 
   build-success:
     needs: build
