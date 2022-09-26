@@ -34,7 +34,7 @@ class AppInfo {
         device = DeviceInfo(
           platformName: info.version.baseOS,
           platformVersion: info.version.release,
-          uid: info.androidId,
+          uid: info.id,
           name: info.device,
           model: info.model,
           isPhysicalDevice: info.isPhysicalDevice ?? true,

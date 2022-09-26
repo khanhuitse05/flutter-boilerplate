@@ -21,7 +21,7 @@ class DashBoardBloc extends Cubit<DashBoardState> {
     } else if (context != null) {
       final router = tabsRouter?.stackRouterOfIndex(index);
       if (router != null) {
-        if (router.canPopSelfOrChildren) {
+        if (router.canPop()) {
           // back to root
           tabsRouter?.stackRouterOfIndex(index)?.popUntilRoot();
         } else {

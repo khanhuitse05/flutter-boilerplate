@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_route/empty_router_widgets.dart';
 import 'package:my_app/_dev/router/dev_router.dart';
 import 'package:my_app/src/features/account/profile/view/profile_view.dart';
 import 'package:my_app/src/features/account/view/account_view.dart';

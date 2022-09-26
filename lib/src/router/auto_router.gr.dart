@@ -10,8 +10,9 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i3;
-import 'package:flutter/material.dart' as _i26;
+import 'package:auto_route/auto_route.dart' as _i26;
+import 'package:auto_route/empty_router_widgets.dart' as _i3;
+import 'package:flutter/material.dart' as _i27;
 
 import '../../_dev/location/dev_view.dart' as _i11;
 import '../../_dev/location/dev_wrapper_view.dart' as _i4;
@@ -38,50 +39,50 @@ import '../features/sample/view/sample_detail_view.dart' as _i10;
 import '../features/sample/view/sample_list_view.dart' as _i9;
 import '../features/settings/settings_view.dart' as _i2;
 
-class XRouter extends _i3.RootStackRouter {
-  XRouter([_i26.GlobalKey<_i26.NavigatorState>? navigatorKey])
+class XRouter extends _i26.RootStackRouter {
+  XRouter([_i27.GlobalKey<_i27.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i3.PageFactory> pagesMap = {
+  final Map<String, _i26.PageFactory> pagesMap = {
     DashBoardRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.DashBoardView());
     },
     SettingsRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i2.SettingsView());
     },
     SampleRouter.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i3.EmptyRouterPage());
     },
     DevRouter.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i4.DevWrapperView());
     },
     OrderRouter.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i5.OrderWrapperView());
     },
     HomeRouter.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i6.HomeView());
     },
     AccountRouter.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i3.EmptyRouterPage());
     },
     AccountRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i7.AccountView());
     },
     ProfileRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i8.ProfileView());
     },
     SampleItemListRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i9.SampleItemListView());
     },
     SampleItemDetailsRoute.name: (routeData) {
@@ -89,156 +90,156 @@ class XRouter extends _i3.RootStackRouter {
       final args = routeData.argsAs<SampleItemDetailsRouteArgs>(
           orElse: () =>
               SampleItemDetailsRouteArgs(id: pathParams.getString('id')));
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData,
           child: _i10.SampleItemDetailsView(id: args.id, key: args.key));
     },
     DevRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i11.DevView());
     },
     DevDeviceRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i12.DevDeviceView());
     },
     DevButtonRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i13.DevButtonView());
     },
     DevThemeRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i14.DevThemeView());
     },
     DevTextRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i15.DevTextView());
     },
     DevDialogRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i16.DevDialogView());
     },
     DevInputRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: _i17.DevInputView());
     },
     DevOtherRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i18.DevOtherView());
     },
     OrderReceiveTypeRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i19.OrderReceiveTypeView());
     },
     OrderAddressUserRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i20.OrderAddressUserView());
     },
     OrderAddressShopRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i21.OrderAddressShopView());
     },
     OrderPaymentTypeRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i22.OrderPaymentTypeView());
     },
     OrderConfirmRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i23.OrderConfirmView());
     },
     OrderPaymentRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i24.OrderPaymentView());
     },
     OrderSuccessRoute.name: (routeData) {
-      return _i3.MaterialPageX<dynamic>(
+      return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i25.OrderSuccessView());
     }
   };
 
   @override
-  List<_i3.RouteConfig> get routes => [
-        _i3.RouteConfig(DashBoardRoute.name, path: '/', children: [
-          _i3.RouteConfig(HomeRouter.name,
+  List<_i26.RouteConfig> get routes => [
+        _i26.RouteConfig(DashBoardRoute.name, path: '/', children: [
+          _i26.RouteConfig(HomeRouter.name,
               path: 'home', parent: DashBoardRoute.name),
-          _i3.RouteConfig(AccountRouter.name,
+          _i26.RouteConfig(AccountRouter.name,
               path: 'account',
               parent: DashBoardRoute.name,
               children: [
-                _i3.RouteConfig(AccountRoute.name,
+                _i26.RouteConfig(AccountRoute.name,
                     path: '', parent: AccountRouter.name),
-                _i3.RouteConfig(ProfileRoute.name,
+                _i26.RouteConfig(ProfileRoute.name,
                     path: 'profile', parent: AccountRouter.name),
-                _i3.RouteConfig('*#redirect',
+                _i26.RouteConfig('*#redirect',
                     path: '*',
                     parent: AccountRouter.name,
                     redirectTo: '',
                     fullMatch: true)
               ])
         ]),
-        _i3.RouteConfig(SettingsRoute.name, path: '/setting'),
-        _i3.RouteConfig(SampleRouter.name, path: '/sample', children: [
-          _i3.RouteConfig(SampleItemListRoute.name,
+        _i26.RouteConfig(SettingsRoute.name, path: '/setting'),
+        _i26.RouteConfig(SampleRouter.name, path: '/sample', children: [
+          _i26.RouteConfig(SampleItemListRoute.name,
               path: '', parent: SampleRouter.name),
-          _i3.RouteConfig(SampleItemDetailsRoute.name,
+          _i26.RouteConfig(SampleItemDetailsRoute.name,
               path: ':id', parent: SampleRouter.name),
-          _i3.RouteConfig('*#redirect',
+          _i26.RouteConfig('*#redirect',
               path: '*',
               parent: SampleRouter.name,
               redirectTo: '',
               fullMatch: true)
         ]),
-        _i3.RouteConfig(DevRouter.name, path: '/dev', children: [
-          _i3.RouteConfig(DevRoute.name, path: '', parent: DevRouter.name),
-          _i3.RouteConfig(DevDeviceRoute.name,
+        _i26.RouteConfig(DevRouter.name, path: '/dev', children: [
+          _i26.RouteConfig(DevRoute.name, path: '', parent: DevRouter.name),
+          _i26.RouteConfig(DevDeviceRoute.name,
               path: 'device', parent: DevRouter.name),
-          _i3.RouteConfig(DevButtonRoute.name,
+          _i26.RouteConfig(DevButtonRoute.name,
               path: 'button', parent: DevRouter.name),
-          _i3.RouteConfig(DevThemeRoute.name,
+          _i26.RouteConfig(DevThemeRoute.name,
               path: 'theme', parent: DevRouter.name),
-          _i3.RouteConfig(DevTextRoute.name,
+          _i26.RouteConfig(DevTextRoute.name,
               path: 'textTheme', parent: DevRouter.name),
-          _i3.RouteConfig(DevDialogRoute.name,
+          _i26.RouteConfig(DevDialogRoute.name,
               path: 'dialog', parent: DevRouter.name),
-          _i3.RouteConfig(DevInputRoute.name,
+          _i26.RouteConfig(DevInputRoute.name,
               path: 'input', parent: DevRouter.name),
-          _i3.RouteConfig(DevOtherRoute.name,
+          _i26.RouteConfig(DevOtherRoute.name,
               path: 'other', parent: DevRouter.name),
-          _i3.RouteConfig('*#redirect',
+          _i26.RouteConfig('*#redirect',
               path: '*',
               parent: DevRouter.name,
               redirectTo: '',
               fullMatch: true)
         ]),
-        _i3.RouteConfig(OrderRouter.name, path: '/order', children: [
-          _i3.RouteConfig(OrderReceiveTypeRoute.name,
+        _i26.RouteConfig(OrderRouter.name, path: '/order', children: [
+          _i26.RouteConfig(OrderReceiveTypeRoute.name,
               path: '', parent: OrderRouter.name),
-          _i3.RouteConfig(OrderAddressUserRoute.name,
+          _i26.RouteConfig(OrderAddressUserRoute.name,
               path: 'userAddress', parent: OrderRouter.name),
-          _i3.RouteConfig(OrderAddressShopRoute.name,
+          _i26.RouteConfig(OrderAddressShopRoute.name,
               path: 'shopAddress', parent: OrderRouter.name),
-          _i3.RouteConfig(OrderPaymentTypeRoute.name,
+          _i26.RouteConfig(OrderPaymentTypeRoute.name,
               path: 'paymentType', parent: OrderRouter.name),
-          _i3.RouteConfig(OrderConfirmRoute.name,
+          _i26.RouteConfig(OrderConfirmRoute.name,
               path: 'confirm', parent: OrderRouter.name),
-          _i3.RouteConfig(OrderPaymentRoute.name,
+          _i26.RouteConfig(OrderPaymentRoute.name,
               path: 'payment', parent: OrderRouter.name),
-          _i3.RouteConfig(OrderSuccessRoute.name,
+          _i26.RouteConfig(OrderSuccessRoute.name,
               path: 'success', parent: OrderRouter.name),
-          _i3.RouteConfig('*#redirect',
+          _i26.RouteConfig('*#redirect',
               path: '*',
               parent: OrderRouter.name,
               redirectTo: '',
               fullMatch: true)
         ]),
-        _i3.RouteConfig('*#redirect',
+        _i26.RouteConfig('*#redirect',
             path: '*', redirectTo: '', fullMatch: true)
       ];
 }
 
 /// generated route for
 /// [_i1.DashBoardView]
-class DashBoardRoute extends _i3.PageRouteInfo<void> {
-  const DashBoardRoute({List<_i3.PageRouteInfo>? children})
+class DashBoardRoute extends _i26.PageRouteInfo<void> {
+  const DashBoardRoute({List<_i26.PageRouteInfo>? children})
       : super(DashBoardRoute.name, path: '/', initialChildren: children);
 
   static const String name = 'DashBoardRoute';
@@ -246,7 +247,7 @@ class DashBoardRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.SettingsView]
-class SettingsRoute extends _i3.PageRouteInfo<void> {
+class SettingsRoute extends _i26.PageRouteInfo<void> {
   const SettingsRoute() : super(SettingsRoute.name, path: '/setting');
 
   static const String name = 'SettingsRoute';
@@ -254,8 +255,8 @@ class SettingsRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.EmptyRouterPage]
-class SampleRouter extends _i3.PageRouteInfo<void> {
-  const SampleRouter({List<_i3.PageRouteInfo>? children})
+class SampleRouter extends _i26.PageRouteInfo<void> {
+  const SampleRouter({List<_i26.PageRouteInfo>? children})
       : super(SampleRouter.name, path: '/sample', initialChildren: children);
 
   static const String name = 'SampleRouter';
@@ -263,8 +264,8 @@ class SampleRouter extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.DevWrapperView]
-class DevRouter extends _i3.PageRouteInfo<void> {
-  const DevRouter({List<_i3.PageRouteInfo>? children})
+class DevRouter extends _i26.PageRouteInfo<void> {
+  const DevRouter({List<_i26.PageRouteInfo>? children})
       : super(DevRouter.name, path: '/dev', initialChildren: children);
 
   static const String name = 'DevRouter';
@@ -272,8 +273,8 @@ class DevRouter extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.OrderWrapperView]
-class OrderRouter extends _i3.PageRouteInfo<void> {
-  const OrderRouter({List<_i3.PageRouteInfo>? children})
+class OrderRouter extends _i26.PageRouteInfo<void> {
+  const OrderRouter({List<_i26.PageRouteInfo>? children})
       : super(OrderRouter.name, path: '/order', initialChildren: children);
 
   static const String name = 'OrderRouter';
@@ -281,7 +282,7 @@ class OrderRouter extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.HomeView]
-class HomeRouter extends _i3.PageRouteInfo<void> {
+class HomeRouter extends _i26.PageRouteInfo<void> {
   const HomeRouter() : super(HomeRouter.name, path: 'home');
 
   static const String name = 'HomeRouter';
@@ -289,8 +290,8 @@ class HomeRouter extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.EmptyRouterPage]
-class AccountRouter extends _i3.PageRouteInfo<void> {
-  const AccountRouter({List<_i3.PageRouteInfo>? children})
+class AccountRouter extends _i26.PageRouteInfo<void> {
+  const AccountRouter({List<_i26.PageRouteInfo>? children})
       : super(AccountRouter.name, path: 'account', initialChildren: children);
 
   static const String name = 'AccountRouter';
@@ -298,7 +299,7 @@ class AccountRouter extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.AccountView]
-class AccountRoute extends _i3.PageRouteInfo<void> {
+class AccountRoute extends _i26.PageRouteInfo<void> {
   const AccountRoute() : super(AccountRoute.name, path: '');
 
   static const String name = 'AccountRoute';
@@ -306,7 +307,7 @@ class AccountRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.ProfileView]
-class ProfileRoute extends _i3.PageRouteInfo<void> {
+class ProfileRoute extends _i26.PageRouteInfo<void> {
   const ProfileRoute() : super(ProfileRoute.name, path: 'profile');
 
   static const String name = 'ProfileRoute';
@@ -314,7 +315,7 @@ class ProfileRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.SampleItemListView]
-class SampleItemListRoute extends _i3.PageRouteInfo<void> {
+class SampleItemListRoute extends _i26.PageRouteInfo<void> {
   const SampleItemListRoute() : super(SampleItemListRoute.name, path: '');
 
   static const String name = 'SampleItemListRoute';
@@ -323,8 +324,8 @@ class SampleItemListRoute extends _i3.PageRouteInfo<void> {
 /// generated route for
 /// [_i10.SampleItemDetailsView]
 class SampleItemDetailsRoute
-    extends _i3.PageRouteInfo<SampleItemDetailsRouteArgs> {
-  SampleItemDetailsRoute({required String id, _i26.Key? key})
+    extends _i26.PageRouteInfo<SampleItemDetailsRouteArgs> {
+  SampleItemDetailsRoute({required String id, _i27.Key? key})
       : super(SampleItemDetailsRoute.name,
             path: ':id',
             args: SampleItemDetailsRouteArgs(id: id, key: key),
@@ -338,7 +339,7 @@ class SampleItemDetailsRouteArgs {
 
   final String id;
 
-  final _i26.Key? key;
+  final _i27.Key? key;
 
   @override
   String toString() {
@@ -348,7 +349,7 @@ class SampleItemDetailsRouteArgs {
 
 /// generated route for
 /// [_i11.DevView]
-class DevRoute extends _i3.PageRouteInfo<void> {
+class DevRoute extends _i26.PageRouteInfo<void> {
   const DevRoute() : super(DevRoute.name, path: '');
 
   static const String name = 'DevRoute';
@@ -356,7 +357,7 @@ class DevRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.DevDeviceView]
-class DevDeviceRoute extends _i3.PageRouteInfo<void> {
+class DevDeviceRoute extends _i26.PageRouteInfo<void> {
   const DevDeviceRoute() : super(DevDeviceRoute.name, path: 'device');
 
   static const String name = 'DevDeviceRoute';
@@ -364,7 +365,7 @@ class DevDeviceRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i13.DevButtonView]
-class DevButtonRoute extends _i3.PageRouteInfo<void> {
+class DevButtonRoute extends _i26.PageRouteInfo<void> {
   const DevButtonRoute() : super(DevButtonRoute.name, path: 'button');
 
   static const String name = 'DevButtonRoute';
@@ -372,7 +373,7 @@ class DevButtonRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i14.DevThemeView]
-class DevThemeRoute extends _i3.PageRouteInfo<void> {
+class DevThemeRoute extends _i26.PageRouteInfo<void> {
   const DevThemeRoute() : super(DevThemeRoute.name, path: 'theme');
 
   static const String name = 'DevThemeRoute';
@@ -380,7 +381,7 @@ class DevThemeRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i15.DevTextView]
-class DevTextRoute extends _i3.PageRouteInfo<void> {
+class DevTextRoute extends _i26.PageRouteInfo<void> {
   const DevTextRoute() : super(DevTextRoute.name, path: 'textTheme');
 
   static const String name = 'DevTextRoute';
@@ -388,7 +389,7 @@ class DevTextRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i16.DevDialogView]
-class DevDialogRoute extends _i3.PageRouteInfo<void> {
+class DevDialogRoute extends _i26.PageRouteInfo<void> {
   const DevDialogRoute() : super(DevDialogRoute.name, path: 'dialog');
 
   static const String name = 'DevDialogRoute';
@@ -396,7 +397,7 @@ class DevDialogRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i17.DevInputView]
-class DevInputRoute extends _i3.PageRouteInfo<void> {
+class DevInputRoute extends _i26.PageRouteInfo<void> {
   const DevInputRoute() : super(DevInputRoute.name, path: 'input');
 
   static const String name = 'DevInputRoute';
@@ -404,7 +405,7 @@ class DevInputRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i18.DevOtherView]
-class DevOtherRoute extends _i3.PageRouteInfo<void> {
+class DevOtherRoute extends _i26.PageRouteInfo<void> {
   const DevOtherRoute() : super(DevOtherRoute.name, path: 'other');
 
   static const String name = 'DevOtherRoute';
@@ -412,7 +413,7 @@ class DevOtherRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i19.OrderReceiveTypeView]
-class OrderReceiveTypeRoute extends _i3.PageRouteInfo<void> {
+class OrderReceiveTypeRoute extends _i26.PageRouteInfo<void> {
   const OrderReceiveTypeRoute() : super(OrderReceiveTypeRoute.name, path: '');
 
   static const String name = 'OrderReceiveTypeRoute';
@@ -420,7 +421,7 @@ class OrderReceiveTypeRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i20.OrderAddressUserView]
-class OrderAddressUserRoute extends _i3.PageRouteInfo<void> {
+class OrderAddressUserRoute extends _i26.PageRouteInfo<void> {
   const OrderAddressUserRoute()
       : super(OrderAddressUserRoute.name, path: 'userAddress');
 
@@ -429,7 +430,7 @@ class OrderAddressUserRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i21.OrderAddressShopView]
-class OrderAddressShopRoute extends _i3.PageRouteInfo<void> {
+class OrderAddressShopRoute extends _i26.PageRouteInfo<void> {
   const OrderAddressShopRoute()
       : super(OrderAddressShopRoute.name, path: 'shopAddress');
 
@@ -438,7 +439,7 @@ class OrderAddressShopRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i22.OrderPaymentTypeView]
-class OrderPaymentTypeRoute extends _i3.PageRouteInfo<void> {
+class OrderPaymentTypeRoute extends _i26.PageRouteInfo<void> {
   const OrderPaymentTypeRoute()
       : super(OrderPaymentTypeRoute.name, path: 'paymentType');
 
@@ -447,7 +448,7 @@ class OrderPaymentTypeRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i23.OrderConfirmView]
-class OrderConfirmRoute extends _i3.PageRouteInfo<void> {
+class OrderConfirmRoute extends _i26.PageRouteInfo<void> {
   const OrderConfirmRoute() : super(OrderConfirmRoute.name, path: 'confirm');
 
   static const String name = 'OrderConfirmRoute';
@@ -455,7 +456,7 @@ class OrderConfirmRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i24.OrderPaymentView]
-class OrderPaymentRoute extends _i3.PageRouteInfo<void> {
+class OrderPaymentRoute extends _i26.PageRouteInfo<void> {
   const OrderPaymentRoute() : super(OrderPaymentRoute.name, path: 'payment');
 
   static const String name = 'OrderPaymentRoute';
@@ -463,7 +464,7 @@ class OrderPaymentRoute extends _i3.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i25.OrderSuccessView]
-class OrderSuccessRoute extends _i3.PageRouteInfo<void> {
+class OrderSuccessRoute extends _i26.PageRouteInfo<void> {
   const OrderSuccessRoute() : super(OrderSuccessRoute.name, path: 'success');
 
   static const String name = 'OrderSuccessRoute';
