@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_app/src/features/order/logic/order_bloc.dart';
+import 'package:my_app/src/features/order/model/receive_type.dart';
 import 'package:my_app/src/features/order/widget/order_exit_button.dart';
 import 'package:my_app/src/features/order/widget/order_next_button.dart';
+import 'package:my_app/src/features/order/widget/order_select_item.dart';
 
 class OrderReceiveTypeView extends StatelessWidget {
   const OrderReceiveTypeView({Key? key}) : super(key: key);
@@ -32,22 +34,13 @@ class OrderReceiveTypeView extends StatelessWidget {
     );
   }
 
-  ListTile _buildItem(
-      BuildContext context, OrderState state, ReceiveType type) {
-    return ListTile(
+  Widget _buildItem(BuildContext context, OrderState state, ReceiveType type) {
+    return OrderSelectItem(
+      title: type.name,
       onTap: () {
         context.read<OrderBloc>().onSelectReceiveType(type);
       },
-      title: Text(type.toString()),
-      trailing: _buildIconSelect(state.receiveType == type),
+      value: state.receiveType == type,
     );
-  }
-
-  Widget _buildIconSelect(bool value) {
-    if (value) {
-      return Icon(Icons.radio_button_checked);
-    } else {
-      return Icon(Icons.radio_button_off);
-    }
   }
 }

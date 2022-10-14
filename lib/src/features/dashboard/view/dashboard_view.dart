@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_app/src/features/common/logic/lifecycle_mixin.dart';
 import 'package:my_app/src/features/dashboard/logic/dashboard_bloc.dart';
+import 'package:my_app/src/features/dashboard/widget/bottom_navigation_bar.dart';
 import 'package:my_app/src/router/auto_router.gr.dart';
 
 class DashBoardView extends StatefulWidget {
@@ -18,19 +19,17 @@ class _DashBoardViewState extends State<DashBoardView> with LifecycleMixin {
     super.initState();
   }
 
-  final DashBoardBloc bloc = DashBoardBloc();
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => bloc),
+        BlocProvider(create: (_) => DashBoardBloc()),
       ],
       child: BlocBuilder<DashBoardBloc, DashBoardState>(
         builder: (context, state) {
           return WillPopScope(
             onWillPop: () async {
-              bloc.setActiveIndex(TapIndex.home.index);
+              context.read<DashBoardBloc>().setActiveIndex(TapIndex.home.index);
               return false;
             },
             child: AutoTabsScaffold(
@@ -39,20 +38,8 @@ class _DashBoardViewState extends State<DashBoardView> with LifecycleMixin {
                 AccountRouter(),
               ],
               bottomNavigationBuilder: (_, TabsRouter tabsRouter) {
-                bloc.tabsRouter = tabsRouter;
-                return BottomNavigationBar(
-                  currentIndex: tabsRouter.activeIndex,
-                  onTap: (index) =>
-                      bloc.setActiveIndex(index, context: context),
-                  items: [
-                    ...TapIndex.values
-                        .map((e) => BottomNavigationBarItem(
-                              label: e.nameOf(),
-                              icon: Icon(e.iconOf()),
-                            ))
-                        .toList(),
-                  ],
-                );
+                context.read<DashBoardBloc>().tabsRouter = tabsRouter;
+                return XBottomNavigationBar(tabsRouter);
               },
             ),
           );

@@ -21,26 +21,33 @@ class OrderConfirmView extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          ListTile(
+          _buildItem(
+            'Edit Receive Type',
             onTap: () {
               context.read<OrderBloc>().backToReceiveType(context);
             },
-            title: Text('Edit Receive Type'),
           ),
-          ListTile(
+          _buildItem(
+            'Edit Address',
             onTap: () {
               context.read<OrderBloc>().backToAddress(context);
             },
-            title: Text('Edit Address'),
           ),
-          ListTile(
+          _buildItem(
+            'Edit Payment Type',
             onTap: () {
               context.read<OrderBloc>().backToPaymentType(context);
             },
-            title: Text('Edit Payment Type'),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildItem(String title, {VoidCallback? onTap}) {
+    return ListTile(
+      onTap: onTap,
+      title: Text(title),
     );
   }
 }

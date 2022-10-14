@@ -13,9 +13,9 @@ extension ETapIndex on TapIndex {
   IconData iconOf() {
     switch (this) {
       case TapIndex.home:
-        return Icons.person;
-      default:
         return Icons.home;
+      default:
+        return Icons.person;
     }
   }
 

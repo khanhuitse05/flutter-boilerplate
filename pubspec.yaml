@@ -20,13 +20,13 @@ dependencies:
   equatable: ^2.0.5
   logger: ^1.1.0
   http: ^0.13.5
-  device_info_plus: ^4.1.2
-  package_info_plus: ^1.4.3+1
+  device_info_plus: ^6.0.0
+  package_info_plus: ^2.0.0
   shared_preferences: ^2.0.15
   get_it: ^7.2.0
   flutter_dotenv: ^5.0.2
   environment_config: ^3.1.0
-  url_launcher: ^6.1.5
+  url_launcher: ^6.1.6
   formz: ^0.4.1
   
   # WIDGET
@@ -39,7 +39,7 @@ dependencies:
   
   # STATE MANAGEMENT
   flutter_bloc: ^8.1.1
-  auto_route: ^5.0.1
+  auto_route: ^5.0.2
 
   # FIREBASE
   # GITHUB
@@ -48,8 +48,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.1
-  auto_route_generator: ^5.0.2
-  build_runner: ^2.2.1
+  auto_route_generator: ^5.0.3
+  build_runner: ^2.3.0
 
 
 flutter:

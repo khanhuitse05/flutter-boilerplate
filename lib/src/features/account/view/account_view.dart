@@ -14,17 +14,26 @@ class AccountView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              context.read<DashBoardBloc>().setActiveIndex(TapIndex.home.index);
-            },
-            icon: Icon(Icons.home),
-          ),
-          IconButton(
-            onPressed: () {
               context.router.pushNamed('profile');
             },
             icon: Icon(Icons.person),
           ),
         ],
+      ),
+      body: Center(
+        child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TextButton(
+                child: const Text('Switch to Home'),
+                onPressed: () {
+                  context
+                      .read<DashBoardBloc>()
+                      .setActiveIndex(TapIndex.home.index);
+                },
+              ),
+            ]),
       ),
     );
   }

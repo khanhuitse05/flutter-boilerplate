@@ -24,7 +24,7 @@ class XBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      color: Theme.of(context).backgroundColor,
+      color: Theme.of(context).bottomAppBarColor,
       child: Container(
         padding: EdgeInsets.fromLTRB(
             16, 8, 16, 10 + MediaQuery.of(context).viewInsets.bottom),

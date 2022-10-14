@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:my_app/src/dialogs/toast_wrapper.dart';
+import 'package:my_app/src/features/order/model/payment_type.dart';
+import 'package:my_app/src/features/order/model/receive_type.dart';
 import 'package:my_app/src/features/order/router/order_router.dart';
 import 'package:my_app/src/router/auto_router.gr.dart';
 
@@ -14,12 +16,16 @@ class OrderBloc extends Cubit<OrderState> {
   late StackRouter router;
 
   // Action
-  void onSelectReceiveType(ReceiveType type) {
-    emit(state.copyWith(receiveType: type));
+  void onSelectReceiveType(ReceiveType value) {
+    emit(state.copyWith(receiveType: value, address: ''));
   }
 
-  void onSelectPaymentType(PaymentType type) {
-    emit(state.copyWith(paymentType: type));
+  void onSelectPaymentType(PaymentType value) {
+    emit(state.copyWith(paymentType: value));
+  }
+
+  void onSelectAddress(String value) {
+    emit(state.copyWith(address: value));
   }
 
   // navigation Event
@@ -43,19 +49,23 @@ class OrderBloc extends Cubit<OrderState> {
       router.pushNamed(OrderRouters.userAddress);
     } else {
       //  validation
-      XToast.show('Required');
+      XToast.show('Please select receive type');
     }
   }
 
   void nextFromAddress(BuildContext context) {
     router = context.router;
-    router.pushNamed(OrderRouters.paymentType);
+    if (state.address.isEmpty) {
+      XToast.show('Please select anddress');
+    } else {
+      router.pushNamed(OrderRouters.paymentType);
+    }
   }
 
   void nextFromPaymentType(BuildContext context) {
     router = context.router;
     if (state.paymentType == PaymentType.node) {
-      XToast.show('Required');
+      XToast.show('Please select payment type');
     } else {
       //  validation
       router.pushNamed(OrderRouters.confirm);

@@ -9,15 +9,24 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              context.read<DashBoardBloc>().setActiveIndex(TapIndex.home.index);
-            },
-            icon: Icon(Icons.home),
-          ),
-        ],
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black87,
+      ),
+      body: Center(
+        child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TextButton(
+                child: const Text('Switch to Home'),
+                onPressed: () {
+                  context
+                      .read<DashBoardBloc>()
+                      .setActiveIndex(TapIndex.home.index);
+                },
+              ),
+            ]),
       ),
     );
   }
