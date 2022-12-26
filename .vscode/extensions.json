@@ -1,0 +1,16 @@
+{
+	// See http://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+	// List of extensions which should be recommended for users of this workspace.
+	"recommendations": [
+		"Dart-Code.flutter",
+		"Nash.awesome-flutter-snippets",
+		"GiancarloCode.built-value-snippets",
+		"hzgood.dart-data-class-generator",
+		"alexisvt.flutter-snippets",
+		"donjayamanne.githistory",
+		"eamodio.gitlens",
+		"pflannery.vscode-versionlens"
+	],
+	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+	"unwantedRecommendations": []
+}

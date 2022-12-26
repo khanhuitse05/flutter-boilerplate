@@ -97,7 +97,6 @@
 
 - [RiverPod](https://pub.dev/packages/riverpod): This project can be considered as a rewrite of provider to make improvements that would be otherwise impossible.
 
-- [Get](https://pub.dev/packages/get): A simplified reactive state management solution.
 - [stacked](https://pub.dev/packages/stacked): This architecture was initially a version of MVVM.
 
 - [get](https://pub.dev/packages/get): GetX Ecosystem (State, Router, Dependency management, Theme, Utils)
@@ -159,6 +158,9 @@ lib/
 |- main.dart
 |- modules
 ```
+
+## Navigation Stack
+![](resources/images/screens.png) 
 
 ## Wiki
 Checkout [wiki](https://github.com/j1mmyto9/flutter-boilerplate/wiki) for more info
