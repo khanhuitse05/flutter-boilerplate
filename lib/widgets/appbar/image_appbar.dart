@@ -44,7 +44,7 @@ class XImageAppBar extends SliverPersistentHeaderDelegate {
               title: isShow
                   ? Text(
                       title,
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                     )
                   : null,
               leading: leading,

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:my_app/src/theme/styles.dart';
 
 import 'colors.dart';
 
 class XTheme {
   static const String? fontFamily = null;
-  static const barOverLayStyle = SystemUiOverlayStyle.light;
 
   static ThemeData light() => ThemeData(
         fontFamily: fontFamily,
@@ -25,7 +23,6 @@ class XTheme {
         // Appbar
         appBarTheme: AppBarTheme(
           // default system appbar icon is white
-          systemOverlayStyle: barOverLayStyle,
           backgroundColor: XColors.primary,
         ),
 

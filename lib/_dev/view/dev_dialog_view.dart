@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:my_app/_dev/widgets/dev_button_title.dart';
@@ -5,6 +6,7 @@ import 'package:my_app/src/dialogs/alert_wrapper.dart';
 import 'package:my_app/src/dialogs/toast_wrapper.dart';
 import '../widgets/dev_screen_layout.dart';
 
+@RoutePage()
 class DevDialogView extends StatelessWidget {
   const DevDialogView({Key? key}) : super(key: key);
 

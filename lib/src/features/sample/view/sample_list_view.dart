@@ -2,10 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:my_app/src/config/constants/images.dart';
+import 'package:my_app/src/router/auto_router.dart';
 import 'package:my_app/src/router/auto_router.gr.dart';
 import 'package:my_app/src/router/coordinator.dart';
-import 'package:my_app/src/router/router_name.dart';
 
+@RoutePage()
 class SampleItemListView extends StatelessWidget {
   const SampleItemListView({Key? key}) : super(key: key);
 
@@ -23,7 +24,7 @@ class SampleItemListView extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              GetIt.I<XRouter>().pushNamed(XRoutes.setting);
+              GetIt.I<XRouter>().push(SettingsRoute());
             },
           ),
         ],

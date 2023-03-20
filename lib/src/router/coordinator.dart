@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:my_app/src/router/auto_router.gr.dart';
+import 'package:my_app/src/router/auto_router.dart';
 import 'package:my_app/src/router/router_name.dart';
 
 class XCoordinator {

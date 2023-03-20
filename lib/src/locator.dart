@@ -4,10 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:my_app/src/config/devices/app_Info.dart';
 import 'package:my_app/src/network/domain_manager.dart';
-import 'package:my_app/src/router/auto_router.gr.dart';
+import 'package:my_app/src/router/auto_router.dart';
 import 'package:my_app/src/services/user_prefs.dart';
-import 'package:my_app/src/theme/themes.dart';
-
 import 'features/common/app_bloc/bloc_observer.dart';
 
 Future initializeApp() async {
@@ -15,7 +13,6 @@ Future initializeApp() async {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  SystemChrome.setSystemUIOverlayStyle(XTheme.barOverLayStyle);
   _locator();
   await Future.wait([
     // Firebase.initializeApp(),

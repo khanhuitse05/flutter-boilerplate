@@ -4,6 +4,7 @@ class XRoutes {
   static const sample = '/sample';
   static const dev = '/dev';
   static const order = '/order';
+  static const notFound = '/not-found';
 }
 
 class XRouteNames {
@@ -14,5 +15,6 @@ class XRouteNames {
 }
 
 class XRouteTaps {
-  static const dashBoard = '/';
+  static const home = 'home';
+  static const account = 'account';
 }

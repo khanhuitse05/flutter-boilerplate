@@ -37,7 +37,7 @@ class AppInfo {
           uid: info.id,
           name: info.device,
           model: info.model,
-          isPhysicalDevice: info.isPhysicalDevice ?? true,
+          isPhysicalDevice: info.isPhysicalDevice,
         );
       } else if (Platform.isIOS) {
         final IosDeviceInfo info = await _plugin.iosInfo;

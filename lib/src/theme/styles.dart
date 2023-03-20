@@ -22,12 +22,7 @@ class XStyles {
 
 // https://api.flutter.dev/flutter/material/TextTheme-class.html
   static TextTheme get textTheme {
-    final textTheme = const TextTheme(
-      // input style
-      subtitle1: inputStyle,
-      bodyText2: body,
-      button: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-    ).apply(
+    final textTheme = const TextTheme().apply(
       bodyColor: XColors.text,
       displayColor: XColors.text,
     );
