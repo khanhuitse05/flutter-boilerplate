@@ -1,6 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/src/theme/colors.dart';
 
+@RoutePage()
 class DevTextView extends StatelessWidget {
   const DevTextView({Key? key}) : super(key: key);
 
@@ -12,25 +13,27 @@ class DevTextView extends StatelessWidget {
       ),
       body: CustomScrollView(
         slivers: [
-          _title('Theme Typography'),
           _buildTypography(context),
         ],
       ),
     );
   }
 
-  Widget _title(String title) {
-    return SliverToBoxAdapter(
-      child: Container(
-        padding: EdgeInsets.fromLTRB(16, 24, 16, 12),
-        child: Text(
-          title,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: XColors.text,
-          ),
-        ),
+  Widget _title(BuildContext context, String title) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+      child: Text(
+        title,
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
+    );
+  }
+
+  Widget _subTitle(String title) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
+      child: Text(
+        title,
       ),
     );
   }
@@ -41,166 +44,204 @@ class DevTextView extends StatelessWidget {
       sliver: SliverList(
         delegate: SliverChildListDelegate(
           <Widget>[
+            _title(context, '1. Display styles'),
+            _subTitle(
+                "As the largest text on the screen, display styles are reserved for short, important text or numerals. They work best on large screens."),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "H1",
-                  style: Theme.of(context).textTheme.headline1,
+                  "DL",
+                  style: Theme.of(context).textTheme.displayLarge,
                   maxLines: 1,
                 ),
-                Text("Light 96")
+                Text("Regular 57")
               ],
             ),
+            Text('Largest of the display styles.'),
             Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "H2",
-                  style: Theme.of(context).textTheme.headline2,
+                  "DM",
+                  style: Theme.of(context).textTheme.displayMedium,
                   maxLines: 1,
                 ),
-                Text("Light 60")
+                Text("Regular 45")
               ],
             ),
-            Text("Used for the date in the dialog shown by [showDatePicker]."),
+            Text('Middle size of the display styles.'),
             Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "H3",
-                  style: Theme.of(context).textTheme.headline3,
+                  "DS",
+                  style: Theme.of(context).textTheme.displaySmall,
                 ),
-                Text("Regular 48")
+                Text("Regular 36")
               ],
             ),
+            Text('Smallest size of the display styles.'),
             Divider(),
+            _title(context, '2. Headline styles'),
+            _subTitle(
+                "Headline styles are smaller than display styles. They're best-suited for short, high-emphasis text on smaller screens."),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "H4",
-                  style: Theme.of(context).textTheme.headline4,
+                  "Headline Large",
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
-                Text("Regular 34")
+                Text("Regular 32")
               ],
             ),
+            Text('Largest of the headline styles.'),
             Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "H5",
-                  style: Theme.of(context).textTheme.headline5,
+                  "Headline Medium",
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                Text("Regular 28")
+              ],
+            ),
+            Text('Medium of the headline styles.'),
+            Divider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "Headline Small",
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 Text("Regular 24")
               ],
             ),
-            Text(
-                "Used for large text in dialogs (e.g., the month and year in the dialog shown by [showDatePicker])."),
+            Text('Small of the headline styles.'),
             Divider(),
+            _title(context, '3. Title styles'),
+            _subTitle(
+                "Titles are smaller than headline styles and should be used for shorter, medium-emphasis text"),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "H6",
-                  style: Theme.of(context).textTheme.headline6,
+                  "Title Large",
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
-                Text("Medium 20")
+                Text("Medium 22")
               ],
             ),
-            Text(
-                "Used for the primary text in app bars and dialogs (e.g., [AppBar.title] and [AlertDialog.title])."),
+            Text("Largest of the title styles"),
             Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "Subtitle1",
-                  style: Theme.of(context).textTheme.subtitle1,
+                  "Title Medium",
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
-                Text("Regular 16")
+                Text("Medium 16")
               ],
             ),
-            Text(
-                "Used for the primary text in lists (e.g., [ListTile.title])."),
+            Text("Medium of the title styles"),
             Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "Subtitle2",
-                  style: Theme.of(context).textTheme.subtitle2,
+                  "Title Small",
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
                 Text("Medium 14")
               ],
             ),
-            Text(
-                "For medium emphasis text that's a little smaller than [subtitle1]."),
+            Text("Small of the title styles"),
             Divider(),
+            _title(context, '4. Body styles'),
+            _subTitle('Body styles are used for longer passages of text.'),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "BodyText1",
-                  style: Theme.of(context).textTheme.bodyText1,
+                  "Body Large",
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 Text("Regular 16")
               ],
             ),
-            Text(
-                "Used for emphasizing text that would otherwise be [bodyText2]."),
+            Text("Largest of the body styles"),
             Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "BodyText2 (Default)",
-                  style: Theme.of(context).textTheme.bodyText2,
+                  "Body Medium (Default)",
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 Text("Regular 14")
               ],
             ),
             Text("The default text style for [Material]."),
+            Text("Medium of the body styles"),
             Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "Button",
-                  style: Theme.of(context).textTheme.button,
-                ),
-                Text("MEDIUM 14")
-              ],
-            ),
-            Text("Used for text on [RaisedButton] and [FlatButton]."),
-            Divider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  "Caption",
-                  style: Theme.of(context).textTheme.caption,
+                  "Body Small",
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
                 Text("Regular 12")
               ],
             ),
-            Text("Used for auxiliary text associated with images."),
+            Text("Small of the body styles"),
+            Divider(),
+            _title(context, '5. Label styles'),
+            _subTitle(
+                "Label styles are smaller, utilitarian styles, used for areas of the UI such as text inside of components or very small supporting text in the content body, like captions."),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "Label Large - Button",
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
+                Text("Medium 14")
+              ],
+            ),
+            Text("Largest of the label styles."),
+            Text(
+                "Used for text on [ElevatedButton], [TextButton] and [OutlinedButton]"),
             Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "Overline",
-                  style: Theme.of(context).textTheme.overline,
+                  "Label Medium",
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
-                Text("REGULAR 10")
+                Text("Medium 12")
               ],
             ),
-            Text(
-                "Typically used for captions or to introduce a (larger) headline.")
+            Text("Medium of the label styles."),
+            Divider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "Label Small",
+                  style: Theme.of(context).textTheme.labelSmall,
+                ),
+                Text("Medium 11")
+              ],
+            ),
+            Text("Small of the label styles."),
           ],
         ),
       ),

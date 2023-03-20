@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 String _domainApi = '';
@@ -19,16 +20,28 @@ class XImageNetwork extends StatelessWidget {
 
     final String fullUrl =
         ((url != null && url!.contains('http')) ? url : ('$_domainApi$url'))!;
-    return Image.network(
-      fullUrl,
+    return CachedNetworkImage(
+      imageUrl: fullUrl,
       fit: fit,
+      placeholder: (context, url) => _buildPlaceHolder(),
+      errorWidget: (context, url, error) => _buildError(),
     );
   }
 
   Widget _buildPlaceHolder() {
     return Container(
-        decoration: BoxDecoration(
-      color: Colors.grey[200],
-    ));
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+      ),
+    );
+  }
+
+  Widget _buildError() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+      ),
+      child: Icon(Icons.error),
+    );
   }
 }

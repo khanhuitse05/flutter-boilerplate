@@ -142,7 +142,7 @@ class XMultiTextField extends StatelessWidget {
                     const SizedBox(width: 24),
                     Text(
                       hintText ?? '',
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const CloseButton(),
                   ],

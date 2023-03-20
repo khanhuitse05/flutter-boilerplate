@@ -6,6 +6,7 @@ import 'package:my_app/src/features/dashboard/logic/dashboard_bloc.dart';
 import 'package:my_app/src/features/dashboard/widget/bottom_navigation_bar.dart';
 import 'package:my_app/src/router/auto_router.gr.dart';
 
+@RoutePage()
 class DashBoardView extends StatefulWidget {
   const DashBoardView({Key? key}) : super(key: key);
 
@@ -35,7 +36,7 @@ class _DashBoardViewState extends State<DashBoardView> with LifecycleMixin {
             child: AutoTabsScaffold(
               routes: [
                 HomeRouter(),
-                AccountRouter(),
+                AccountRoute(),
               ],
               bottomNavigationBuilder: (_, TabsRouter tabsRouter) {
                 context.read<DashBoardBloc>().tabsRouter = tabsRouter;

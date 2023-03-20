@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/_dev/widgets/dev_screen_layout.dart';
 import 'package:my_app/_dev/widgets/dev_title.dart';
 import 'package:my_app/widgets/button/button.dart';
 import 'package:my_app/widgets/button/outlined_button.dart';
 
+@RoutePage()
 class DevButtonView extends StatefulWidget {
   const DevButtonView({Key? key}) : super(key: key);
 

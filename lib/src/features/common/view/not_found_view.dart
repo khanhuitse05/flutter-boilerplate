@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class NotFoundView extends StatelessWidget {
   const NotFoundView({Key? key}) : super(key: key);
 
@@ -10,7 +12,7 @@ class NotFoundView extends StatelessWidget {
       body: Center(
         child: Text(
           'Page not found',
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/_dev/widgets/dev_copy_title.dart';
 import 'package:my_app/_dev/widgets/dev_title.dart';
@@ -6,6 +7,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../widgets/dev_screen_layout.dart';
 
+@RoutePage()
 class DevDeviceView extends StatelessWidget {
   const DevDeviceView({Key? key}) : super(key: key);
 

@@ -7,6 +7,7 @@ import 'package:my_app/src/dialogs/toast_wrapper.dart';
 import 'package:my_app/src/features/order/model/payment_type.dart';
 import 'package:my_app/src/features/order/model/receive_type.dart';
 import 'package:my_app/src/features/order/router/order_router.dart';
+import 'package:my_app/src/router/auto_router.dart';
 import 'package:my_app/src/router/auto_router.gr.dart';
 
 part 'order_state.dart';
@@ -44,9 +45,9 @@ class OrderBloc extends Cubit<OrderState> {
     // go to ReceiveAndress
     router = context.router;
     if (state.receiveType == ReceiveType.shop) {
-      router.pushNamed(OrderRouters.shopAddress);
+      router.pushNamed(OrderRoutes.shopAddress);
     } else if (state.receiveType == ReceiveType.user) {
-      router.pushNamed(OrderRouters.userAddress);
+      router.pushNamed(OrderRoutes.userAddress);
     } else {
       //  validation
       XToast.show('Please select receive type');
@@ -58,7 +59,7 @@ class OrderBloc extends Cubit<OrderState> {
     if (state.address.isEmpty) {
       XToast.show('Please select anddress');
     } else {
-      router.pushNamed(OrderRouters.paymentType);
+      router.pushNamed(OrderRoutes.paymentType);
     }
   }
 
@@ -68,18 +69,18 @@ class OrderBloc extends Cubit<OrderState> {
       XToast.show('Please select payment type');
     } else {
       //  validation
-      router.pushNamed(OrderRouters.confirm);
+      router.pushNamed(OrderRoutes.confirm);
     }
   }
 
   void nextFromConfrim(BuildContext context) {
     router = context.router;
-    router.pushNamed(OrderRouters.payment);
+    router.pushNamed(OrderRoutes.payment);
   }
 
   void nextFromPayment(BuildContext context) {
     router = context.router;
-    router.pushNamed(OrderRouters.success);
+    router.pushNamed(OrderRoutes.success);
   }
 
   void nextFromSuccess(BuildContext context) {

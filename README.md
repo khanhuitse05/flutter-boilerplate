@@ -26,6 +26,9 @@
 - [Dependencies](#dependencies)
 - [Code structure](#code-structure)
 
+## Prerequisites
+- Flutter: >=3.7.0 <7.0.0
+
 ## How to Use 
 
 1. Download or clone this repo by using the link below:

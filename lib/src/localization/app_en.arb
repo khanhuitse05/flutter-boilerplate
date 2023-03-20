@@ -1,5 +1,14 @@
 {
   "common_appTitle": "My App",
+  "common_appVersion": "Version {value}",
+  "@common_appVersion": {
+    "description": "Version number of app",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
   "common_loading": "Loading",
   "common_next": "Next",
   "common_cancel": "Cancel",
