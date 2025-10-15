@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class XLoadingAlert extends StatelessWidget {
-  const XLoadingAlert({Key? key}) : super(key: key);
+  const XLoadingAlert({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +24,13 @@ class XLoadingAlert extends StatelessWidget {
   Widget _indicator(BuildContext context) {
     const double radius = 15;
     if (kIsWeb || Platform.isAndroid) {
-      return SizedBox(
+      return const SizedBox(
         width: radius * 2,
         height: radius * 2,
         child: CircularProgressIndicator(strokeWidth: 1.5),
       );
     }
-    return CupertinoActivityIndicator(
+    return const CupertinoActivityIndicator(
       radius: radius,
     );
   }

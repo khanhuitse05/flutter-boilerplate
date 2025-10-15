@@ -15,16 +15,31 @@ platform :ios do
 
   desc "Setup and Build for Appstore"
   private_lane :build do
-    sh("flutter build ios --release --no-codesign")
-
-    increment_build_number({
-      xcodeproj: xcodeproj,
-      build_number: latest_testflight_build_number(app_identifier: ENV['FASTLANE_APP_IDENTIFIER']) + 1
-    })
-    
+    #  sh("flutter build ios --flavor staging --target lib/main_staging.dart --release --no-codesign")
     build_app(
       workspace: workspace,
-      scheme: "Runner"
+      scheme: "production",
+      export_method: "app-store",
+      export_options: {
+        provisioningProfiles: {
+          "" => "",  # update your app bundle id & you provisioning name
+        }
+      }
+    )
+  end
+
+  desc "Setup and Build for Firebase Distribute"
+  private_lane :buildAdHoc do
+    #  sh("flutter build ios --flavor staging --target lib/main_staging.dart --release --no-codesign")
+    build_app(
+      workspace: workspace,
+      scheme: "staging",
+      export_method: "ad-hoc",
+      export_options: {
+        provisioningProfiles: {
+          "" => "",  # update your app bundle id & you provisioning name
+        }
+      }
     )
   end
 
@@ -32,7 +47,28 @@ platform :ios do
   lane :beta do
     build
     upload_to_testflight(
-      skip_waiting_for_build_processing: true
+      skip_waiting_for_build_processing: true,
+      ipa: "Runner.ipa"
     )
   end
+
+  desc "Push a new beta build to Firebase"
+  lane :firebase do |values|
+    build_number  = values[:build_number]
+    increment_build_number({
+      xcodeproj: xcodeproj,
+      build_number: build_number
+    })
+    buildAdHoc
+    changelog = sh("git log -20 --pretty=format:%s")
+    firebase_app_distribution(
+      app: '1:269131773999:ios:d370bd3445d24f55882eda', 
+      testers: "jimmy.to.goldenowl@gmail.com",
+      groups: 'go',
+      ipa_path: 'Runner.ipa',
+      release_notes: changelog,
+      firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"]
+    )
+  end
+
 end

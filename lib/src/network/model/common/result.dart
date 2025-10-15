@@ -1,28 +1,29 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'error_code.dart';
 
-class XResult<T> {
-  T? data;
-  String? error;
-
-  bool get isError => error != null;
-  bool get isSuccess => error == null && data != null;
-
-  XResult.success(this.data) {
-    this.error = null;
-  }
-
-  XResult.error(String? error) {
-    this.data = null;
-    this.error = error ?? 'An Unknown Error Occurred';
-  }
-
-  XResult.exception(Object? e) {
-    this.data = null;
+class MResult<T> {
+  MResult.exception(Object? e) {
+    data = null;
     if (e is PlatformException) {
       error = e.message;
     } else if (e is AssertionError) {
       error = e.message?.toString();
+    } else if (e is FlutterError) {
+      error = e.message;
     }
-    error ??= 'An Unknown Error Occurred';
+    error ??= MErrorCode.unknown;
   }
+  MResult.error(String? error) {
+    data = null;
+    this.error = error ?? '';
+  }
+  MResult.success(this.data) {
+    error = null;
+  }
+
+  T? data;
+  String? error;
+  bool get isError => error != null;
+  bool get isSuccess => !isError;
 }

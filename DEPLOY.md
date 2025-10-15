@@ -1,4 +1,51 @@
-# Template Flutter Project Deploy document
+# Deploy document
+
+## Release Process
+
+1. Create a release branch from develop:
+
+    ```bash
+    git checkout develop
+    git pull origin develop
+    git checkout -b release/1.0.0
+    ```
+
+2. Update version numbers, if necessary, and commit the changes.
+
+3. Tag the release:
+
+    ```bash
+    git tag -a v1.0.0 -m "Release version 1.0.0"
+    ```
+4. Merge the release branch into both main and develop.
+
+## Hotfix Process
+1. Create a hotfix branch from main:
+
+    ```bash
+    git checkout main
+    git pull origin main
+    git checkout -b hotfix/1.0.1
+    ```
+
+2. Implement the hotfix, commit, and push:
+
+    ```bash
+    git add .
+    git commit -m "Fix critical bug"
+    git push origin hotfix/1.0.1
+    ```
+3. Create a pull request to merge the hotfix into main.
+
+4. After code review and testing, merge the hotfix into both main and develop.
+## Deployment
+Before deploying to production, ensure that the main branch contains the stable and tested code:
+
+    ```bash
+    git checkout main
+    git pull origin main
+    ```
+
 # Deploy for Android
 ## Deploy Firebase App Distribution 
 - [Link firebase Distribute](https://console.firebase.google.com/project/yourapp/appdistribution/)
@@ -15,6 +62,9 @@
 3. Download and Check if build is stable.
 4. Update release notes and release to other testers.
 5. Announce new build with release notes in Slack channel.
+### Via Fastlane
+1. create file `android/.env` then add your key `FIREBASE_CLI_TOKEN`
+2. cd to android folder then run `fastlane firebase build_number:[your-build-number]`
 
 ### Via CircleCI
 1. Create sit-android branch from develop, any branch that starts with sit-android/. e.g., sit-android/2.3.0, sit-android/2.3.1
@@ -38,6 +88,10 @@ You go to the production page of the app on the Google Play Console
       ```
    Make sure version is correct. Will use current version in project. 
 2. Upload the build to beta testing
+
+### Via Fastlane
+- Add file play-store-credentials.json -> Follow https://docs.fastlane.tools/actions/supply/#setup to get one 
+- cd to android folder then run fastlane beta
 
 ### Via CircleCI
 1. Create release-android branch from develop, any branch that starts with release-android/. e.g., release-android/2.3.0, release-android/2.3.1

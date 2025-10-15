@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/widgets/image/image_network.dart';
+import 'package:myapp/widgets/image/image_network.dart';
 
 class XImageAppBar extends SliverPersistentHeaderDelegate {
   XImageAppBar(
@@ -16,9 +16,9 @@ class XImageAppBar extends SliverPersistentHeaderDelegate {
   late bool isShow;
 
   void checkShow(BuildContext context, double dt) {
-    final _new = dt >= 0.7;
-    if (_new != isShow) {
-      isShow = _new;
+    final isNew = dt >= 0.7;
+    if (isNew != isShow) {
+      isShow = isNew;
     }
   }
 
@@ -37,7 +37,7 @@ class XImageAppBar extends SliverPersistentHeaderDelegate {
         ),
         Align(
           alignment: Alignment.topCenter,
-          child: Container(
+          child: SizedBox(
             height: kToolbarHeight,
             child: AppBar(
               backgroundColor: isShow ? null : Colors.transparent,

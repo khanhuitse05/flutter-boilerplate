@@ -1,44 +1,43 @@
 import 'dart:core';
-import 'result.dart';
 
-class XHandle<T> {
+import 'result.dart';
+part 'status.dart';
+
+class MHandle<T> {
+  MHandle.result(MResult<T> result) {
+    message = result.error;
+    _data = result.data;
+    _status = result.isError ? MStatus.failure : MStatus.success;
+  }
+
+  MHandle.error(this.message) {
+    _data = null;
+    _status = MStatus.failure;
+  }
+
+  MHandle.completed(T data) {
+    _data = data;
+    message = '';
+    _status = MStatus.success;
+  }
+  MHandle.loading({this.message}) {
+    _status = MStatus.loading;
+  }
+
+  MHandle() {
+    _status = MStatus.initial;
+  }
   String? message;
 
   T? _data;
 
   T? get data => _data;
 
-  Status _status = Status.none;
+  MStatus _status = MStatus.initial;
 
-  bool get isLoading => _status == Status.loading;
+  bool get isLoading => _status == MStatus.loading;
 
-  bool get isCompleted => _status == Status.success;
+  bool get isCompleted => _status == MStatus.success;
 
-  bool get isError => _status == Status.error;
-
-  XHandle() {
-    _status = Status.none;
-  }
-  XHandle.loading({this.message}) {
-    _status = Status.loading;
-  }
-
-  XHandle.completed(T data) {
-    this._data = data;
-    this.message = '';
-    _status = Status.success;
-  }
-
-  XHandle.error(this.message) {
-    _data = null;
-    _status = Status.error;
-  }
-
-  XHandle.result(XResult<T> result) {
-    this.message = result.error;
-    _data = result.data;
-    _status = result.isError ? Status.error : Status.success;
-  }
+  bool get isError => _status == MStatus.failure;
 }
-
-enum Status { none, loading, error, success }

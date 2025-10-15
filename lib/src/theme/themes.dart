@@ -1,48 +1,64 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/src/theme/styles.dart';
+import 'package:myapp/src/theme/styles.dart';
 
 import 'colors.dart';
 
-class XTheme {
+class AppTheme {
   static const String? fontFamily = null;
 
   static ThemeData light() => ThemeData(
         fontFamily: fontFamily,
+        scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
+
+        /// dialog
+        dialogTheme: DialogThemeData(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
 
         /// Colors
-        primarySwatch: XColors.primaryColors,
-        primaryColor: XColors.primary,
+        primaryColor: AppColors.primary,
         brightness: Brightness.light,
-        textTheme: XStyles.textTheme,
+
+        /// Text
+        textTheme: AppStyles.textTheme,
 
         /// ColorScheme
-        colorScheme: ColorScheme.light(
-          primary: XColors.primary,
+        colorScheme: const ColorScheme.light(
+          primary: AppColors.primary,
         ),
 
         // Appbar
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           // default system appbar icon is white
-          backgroundColor: XColors.primary,
+          backgroundColor: AppColors.primary,
+          foregroundColor: Colors.white,
         ),
 
         /// input
-        inputDecorationTheme: InputDecorationTheme(),
+        inputDecorationTheme: const InputDecorationTheme(),
 
         /// Button
-        buttonTheme: ButtonThemeData(),
+        buttonTheme: const ButtonThemeData(),
         elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(),
+          style: ElevatedButton.styleFrom(
+            fixedSize: const Size.fromHeight(50),
+          ),
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(),
+          style: OutlinedButton.styleFrom(
+            fixedSize: const Size.fromHeight(50),
+          ),
         ),
 
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(),
         ),
-        iconTheme: IconThemeData(),
+        iconTheme: const IconThemeData(),
       );
 
-  static ThemeData dark() => ThemeData.dark();
+  // do not support dark theme yet
+  static ThemeData dark() => light();
 }

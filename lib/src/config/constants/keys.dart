@@ -1,1 +1,1 @@
-class XKeys {}
+class AppKeys {}

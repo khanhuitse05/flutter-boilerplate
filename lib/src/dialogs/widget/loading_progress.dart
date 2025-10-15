@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/src/router/coordinator.dart';
+import 'package:myapp/src/router/coordinator.dart';
 
 String _dialogMessage = '';
 StreamController<String> _streamController =
@@ -16,7 +16,7 @@ Future<void> showLoading({String message = ''}) async {
   if (_progressDialog == null) {
     _progressDialog = _XLoadingProgress();
     _dialogMessage = message;
-    return _progressDialog?.show(XCoordinator.context);
+    return _progressDialog?.show(AppCoordinator.context);
   }
 }
 
@@ -91,7 +91,7 @@ class _XLoadingProgress {
                           child: Text(
                             _dialogMessage,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 12,
                               fontWeight: FontWeight.w500,

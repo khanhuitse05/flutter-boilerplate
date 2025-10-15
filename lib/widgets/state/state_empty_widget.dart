@@ -1,43 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:myapp/generated/assets/assets.gen.dart';
+import 'package:myapp/src/localization/localization_utils.dart';
+import 'package:myapp/src/theme/styles.dart';
 
 class XStateEmptyWidget extends StatelessWidget {
-  const XStateEmptyWidget({this.title, this.body, this.child, Key? key})
-      : super(key: key);
-
+  const XStateEmptyWidget({
+    super.key,
+    this.title,
+    this.body,
+    this.iconSvg,
+    this.bottom,
+  });
   final String? title;
   final String? body;
-  final Widget? child;
+  final String? iconSvg;
+  final Widget? bottom;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Icon(Icons.inventory_2_outlined),
-          SizedBox(height: 20),
-          if (title != null)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Text(
-                title!,
-                style: Theme.of(context).textTheme.bodyLarge,
-                textAlign: TextAlign.center,
-              ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        SvgPicture.asset(iconSvg ?? Assets.svgs.stateEmpty.path),
+        const SizedBox(height: 15),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Text(
+            title ?? S.of(context).common_list_empty_title,
+            textAlign: TextAlign.center,
+            style: AppStyles.title,
+          ),
+        ),
+        if (body?.isNotEmpty == true) ...[
+          const SizedBox(height: 15),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              body!,
+              textAlign: TextAlign.center,
+              style: AppStyles.body,
             ),
-          if (body != null)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Text(
-                body!,
-                textAlign: TextAlign.center,
-              ),
-            ),
-          if (child != null) child!
+          ),
         ],
-      ),
+        if (bottom != null) ...[
+          const SizedBox(height: 15),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: bottom!,
+          ),
+        ],
+      ],
     );
   }
 }

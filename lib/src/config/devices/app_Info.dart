@@ -1,8 +1,7 @@
 import 'dart:io';
-
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
-import 'package:my_app/src/utils/utils.dart';
+import 'package:myapp/src/utils/utils.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class AppInfo {
@@ -18,9 +17,9 @@ class AppInfo {
 
   static Future loadDevice() async {
     try {
-      final DeviceInfoPlugin _plugin = DeviceInfoPlugin();
+      final DeviceInfoPlugin plugin = DeviceInfoPlugin();
       if (kIsWeb) {
-        WebBrowserInfo info = await _plugin.webBrowserInfo;
+        WebBrowserInfo info = await plugin.webBrowserInfo;
         device = DeviceInfo(
           platformName: info.platform,
           platformVersion: info.appVersion,
@@ -30,7 +29,7 @@ class AppInfo {
           isPhysicalDevice: true,
         );
       } else if (Platform.isAndroid) {
-        final AndroidDeviceInfo info = await _plugin.androidInfo;
+        final AndroidDeviceInfo info = await plugin.androidInfo;
         device = DeviceInfo(
           platformName: info.version.baseOS,
           platformVersion: info.version.release,
@@ -40,7 +39,7 @@ class AppInfo {
           isPhysicalDevice: info.isPhysicalDevice,
         );
       } else if (Platform.isIOS) {
-        final IosDeviceInfo info = await _plugin.iosInfo;
+        final IosDeviceInfo info = await plugin.iosInfo;
         device = DeviceInfo(
           platformName: info.systemName,
           platformVersion: info.systemVersion,

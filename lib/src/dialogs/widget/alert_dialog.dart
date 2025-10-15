@@ -3,12 +3,22 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/src/localization/localization_utils.dart';
+import 'package:myapp/src/theme/colors.dart';
 
-class XAlertButton {
-  final String title;
-  final String? key;
-  XAlertButton(this.title, {this.key});
-  XAlertButton.close({this.title = 'Close', this.key});
+class XAlertButton<T> {
+  final String? title;
+  final Widget? child;
+  final T? key;
+  final bool isDestructiveAction;
+
+  XAlertButton(
+      {this.key, this.title, this.child, this.isDestructiveAction = false})
+      : assert(title != null || child != null);
+
+  factory XAlertButton.close({String? title}) {
+    return XAlertButton(title: title ?? S.text.common_close);
+  }
 }
 
 class XAlertDialog extends StatelessWidget {
@@ -18,8 +28,8 @@ class XAlertDialog extends StatelessWidget {
     this.titleWidget,
     this.contentWidget,
     this.actions = const [],
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   final String? title;
   final String? content;
   final Widget? titleWidget;
@@ -28,14 +38,14 @@ class XAlertDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _actions = actions.isEmpty ? [XAlertButton.close()] : actions;
+    final actionButtons = actions.isEmpty ? [XAlertButton.close()] : actions;
     if (kIsWeb || Platform.isAndroid) {
       return AlertDialog(
         title: titleWidget ?? (title == null ? null : Text(title!)),
         content: contentWidget ?? (content == null ? null : Text(content!)),
         actions: <Widget>[
-          for (int i = 0; i < _actions.length; i++)
-            _buildButton(context, _actions[i], i)
+          for (int i = 0; i < actionButtons.length; i++)
+            _buildButton(context, actionButtons[i], i)
         ],
       );
     }
@@ -43,8 +53,8 @@ class XAlertDialog extends StatelessWidget {
       title: titleWidget ?? (title == null ? null : Text(title!)),
       content: contentWidget ?? (content == null ? null : Text(content!)),
       actions: <Widget>[
-        for (int i = 0; i < _actions.length; i++)
-          _buildButton(context, _actions[i], i)
+        for (int i = 0; i < actionButtons.length; i++)
+          _buildButton(context, actionButtons[i], i)
       ],
     );
   }
@@ -56,7 +66,14 @@ class XAlertDialog extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).pop(item.key);
         },
-        child: Text(item.title),
+        child: item.child != null
+            ? item.child!
+            : Text(
+                item.title ?? '',
+                style: TextStyle(
+                  color: item.isDestructiveAction ? Colors.red : AppColors.text,
+                ),
+              ),
       );
     }
     return CupertinoDialogAction(
@@ -64,7 +81,8 @@ class XAlertDialog extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).pop(item.key);
       },
-      child: Text(item.title),
+      isDestructiveAction: item.isDestructiveAction,
+      child: item.child != null ? item.child! : Text(item.title ?? ''),
     );
   }
 }

@@ -21,126 +21,186 @@
 
 ## Table of contents
 
-- [How to Use](#how-to-use)
+- [Prerequisites](#prerequisites)
+- [How to Run](#how-to-run)
+- [Using This Template](#using-this-template)
 - [Code Conventions](#code-conventions)
 - [Dependencies](#dependencies)
-- [Code structure](#code-structure)
+- [Code Structure](#code-structure)
+- [Navigation Stack](#navigation-stack)
+- [Wiki](#wiki)
+- [Screenshots](#screenshots)
+
+---
 
 ## Prerequisites
-- Flutter: >=3.7.0 <7.0.0
 
-## How to Use 
+- **Flutter:** `>=3.35.3`
+- **Firebase Projects:**
+  - [Firebase Staging](https://console.firebase.google.com/u/0/project/flutter-app-ec8dd/settings/iam)
+  - [Firebase Production](https://console.firebase.google.com/u/0/project/template-app-prod-3a034/settings/iam)
 
-1. Download or clone this repo by using the link below:
-  ```
-  https://github.com/j1mmyto9/flutter-boilerplate.git
-  ```
-2. Go to project root and execute the following command in console to get the required dependencies: 
+---
 
-  ```
-  flutter pub get 
-  ```
-3. Now run the generator
-  ```
-  flutter packages pub run build_runner build
-  ```
+## How to Run
 
-# Code Conventions
+1. **Clone the repo:**
+
+   ```sh
+   git clone https://github.com/khanhuitse05/flutter-boilerplate.git
+   ```
+
+2. **Install dependencies:**
+
+   ```sh
+   flutter pub get
+   ```
+
+3. **Generate code:**
+
+   ```sh
+   flutter packages pub run build_runner build
+   ```
+
+4. **Run the app (Staging):**
+
+   ```sh
+   flutter run --flavor staging --target lib/main_staging.dart
+   ```
+
+5. **Run the app (Production):**
+
+   ```sh
+   flutter run --flavor production --target lib/main_production.dart
+   ```
+
+---
+
+## Using This Template
+
+1. **Clone this repo:**
+
+   ```sh
+   git clone https://github.com/khanhuitse05/flutter-boilerplate.git
+   ```
+
+2. **Customize the package name:**
+
+   ```sh
+   sudo sh ./customizer.sh your.package.name
+   ```
+
+   ✅ This will:
+   - Remove the existing git history  
+   - Update the README  
+   - Change your bundle ID  
+
+3. **Update your Firebase config:**
+
+   - **Android**
+     - `android/app/src/staging/google-services.json`
+     - `android/app/src/production/google-services.json`
+   - **iOS**
+     - `ios/config/GoogleService-Info.plist` (staging & production)
+   - Update:
+     - `firebase_options_stg.dart`
+     - `firebase_options_prod.dart`
+     - `REVERSED_CLIENT_ID` in `Info.plist`
+
+4. **Regenerate Firebase options:**
+
+   ```sh
+   flutterfire config      --project={YOUR_FIREBASE_PROJECT_ID}      --out={PATH_TO_SAVE/firebase_options.dart}      --ios-bundle-id={BUNDLE_ID_APP}      --android-app-id={APP_ID}
+   ```
+
+   → [Read More in the Wiki](https://github.com/khanhuitse05/flutter-boilerplate/wiki/Flavors)
+
+5. **Run the app:** [Follow steps here](#how-to-run)
+
+---
+
+## Code Conventions
+
 - [analysis_options.yaml](analysis_options.yaml)
-- [About code analytics flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
+- [Effective Code in Flutter](https://medium.com/flutter-community/effective-code-in-your-flutter-app-from-the-beginning-e597444e1273)
 
-  In Flutter, Modularization will be done at a file level. While building widgets, we have to make sure they stay independent and re-usable as maximum. Ideally, widgets should be easily extractable into an independent project.
+**Best Practices:**
 
+- Modularize widgets to be as independent and reusable as possible.
+- Follow naming conventions:
+  - **Models:** start with `M` → `MUser`, `MProduct`, `MGroup`
+  - **Common Widgets:** start with `X` → `XButton`, `XText`, `XAppBar` (stored in `lib/widgets/`)
+  - **App Constants/Services:** start with `App` → `AppStyles`, `AppColor`, `AppRouter`, `AppCoordinator`, `UserPrefs`
 
-# Dependencies
+---
 
-  ![](resources/images/dependencies.jpg) 
+## Dependencies
 
-## Helper
-- [logger](https://pub.dev/packages/logger): Small, easy to use and extensible logger which prints beautiful logs.
+![Dependencies](resources/images/dependencies.jpg)
 
-- [url_launcher](https://pub.dev/packages/url_launcher): A Flutter plugin for launching a URL in the mobile platform. Supports iOS, Android, web, Windows, macOS, and Linux.
+### Helpers
 
-- [auto_route](https://pub.dev/packages/auto_route): Auto route generator, Manager router
+- [logger](https://pub.dev/packages/logger) – Pretty logging
+- [url_launcher](https://pub.dev/packages/url_launcher) – Launch URLs
+- [auto_route](https://pub.dev/packages/auto_route) – Router generator
+- [get_it](https://pub.dev/packages/get_it) – Service Locator
+- [intl](https://pub.dev/packages/intl) – i18n, formatting
+- [shared_preferences](https://pub.dev/packages/shared_preferences) – Key-value storage
+- [package_info_plus](https://pub.dev/packages/package_info_plus) – App package info
+- [device_info_plus](https://pub.dev/packages/device_info_plus) – Device info
+- [permission_handler](https://pub.dev/packages/permission_handler) – Permission management
 
-- [get_it](https://pub.dev/packages/get_it): This is a simple Service Locator
+### HTTP / API
 
-- [intl](https://pub.dev/packages/intl): This package provides internationalization and localization facilities, including message translation, plurals and genders, date/number formatting and parsing, and bidirectional text.
+- [http](https://pub.dev/packages/http) – HTTP requests
 
-- [shared_preferences](https://pub.dev/packages/shared_preferences): Flutter plugin for reading and writing simple key-value pairs. Wraps NSUserDefaults on iOS and SharedPreferences on Android.
+### Firebase
 
-- [package_info_plus](https://pub.dev/packages/package_info_plus): This Flutter plugin provides an API for querying information about an application package.
+- [FlutterFire](https://firebase.flutter.dev/) – Auth, Analytics, Crashlytics, Storage, Firestore
 
-- [device_info_plus](https://pub.dev/packages/device_info_plus): Get current device information from within the Flutter application.
+### State Management
 
-- [permission_handler](https://pub.dev/packages/permission_handler): Permission plugin for Flutter. This plugin provides a cross-platform (iOS, Android) API to request and check permissions.
+- [flutter_bloc](https://pub.dev/packages/flutter_bloc) – Recommended BLoC pattern [Docs](https://bloclibrary.dev/#/)
 
-## HTTP, API
-- [http](https://pub.dev/packages/http): A composable, Future-based library for making HTTP requests.
+### Assets / Code Generation
 
+- [flutter_gen](https://pub.dev/packages/flutter_gen) – Strongly typed assets, fonts, colors
 
-## Flutter Fire
-  > The official Firebase plugins for Flutter. sign_in, analytics, crashlytics, storage, firestore
-- [Flutter Fire](https://firebase.flutter.dev/)
+### Localization
 
+- [localization](https://pub.dev/packages/localization) – Simplified translations
 
-## State Management
-  > State Management is still the hottest topic in Flutter Community. There are tons of choices available and it’s super intimidating for a beginner to choose one. Also, all of them have their pros and cons. So, what’s the best approach
+### Widgets
 
-![](resources/images/state.png) 
-
-**A recommended approach**
-- [flutter_bloc](https://pub.dev/packages/flutter_bloc): Widgets that make it easy to integrate blocs and cubits into Flutter. [Learn more](https://bloclibrary.dev/#/) 
-
-
-**Other favorite package**
-- [provider](https://pub.dev/packages/provider): A wrapper around InheritedWidget to make them easier to use and more reusable.
-
-- [rxdart](https://pub.dev/packages/rxdart): RxDart adds additional capabilities to Dart Streams and StreamControllers. Using as bloc pattens
-
-- [RiverPod](https://pub.dev/packages/riverpod): This project can be considered as a rewrite of provider to make improvements that would be otherwise impossible.
-
-- [stacked](https://pub.dev/packages/stacked): This architecture was initially a version of MVVM.
-
-- [get](https://pub.dev/packages/get): GetX Ecosystem (State, Router, Dependency management, Theme, Utils)
-
-- [More about state management](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options)
-
-## Flutter Gen
-- [flutter_gen](https://pub.dev/packages/flutter_gen): The Flutter code generator for your assets, fonts, colors, … — Get rid of all String-based APIs.
-
-## Widget
-- [shimmer](https://pub.dev/packages/shimmer): Shimmer loading animation
+- [shimmer](https://pub.dev/packages/shimmer) – Loading shimmer effect
 - [flutter_html](https://pub.dev/packages/flutter_html)
 - [webview_flutter](https://pub.dev/packages/webview_flutter)
 
-## Image
+### Image & Cache
+
 - [cached_network_image](https://pub.dev/packages/cached_network_image)
 - [flutter_cache_manager](https://pub.dev/packages/flutter_cache_manager)
 
-## Other favorite package
-- [DIO](https://pub.dev/packages/dio): A powerful Http client for Dart
-- [hive](https://pub.dev/packages/hive), [sqflite](https://pub.dev/packages/sqflite): Flutter plugin for reading and locale data
+---
 
-# Code structure
-Here is the core folder structure which flutter provides.
+## Code Structure
+
+### Default Flutter Structure
+
 ```
 flutter-app/
 |- android
 |- ios
+|- web
 |- lib
 |- modules
 |- test
 ```
-Here is the folder structure we have been using in this project
+
+### Project Structure Used
 
 ```
 lib/
-|- _dev/
-  |- mock/
-  |- view/
-  |- widget/
-
 |- packages/
 |- src/
   |- data/
@@ -148,7 +208,7 @@ lib/
   |- feature/
     |- dashboard/
       |- widget/
-      |- controller
+      |- controller/
       |- dashboard_screen.dart
     |- home/
     |- login/
@@ -159,12 +219,25 @@ lib/
   |- image/
   |- view/
 |- main.dart
-|- modules
+|- modules/
 ```
 
+---
+
 ## Navigation Stack
-![](resources/images/screens.png) 
+
+![Navigation Stack](resources/images/screens.png)
+
+---
 
 ## Wiki
-Checkout [wiki](https://github.com/j1mmyto9/flutter-boilerplate/wiki) for more info
 
+Check out the [Wiki](https://github.com/khanhuitse05/flutter-boilerplate/wiki) for more detailed guides.
+
+---
+
+## Screenshots
+
+| Account | Profile | Login |
+| ------ | ------- | ----- |
+| <img src="./resources/images/account.png" width=250> | <img src="./resources/images/profile.png" width=250> | <img src="./resources/images/login.png" width=250> |

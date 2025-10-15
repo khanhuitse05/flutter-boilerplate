@@ -1,74 +1,69 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/widgets/common/indicator.dart';
+import 'package:myapp/widgets/common/indicator.dart';
+
+import 'model/button_size.dart';
 
 /// A button that shows a busy indicator in place of title
 class XButton extends StatelessWidget {
-  final bool busy;
-  final bool enabled;
-  final String? title;
-  final Widget? child;
-  final VoidCallback? onPressed;
-
   const XButton({
     this.onPressed,
     this.title,
     this.child,
+    this.icon,
     this.busy = false,
     this.enabled = true,
-    Key? key,
-  }) : super(key: key);
+    this.size,
+    super.key,
+  });
 
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: enabled
-          ? () {
-              if (onPressed != null || busy == false) {
-                onPressed?.call();
-              }
-            }
-          : null,
-      child: XBusyTitle(
-        busy: busy,
-        title: title,
-        child: child,
-      ),
-    );
-  }
-}
-
-class XBusyTitle extends StatelessWidget {
   final bool busy;
+  final bool enabled;
+  final Widget? icon;
   final String? title;
   final Widget? child;
-  const XBusyTitle({
-    this.title,
-    this.child,
-    this.busy = false,
-    Key? key,
-  }) : super(key: key);
+  final VoidCallback? onPressed;
+  final ButtonSize? size;
 
   @override
   Widget build(BuildContext context) {
-    const double padding = 12;
+    final size = this.size ?? ButtonSize.medium();
+    final onPressed = enabled
+        ? () {
+            if (this.onPressed != null || busy == false) {
+              this.onPressed?.call();
+            }
+          }
+        : null;
+    final foregroundColor = Theme.of(context).colorScheme.onPrimary;
+    final indicator =
+        XIndicator(radius: size.iconSize / 2, color: foregroundColor);
     return SizedBox(
-      height: Theme.of(context).buttonTheme.height,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const SizedBox(width: padding * 2),
-          child ??
-              Text(
-                title ?? '',
-                maxLines: 1,
-                textAlign: TextAlign.center,
+      height: size.height,
+      child: ElevatedButtonTheme(
+        data: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: foregroundColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            textStyle: size.style.copyWith(),
+            minimumSize: Size(size.minWidth, size.height),
+            padding: EdgeInsets.symmetric(horizontal: size.padding),
+          ),
+        ),
+        child: icon != null
+            ? ElevatedButton.icon(
+                onPressed: onPressed,
+                label: child ?? Text(title ?? ''),
+                icon: busy
+                    ? indicator
+                    : IconTheme(
+                        data: IconThemeData(
+                            size: size.iconSize, color: foregroundColor),
+                        child: icon!),
+              )
+            : ElevatedButton(
+                onPressed: onPressed,
+                child: busy ? indicator : (child ?? Text(title ?? '')),
               ),
-          if (busy)
-            const XIndicator(radius: padding)
-          else
-            const SizedBox(width: padding * 2),
-        ],
       ),
     );
   }

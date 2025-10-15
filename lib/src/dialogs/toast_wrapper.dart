@@ -6,23 +6,23 @@ import 'widget/status_toast.dart';
 
 class XToast {
   static CancelFunc? loadingCancel;
-  static get isShowLoading => loadingCancel != null;
+  static bool get isShowLoading => loadingCancel != null;
 
   static void show(String? message) {
     BotToast.showText(text: message ?? '');
   }
 
-  static showLoading() {
+  static void showLoading() {
     if (isShowLoading == false) {
       loadingCancel = BotToast.showCustomLoading(
-        toastBuilder: (_) => XLoadingAlert(),
+        toastBuilder: (_) => const XLoadingAlert(),
         crossPage: true,
         ignoreContentClick: true,
       );
     }
   }
 
-  static hideLoading() {
+  static void hideLoading() {
     if (isShowLoading) {
       loadingCancel?.call();
       loadingCancel = null;
@@ -31,14 +31,14 @@ class XToast {
 
   static void success(String? message) {
     _showMessage(
-      Icon(Icons.check_circle, color: Color(0xFF00BC68), size: 20),
+      const Icon(Icons.check_circle, color: Color(0xFF00BC68), size: 20),
       message,
     );
   }
 
   static void error(String? message) {
     _showMessage(
-      Icon(Icons.error, color: Colors.red, size: 20),
+      const Icon(Icons.error, color: Colors.red, size: 20),
       message,
     );
   }

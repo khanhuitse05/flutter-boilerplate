@@ -4,26 +4,25 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class XIndicator extends StatelessWidget {
-  const XIndicator({this.radius = 15, Key? key}) : super(key: key);
+  const XIndicator({this.radius = 15, this.color, super.key});
   final double radius;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     if (kIsWeb || Platform.isAndroid) {
-      return Center(
-        child: SizedBox(
-          width: radius * 2,
-          height: radius * 2,
-          child: CircularProgressIndicator(
-              backgroundColor: Theme.of(context).colorScheme.onBackground,
-              strokeWidth: 1.5),
+      return SizedBox(
+        width: radius * 2,
+        height: radius * 2,
+        child: CircularProgressIndicator(
+          backgroundColor: color ?? Theme.of(context).colorScheme.onSurface,
+          strokeWidth: 1.5,
         ),
       );
     }
-    return Center(
-      child: CupertinoActivityIndicator(
-        radius: radius,
-      ),
+    return CupertinoActivityIndicator(
+      radius: radius,
+      color: color,
     );
   }
 }

@@ -1,14 +1,17 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/src/theme/colors.dart';
 
-@RoutePage()
 class NotFoundView extends StatelessWidget {
-  const NotFoundView({Key? key}) : super(key: key);
+  const NotFoundView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: AppColors.textSecondary,
+      ),
       body: Center(
         child: Text(
           'Page not found',

@@ -1,0 +1,9 @@
+version: 2
+updates:
+  - package-ecosystem: "pub"
+    directory: "/" # root folder where pubspec.yaml is
+    schedule:
+      interval: "weekly" # or "daily", "monthly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "⬆️ pub upgrade"

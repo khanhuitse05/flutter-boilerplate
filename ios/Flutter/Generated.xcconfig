@@ -1,14 +1,16 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Users/khanhuitse05/Developer/flutter_latest
-FLUTTER_APPLICATION_PATH=/Users/khanhuitse05/Documents/FlutterProject/flutter-boilerplate/my_app
+FLUTTER_ROOT=/Users/j1mmyto9/Developer/flutter
+FLUTTER_APPLICATION_PATH=/Users/j1mmyto9/Projects/GO-TEMPLATE/mobile-flutter-template
 COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=lib/main.dart
+FLUTTER_TARGET=/Users/j1mmyto9/Projects/GO-TEMPLATE/mobile-flutter-template/lib/main_staging.dart
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.0
 FLUTTER_BUILD_NUMBER=1
 EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
 EXCLUDED_ARCHS[sdk=iphoneos*]=armv7
+DART_DEFINES=RkxVVFRFUl9BUFBfRkxBVk9SPXN0YWdpbmc=,RkxVVFRFUl9WRVJTSU9OPTMuMzUuMw==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049YTQwMmQ5YTQzNw==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049ZGRmNDdkZDNmZg==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My45LjI=
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=true
 TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=.dart_tool/package_config.json
+PACKAGE_CONFIG=/Users/j1mmyto9/Projects/GO-TEMPLATE/mobile-flutter-template/.dart_tool/package_config.json
+FLAVOR=staging

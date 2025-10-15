@@ -1,34 +1,30 @@
-import 'dart:async';
-
-import 'package:auto_route/auto_route.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myapp/src/router/coordinator.dart';
+import 'navigation_bar_item.dart';
+import 'package:myapp/src/dialogs/alert_wrapper.dart';
+import 'package:myapp/src/services/remote_config/remote_config_service.dart';
 
-part 'dashboard_state.dart';
+class DashboardBloc extends Cubit<XNavigationBarItems> {
+  DashboardBloc(super.current) {
+    checkForceUpdate();
+  }
 
-class DashBoardBloc extends Cubit<DashBoardState> {
-  DashBoardBloc() : super(DashBoardState());
-  final StreamController<TapIndex> reTap =
-      StreamController<TapIndex>.broadcast();
-  TabsRouter? tabsRouter;
-  void setActiveIndex(int index, {BuildContext? context}) {
-    final tap = TapIndex.values[index];
-    int currentIndex = tabsRouter?.activeIndex ?? -1;
-    if (currentIndex != index) {
-      // switch tap
-      tabsRouter?.setActiveIndex(index);
-    } else if (context != null) {
-      final router = tabsRouter?.stackRouterOfIndex(index);
-      if (router != null) {
-        if (router.canPop()) {
-          // back to root
-          tabsRouter?.stackRouterOfIndex(index)?.popUntilRoot();
-        } else {
-          // retap
-          reTap.add(tap);
-        }
-      }
+  bool checkForceUpdate() {
+    final needForceUpdate = RemoteConfigService.config.needForceUpdate;
+    if (needForceUpdate) {
+      XAlert.showForceUpdate();
+      return true;
     }
+    return false;
+  }
+
+  void onDestinationSelected(int index) {
+    emit(XNavigationBarItems.values[index]);
+    AppCoordinator.goNamed(state.route.name);
+  }
+
+  void goHome() {
+    emit(XNavigationBarItems.home);
+    AppCoordinator.goNamed(state.route.name);
   }
 }

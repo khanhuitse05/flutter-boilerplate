@@ -10,11 +10,13 @@ class PageViewCubit extends Cubit<int> {
   PageController pageController = PageController();
   void nextPage() {
     pageController.nextPage(
-        duration: Duration(milliseconds: 300), curve: Curves.easeInOutCubic);
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOutCubic);
   }
 
   void previousPage() {
     pageController.previousPage(
-        duration: Duration(milliseconds: 300), curve: Curves.easeInOutCubic);
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOutCubic);
   }
 }

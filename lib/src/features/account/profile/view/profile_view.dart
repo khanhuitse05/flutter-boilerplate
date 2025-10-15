@@ -1,11 +1,12 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_app/src/features/dashboard/logic/dashboard_bloc.dart';
+import 'package:myapp/src/features/account/logic/account_bloc.dart';
+import 'package:myapp/src/router/coordinator.dart';
+import 'package:myapp/widgets/card/card.dart';
+import 'package:myapp/widgets/card/card_section.dart';
 
-@RoutePage()
 class ProfileView extends StatelessWidget {
-  const ProfileView({Key? key}) : super(key: key);
+  const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,20 +16,61 @@ class ProfileView extends StatelessWidget {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black87,
       ),
-      body: Center(
+      body: Container(
+        padding: const EdgeInsets.all(8),
         child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextButton(
-                child: const Text('Switch to Home'),
-                onPressed: () {
-                  context
-                      .read<DashBoardBloc>()
-                      .setActiveIndex(TapIndex.home.index);
-                },
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            XCardSection(
+              children: [
+                XCardSectionButton(
+                  title: 'User Profile',
+                  onTap: () {},
+                ),
+                XCardSectionButton(
+                  title: 'Change password',
+                  onTap: () {},
+                ),
+                XCardSectionButton(
+                  title: 'Address',
+                  onTap: () {},
+                ),
+              ],
+            ),
+            const SizedBox(height: 46),
+            InkWell(
+              onTap: () async {
+                final result =
+                    await context.read<AccountBloc>().onLogOut(context);
+                if (result == true) {
+                  AppCoordinator.pop();
+                }
+              },
+              child: const XCard(
+                child: Text(
+                  'Logout',
+                  style: TextStyle(color: Color(0xFFC94A28)),
+                ),
               ),
-            ]),
+            ),
+            const SizedBox(height: 16),
+            InkWell(
+              onTap: () async {
+                final result =
+                    await context.read<AccountBloc>().onRemoveAccount(context);
+                if (result == true) {
+                  AppCoordinator.pop();
+                }
+              },
+              child: const XCard(
+                child: Text(
+                  'Remove Account',
+                  style: TextStyle(color: Color(0xFFC94A28)),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

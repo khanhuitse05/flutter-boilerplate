@@ -1,19 +1,54 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "my_app",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "my_app (profile mode)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Staging Debug",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--flavor",
+        "staging",
+        "-t",
+        "lib/main_staging.dart"
+      ],
+    },
+    {
+      "name": "Staging Release",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "args": [
+        "--flavor",
+        "staging",
+        "-t",
+        "lib/main_staging.dart"
+      ],
+    },
+    {
+      "name": "Prod Debug",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--flavor",
+        "production",
+        "-t",
+        "lib/main.dart"
+      ],
+    },
+    {
+      "name": "Prod Release",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "args": [
+        "--flavor",
+        "production",
+        "-t",
+        "lib/main.dart"
+      ],
+    },
+  ]
 }

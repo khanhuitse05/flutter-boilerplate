@@ -2,18 +2,18 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-abstract class StreamCubit<T> extends Cubit<T> {
-  StreamCubit(T initialState) : super(initialState) {
-    initialise();
+abstract class StreamCubit<T, D> extends Cubit<T> {
+  StreamCubit(super.initialState) {
+    initialize();
   }
-  Stream<T> get stream;
+  Stream<D> get getStream;
 
   StreamSubscription? get streamSubscription => _streamSubscription;
 
   StreamSubscription? _streamSubscription;
 
-  void initialise() {
-    _streamSubscription = stream.listen(
+  void initialize() {
+    _streamSubscription = getStream.listen(
       (incomingData) {
         var data = transformData(incomingData);
         onStreamData(data);
@@ -24,20 +24,27 @@ abstract class StreamCubit<T> extends Cubit<T> {
     );
   }
 
+  void onSourceChange() {
+    // Disable current stream
+    _streamSubscription?.cancel();
+    _streamSubscription = null;
+    initialize();
+  }
+
   /// Called before the notifyListeners is called when data has been set
-  void onStreamData(T? data);
+  void onStreamData(D? data);
 
   /// Called when an error is fired in the stream
-  void onStreamError(error);
+  void onStreamError(dynamic error);
 
   /// Called before the data is set for the ViewModel
-  T transformData(T data) {
+  D transformData(D data) {
     return data;
   }
 
   @override
   Future<void> close() async {
-    _streamSubscription!.cancel();
+    _streamSubscription?.cancel();
     super.close();
   }
 }
